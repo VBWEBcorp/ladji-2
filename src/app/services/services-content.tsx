@@ -193,7 +193,7 @@ export function ServicesContent() {
         </div>
       </section>
 
-      {/* Points de dépôt */}
+      {/* Points de dépôt — design enrichi avec numérotation et fond stylisé */}
       <section className="border-b border-border/60 bg-background">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <SectionTitle
@@ -204,32 +204,62 @@ export function ServicesContent() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.15 }}
             variants={{
               hidden: {},
-              visible: { transition: { staggerChildren: 0.06, delayChildren: 0.15 } },
+              visible: { transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
             }}
-            className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            className="mt-14 grid gap-5 md:grid-cols-2"
           >
-            {depositPoints.map((p) => (
+            {depositPoints.map((p, i) => (
               <motion.div
                 key={p.name}
                 variants={{
-                  hidden: { opacity: 0, y: 16 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
                 }}
-                className="rounded-2xl border border-border/80 bg-card/70 p-5 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-md)]"
+                className="group relative overflow-hidden rounded-3xl border border-border/80 bg-card/70 p-7 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 backdrop-blur-sm transition-[border-color,box-shadow] duration-500 ease-out hover:border-primary/30 hover:shadow-[0_20px_50px_-20px_oklch(0.55_0.2_285/0.25)] sm:p-8"
               >
-                <div className="flex items-start gap-3">
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
-                    <MapPin className="size-4" aria-hidden />
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="font-display text-sm font-semibold leading-tight text-foreground">
-                      {p.name}
-                    </h3>
-                    <p className="mt-1 text-xs text-muted-foreground">{p.address}</p>
-                    <p className="mt-2 text-[11px] font-medium uppercase tracking-wide text-primary/80">
+                {/* Gros chiffre fantôme en arrière-plan */}
+                <span
+                  className="pointer-events-none absolute -right-3 -top-8 select-none font-display text-[140px] font-bold leading-none text-primary/[0.07] transition-colors duration-700 ease-out group-hover:text-primary/[0.13] sm:-right-2 sm:text-[160px]"
+                  aria-hidden
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+
+                {/* Halo dégradé subtil */}
+                <span
+                  className="pointer-events-none absolute -left-12 -top-12 size-32 rounded-full bg-primary/10 blur-3xl transition-opacity duration-700 group-hover:opacity-100 opacity-60"
+                  aria-hidden
+                />
+
+                {/* Pin icon en relief */}
+                <div className="relative flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 text-primary shadow-[inset_0_1px_0_oklch(1_0_0/0.3)] ring-1 ring-primary/20">
+                  <MapPin className="size-6" aria-hidden />
+                </div>
+
+                {/* Label étape */}
+                <p className="relative mt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+                  Point de dépôt · {String(i + 1).padStart(2, '0')}
+                </p>
+
+                {/* Nom du point */}
+                <h3 className="relative mt-2 font-display text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl">
+                  {p.name}
+                </h3>
+
+                {/* Adresse + horaires avec dots de séparation */}
+                <div className="relative mt-5 space-y-3 border-t border-border/50 pt-5">
+                  <div className="flex items-start gap-3">
+                    <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/50 ring-2 ring-primary/15" aria-hidden />
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {p.address}
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/50 ring-2 ring-primary/15" aria-hidden />
+                    <p className="text-sm font-medium leading-relaxed text-foreground/85">
                       {p.hours}
                     </p>
                   </div>

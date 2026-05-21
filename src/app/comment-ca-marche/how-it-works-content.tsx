@@ -34,72 +34,93 @@ export function HowItWorksContent() {
         backgroundImage={siteImages.servicesHero}
       />
 
-      {/* Parcours bénéficiaire en 7 étapes */}
+      {/* Parcours bénéficiaire en 7 étapes — timeline verticale */}
       <section className="border-b border-border/60 bg-background">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <SectionTitle
             eyebrow="Le parcours"
             title="7 étapes claires, du NEPH à la première séance"
             description="Vous êtes accompagné à chaque étape. La validation finale par M. Faé se fait sous 24h."
           />
-          <motion.ol
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={{
-              hidden: {},
-              visible: { transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
-            }}
-            className="mt-14 grid gap-5 md:grid-cols-2"
-          >
-            {journey.map((step, i) => {
-              const Icon = getIcon(step.iconName ?? defaults.journey[i]?.iconName)
-              return (
-                <motion.li
-                  key={step.title}
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
-                  }}
-                  className="relative rounded-2xl border border-border/80 bg-card/70 p-6 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-md)]"
-                >
-                  <div className="flex items-start gap-4">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
-                      <Icon className="size-5" aria-hidden />
+
+          <div className="relative mt-16">
+            {/* Ligne verticale dégradée qui traverse toute la timeline */}
+            <div
+              className="pointer-events-none absolute left-5 top-2 bottom-2 w-px bg-gradient-to-b from-primary/50 via-primary/30 to-primary/10 sm:left-6"
+              aria-hidden
+            />
+
+            <motion.ol
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.05 }}
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
+              }}
+              className="space-y-6 sm:space-y-8"
+            >
+              {journey.map((step, i) => {
+                const Icon = getIcon(step.iconName ?? defaults.journey[i]?.iconName)
+                return (
+                  <motion.li
+                    key={step.title}
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease } },
+                    }}
+                    className="group relative pl-16 sm:pl-20"
+                  >
+                    {/* Pastille numérotée sur la ligne */}
+                    <span
+                      className="absolute left-0 top-0 flex size-11 items-center justify-center rounded-full bg-gradient-to-br from-primary to-[oklch(0.42_0.22_280)] font-display text-sm font-bold text-primary-foreground shadow-[0_8px_24px_-8px_oklch(0.55_0.2_285/0.55)] ring-4 ring-background transition-transform duration-500 ease-out group-hover:scale-110 sm:size-12 sm:text-base"
+                      aria-hidden
+                    >
+                      {String(i + 1).padStart(2, '0')}
                     </span>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-baseline gap-2">
-                        <span className="font-display text-[11px] font-bold tracking-[0.2em] text-primary">
-                          ÉTAPE 0{i + 1}
+
+                    {/* Connecteur horizontal subtil entre pastille et card */}
+                    <span
+                      className="pointer-events-none absolute left-11 top-5 hidden h-px w-5 bg-gradient-to-r from-primary/30 to-transparent sm:block sm:left-12"
+                      aria-hidden
+                    />
+
+                    {/* Card contenu */}
+                    <div className="relative rounded-2xl border border-border/80 bg-card/70 p-5 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 backdrop-blur-sm transition-[border-color,box-shadow] duration-500 ease-out group-hover:border-primary/30 group-hover:shadow-[var(--shadow-md)] sm:p-6">
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
+                          <Icon className="size-5" aria-hidden />
                         </span>
-                      </div>
-                      <h3 className="mt-1 font-display text-base font-semibold text-foreground">
-                        {step.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                        {step.desc}
-                      </p>
-                      {step.link && (
-                        <a
-                          href={step.link.href}
-                          target={step.link.external ? '_blank' : undefined}
-                          rel={step.link.external ? 'noopener noreferrer' : undefined}
-                          className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors hover:text-primary/80"
-                        >
-                          {step.link.label}
-                          {step.link.external ? (
-                            <ArrowUpRight className="size-3.5" aria-hidden />
-                          ) : (
-                            <ArrowRight className="size-3.5" aria-hidden />
+                        <div className="min-w-0 flex-1">
+                          <h3 className="font-display text-base font-semibold leading-tight text-foreground sm:text-lg">
+                            {step.title}
+                          </h3>
+                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                            {step.desc}
+                          </p>
+                          {step.link && (
+                            <a
+                              href={step.link.href}
+                              target={step.link.external ? '_blank' : undefined}
+                              rel={step.link.external ? 'noopener noreferrer' : undefined}
+                              className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                            >
+                              {step.link.label}
+                              {step.link.external ? (
+                                <ArrowUpRight className="size-3.5" aria-hidden />
+                              ) : (
+                                <ArrowRight className="size-3.5" aria-hidden />
+                              )}
+                            </a>
                           )}
-                        </a>
-                      )}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </motion.li>
-              )
-            })}
-          </motion.ol>
+                  </motion.li>
+                )
+              })}
+            </motion.ol>
+          </div>
         </div>
       </section>
 

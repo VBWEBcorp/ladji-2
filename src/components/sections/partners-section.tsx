@@ -10,7 +10,7 @@ type PartnerItem = {
 function PartnerCard({ partner }: { partner: PartnerItem }) {
   return (
     <div
-      className="group flex h-20 w-44 shrink-0 items-center justify-center rounded-2xl border border-border/50 bg-card/70 px-6 py-4 shadow-[var(--shadow-xs)] ring-1 ring-foreground/[0.03] backdrop-blur-sm transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-sm)] sm:h-24 sm:w-52"
+      className="group flex h-20 w-44 shrink-0 items-center justify-center rounded-2xl border border-border/50 bg-card/70 px-6 py-4 shadow-[var(--shadow-xs)] ring-1 ring-foreground/[0.03] backdrop-blur-sm sm:h-24 sm:w-52"
       title={partner.name}
     >
       {partner.logo ? (
@@ -18,10 +18,10 @@ function PartnerCard({ partner }: { partner: PartnerItem }) {
           src={partner.logo}
           alt={partner.name}
           loading="lazy"
-          className="max-h-12 w-auto max-w-full object-contain opacity-70 grayscale transition-[filter,opacity] duration-300 group-hover:opacity-100 group-hover:grayscale-0 sm:max-h-14"
+          className="max-h-12 w-auto max-w-full object-contain opacity-70 grayscale transition-[filter,opacity] duration-700 ease-out group-hover:opacity-100 group-hover:grayscale-0 sm:max-h-14"
         />
       ) : (
-        <span className="font-display text-sm font-semibold tracking-tight text-muted-foreground/70 transition-colors duration-300 group-hover:text-foreground sm:text-base">
+        <span className="font-display text-sm font-semibold tracking-tight text-muted-foreground/70 transition-colors duration-700 ease-out group-hover:text-foreground sm:text-base">
           {partner.name}
         </span>
       )}
