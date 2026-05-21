@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 
+import { LanguageSwitcher } from '@/components/layout/language-switcher'
 import { Logo } from '@/components/layout/logo'
 import { ThemeToggle } from '@/components/theme/theme-toggle'
 import { cn } from '@/lib/utils'
@@ -17,48 +18,19 @@ interface NavLink {
 
 const defaultLinks: NavLink[] = [
   { to: '/', label: 'Accueil' },
+  { to: '/comment-ca-marche', label: 'Comment ça marche' },
+  { to: '/services', label: 'Forfaits' },
+  { to: '/financement', label: 'Financement' },
   { to: '/a-propos', label: 'À propos' },
-  { to: '/services', label: 'Services' },
-  { to: '/gallery', label: 'Galerie' },
-  { to: '/blog', label: 'Blog' },
   { to: '/contact', label: 'Contact' },
 ]
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
-  const [links, setLinks] = useState<NavLink[]>(defaultLinks)
+  const [links] = useState<NavLink[]>(defaultLinks)
   const [scrolled, setScrolled] = useState(false)
   const [hoveredKey, setHoveredKey] = useState<string | null>(null)
   const pathname = usePathname()
-
-  useEffect(() => {
-    const checkFeatures = async () => {
-      try {
-        const [galleryRes, blogRes] = await Promise.all([
-          fetch('/api/gallery/settings'),
-          fetch('/api/blog/settings'),
-        ])
-        const gallery = await galleryRes.json()
-        const blog = await blogRes.json()
-
-        const dynamicLinks: NavLink[] = [
-          { to: '/', label: 'Accueil' },
-          { to: '/a-propos', label: 'À propos' },
-          { to: '/services', label: 'Services' },
-        ]
-
-        if (gallery?.enabled !== false) dynamicLinks.push({ to: '/gallery', label: 'Galerie' })
-        if (blog?.enabled !== false) dynamicLinks.push({ to: '/blog', label: 'Blog' })
-
-        dynamicLinks.push({ to: '/contact', label: 'Contact' })
-        setLinks(dynamicLinks)
-      } catch {
-        // Liens par défaut conservés en cas d'erreur
-      }
-    }
-
-    checkFeatures()
-  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -165,6 +137,7 @@ export function Navbar() {
             </nav>
 
             <div className="flex shrink-0 items-center gap-1.5">
+              <LanguageSwitcher className="hidden lg:inline-flex" />
               <ThemeToggle />
 
               {/* CTA premium : gradient + shimmer + arrow */}
@@ -187,7 +160,7 @@ export function Navbar() {
                   className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"
                   aria-hidden
                 />
-                <span className="relative">Nous contacter</span>
+                <span className="relative">Vérifier mon éligibilité</span>
                 <ArrowRight
                   className="relative size-3.5 transition-transform duration-300 group-hover/cta:translate-x-0.5"
                   aria-hidden
@@ -317,9 +290,25 @@ export function Navbar() {
                       className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"
                       aria-hidden
                     />
-                    <span className="relative">Nous contacter</span>
+                    <span className="relative">Vérifier mon éligibilité</span>
                     <ArrowRight className="relative size-4" aria-hidden />
                   </Link>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.24,
+                    delay: 0.08 + links.length * 0.035,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="mt-3 flex items-center justify-between gap-3 border-t border-border/60 pt-3"
+                >
+                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground/80">
+                    Langue
+                  </span>
+                  <LanguageSwitcher layoutId="lang-pill-mobile" />
                 </motion.div>
               </div>
             </motion.div>

@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowRight, Star } from 'lucide-react'
+import { ArrowRight, Check } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -74,13 +74,27 @@ export function HeroSection() {
           transition={{ duration: 0.65, ease }}
           className="mx-auto max-w-3xl text-center"
         >
-          {/* Eyebrow */}
-          <p className="font-display text-xs font-semibold tracking-[0.22em] uppercase text-white/70">
-            {hero.eyebrow}
-          </p>
+          {/* Eyebrow : chips */}
+          {hero.eyebrow && (
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              {hero.eyebrow.split('·').map((chip: string, i: number) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.08] px-3 py-1 font-display text-[11px] font-medium tracking-wide text-white/80 backdrop-blur-sm"
+                >
+                  {i === 0 ? (
+                    <span className="size-1.5 rounded-full bg-[oklch(0.78_0.15_285)]" aria-hidden />
+                  ) : (
+                    <Check className="size-3 text-[oklch(0.78_0.15_285)]" aria-hidden />
+                  )}
+                  {chip.trim()}
+                </span>
+              ))}
+            </div>
+          )}
 
           {/* Titre avec mot accentué en serif italic + violet uni */}
-          <h1 className="mt-6 font-display text-balance pb-1 text-4xl leading-[1.15] font-semibold tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl">
+          <h1 className="mt-8 font-display text-balance pb-1 text-4xl leading-[1.15] font-semibold tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl">
             {lead ? (
               <>
                 {lead}{' '}
@@ -97,8 +111,20 @@ export function HeroSection() {
             {hero.description}
           </p>
 
+          {/* Features list inline */}
+          {Array.isArray((hero as any).features) && (
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/70">
+              {(hero as any).features.map((f: string) => (
+                <span key={f} className="inline-flex items-center gap-1.5">
+                  <Check className="size-3.5 text-[oklch(0.78_0.15_285)]" aria-hidden />
+                  {f}
+                </span>
+              ))}
+            </div>
+          )}
+
           {/* CTAs */}
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             {/* CTA primary premium */}
             <Link
               href="/contact"
@@ -133,30 +159,27 @@ export function HeroSection() {
             </Button>
           </div>
 
-          {/* Social proof : rating + avatars */}
-          <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-5">
-            <div className="flex -space-x-2">
-              {[0, 1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="size-7 rounded-full ring-2 ring-black/30"
-                  style={{
-                    background: `linear-gradient(135deg, oklch(${0.55 + i * 0.05} 0.18 ${260 + i * 15} / 0.85), oklch(${0.65 + i * 0.04} 0.15 ${285 + i * 10} / 0.65))`,
-                  }}
-                  aria-hidden
-                />
+          {/* Stats row : 3 KPIs */}
+          {Array.isArray((hero as any).stats) && (
+            <div className="mt-12 mx-auto grid max-w-2xl grid-cols-3 divide-x divide-white/10 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm">
+              {(hero as any).stats.map((s: { value: string; label: string }, i: number) => (
+                <motion.div
+                  key={s.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 + i * 0.08, ease }}
+                  className="px-4 py-5 text-center sm:px-6 sm:py-6"
+                >
+                  <div className="font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                    {s.value}
+                  </div>
+                  <div className="mt-1 text-[11px] uppercase tracking-wide text-white/60 sm:text-xs">
+                    {s.label}
+                  </div>
+                </motion.div>
               ))}
             </div>
-            <div className="flex items-center gap-2 text-sm">
-              <div className="flex items-center gap-0.5 text-amber-300">
-                {[0, 1, 2, 3, 4].map((i) => (
-                  <Star key={i} className="size-3.5 fill-current" aria-hidden />
-                ))}
-              </div>
-              <span className="font-medium text-white">4.9/5</span>
-              <span className="text-white/70">· 200+ clients satisfaits</span>
-            </div>
-          </div>
+          )}
         </motion.div>
 
         {/* Indicateurs carousel */}

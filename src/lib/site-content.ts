@@ -1,389 +1,896 @@
 /**
- * site-content.ts — Contenu adaptable de la template
+ * site-content.ts : contenu Auto Conduite (V1 conforme au Cahier des Charges Mai 2026)
  *
- * Toute la copie + tous les visuels par défaut sont centralisés ici.
- * Pour adapter la template à un nouveau métier (restaurant, artisan, avocat,
- * conseil, e-commerce, etc.) il suffit d'éditer ce fichier — aucun composant
- * React à toucher.
+ * Vocabulaire à respecter STRICTEMENT (cf. règle absolue de positionnement) :
+ *  - Interdit : "cours de conduite", "leçon", "moniteur officiel", "formation réglementaire"
+ *  - Obligatoire : "véhicule pédagogique à double commande", "brique de mobilité",
+ *                  "outil pédagogique", "accompagnateur proche"
+ *  - Auto Conduite n'est PAS une auto-école.
  *
- * Le CMS (via /api/content/[pageId]) peut surcharger n'importe quelle valeur
- * en runtime ; ce qui est ici sert de fallback / d'état initial.
- *
- * Pour les icônes : passe une chaîne ("Globe", "Phone", "Heart"...) — elle est
- * résolue par `getIcon()` côté composant. Liste complète des icônes :
- * https://lucide.dev/icons/
+ * Voir CAHIER-DES-CHARGES.md à la racine du repo.
  */
 
 // ============================================================================
-//                          IMAGES — pool de visuels
+//                          IMAGES (pool de visuels)
 // ============================================================================
-// Remplace ces URLs Unsplash par les vraies photos du client (locaux, équipe,
-// produits, ateliers, plats, chantiers, etc.). Garde le format auto+fit pour
-// la performance.
+// Photos fournies par le client (M. Faé), hébergées sur ibb.co.
+// 5 visuels mélangés sur tout le site pour garder de la variété.
+
+const photoCoaching3 = 'https://i.ibb.co/rfspRRnL/Conduite-coaching-3.jpg'
+const photoCoaching2 = 'https://i.ibb.co/27RyB3JM/Conduite-coaching-2.jpg'
+const photoCoaching1 = 'https://i.ibb.co/r2Pvm6J0/Conduite-coaching.jpg'
+const photoVoiture2 = 'https://i.ibb.co/KpjN0Vqc/Voiture-basic-2-Copie.webp'
+const photoVoiture1 = 'https://i.ibb.co/HDM862hg/Voiture-basic-Copie.jpg'
 
 export const images = {
-  // Hero homepage — 3 images qui défilent en carousel
-  heroCarousel: [
-    'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80',
-    'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1920&q=80',
-    'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1920&q=80',
-  ],
-
-  // Section "Notre histoire" sur la home
-  story:
-    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80',
-
-  // Page À propos — image principale du hero
-  aboutHero:
-    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80',
-
-  // Page Services — image de fond du hero (workspace/bureau sombre)
-  servicesHero:
-    'https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=1920&q=80',
-
-  // Page Contact — image de fond du hero
-  contactHero:
-    'https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1920&q=80',
-
-  // Page À propos — galerie 4 images
-  aboutGallery: [
-    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80',
-    'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80',
-    'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&q=80',
-    'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80',
-  ],
-
-  // Page Services — 8 images illustrant chaque prestation
-  services: [
-    'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80',
-    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
-    'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=80',
-    'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80',
-    'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80',
-    'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
-    'https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&w=1200&q=80',
-  ],
-
-  // Section CTA — 2 colonnes d'images animées en marquee vertical
+  heroCarousel: [photoCoaching3, photoVoiture2, photoCoaching1],
+  story: photoCoaching2,
+  aboutHero: photoCoaching1,
+  servicesHero: photoVoiture2,
+  contactHero: photoVoiture1,
+  aboutGallery: [photoCoaching3, photoVoiture1, photoCoaching2, photoVoiture2],
+  services: [photoVoiture2, photoCoaching2, photoVoiture1, photoCoaching1],
   ctaScrollColumns: {
-    col1: [
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=500&fit=crop&q=75',
-      'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=500&fit=crop&q=75',
-      'https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=500&fit=crop&q=75',
-      'https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=400&h=500&fit=crop&q=75',
-    ],
-    col2: [
-      'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=500&fit=crop&q=75',
-      'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=500&fit=crop&q=75',
-      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=500&fit=crop&q=75',
-      'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=400&h=500&fit=crop&q=75',
-    ],
+    col1: [photoCoaching3, photoVoiture1, photoCoaching1, photoCoaching2],
+    col2: [photoVoiture2, photoCoaching2, photoVoiture1, photoCoaching3],
   },
-
-  // GalleryCarousel sur la home
   homeGallery: [
-    'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=720&q=80',
-    'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=720&q=80',
-    'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=720&q=80',
-    'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=720&q=80',
-    'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=720&q=80',
-    'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=720&q=80',
+    photoCoaching1,
+    photoCoaching3,
+    photoVoiture1,
+    photoVoiture2,
+    photoCoaching2,
+    photoCoaching1,
   ],
 }
 
 // ============================================================================
-//                          HOME — Hero + sections
+//                          HOME (Hero + sections)
 // ============================================================================
 
 export const heroContent = {
-  eyebrow: 'Bienvenue',
-  title: 'Votre partenaire pour réussir en ligne',
+  eyebrow: 'Mobilité solidaire · Moselle',
+  title: 'Pour toutes les bourses',
   description:
-    'Nous accompagnons les entreprises avec des solutions sur mesure, pensées pour durer. Présence digitale, performance et clarté.',
-  button1: 'Prendre contact',
-  button2: 'Découvrir nos services',
+    "Auto Conduite met à disposition des véhicules pédagogiques à double commande pour les personnes en parcours d'insertion. Vous conduisez avec un accompagnateur proche, dans un cadre légal et sécurisé.",
+  button1: 'Vérifier mon éligibilité',
+  button2: 'Voir les forfaits',
+  features: [
+    'Véhicule pédagogique à double commande',
+    'Assurance apprentissage incluse',
+    'Cadre légal L221-7',
+  ],
+  stats: [
+    { value: 'Dès 199€', label: 'Pack 5h' },
+    { value: '100%', label: 'légal & assuré' },
+    { value: 'CPF', label: 'finançable' },
+  ],
   images: images.heroCarousel,
 }
 
-export const storyContent = {
-  eyebrow: 'Notre histoire',
-  title: 'Une approche humaine, des résultats concrets',
-  paragraph1:
-    "Depuis nos débuts, nous croyons qu'un bon site commence par une bonne écoute. Nous prenons le temps de comprendre votre métier, vos clients et vos objectifs avant de concevoir quoi que ce soit.",
-  paragraph2:
-    "Le résultat : des projets qui vous ressemblent, qui parlent à votre audience, et qui travaillent pour vous 24h/24.",
-  image: images.story,
-}
-
-// Aperçu des services sur la home (4 cards)
-// `iconName` correspond à une icône lucide (voir https://lucide.dev/icons/)
-export const servicesPreviewContent = {
-  eyebrow: 'Nos services',
-  title: 'Des solutions adaptées à votre activité',
+export const whyContent = {
+  eyebrow: 'Pourquoi Auto Conduite ?',
+  title: 'Une brique de mobilité accessible et sécurisée',
   description:
-    'Quel que soit votre secteur, nous vous aidons à développer votre présence et à atteindre vos objectifs.',
+    "Nous fournissons le véhicule et le cadre. Vous conduisez avec un accompagnateur proche, à votre rythme, dans un dispositif encadré par la loi.",
   items: [
     {
-      iconName: 'Globe',
-      title: 'Création de site web',
-      desc: 'Sites vitrines modernes, responsive et optimisés pour convertir vos visiteurs en clients.',
+      iconName: 'Car',
+      title: 'Véhicule pédagogique',
+      desc: "Voitures récentes, entretenues, équipées d'un double pédalier homologué pour un apprentissage en toute sécurité.",
     },
     {
-      iconName: 'Search',
-      title: 'Référencement SEO',
-      desc: 'Stratégie de contenu et optimisation technique pour apparaître en première page Google.',
-    },
-    {
-      iconName: 'Palette',
-      title: 'Identité visuelle',
-      desc: 'Logo, charte graphique et supports cohérents qui reflètent votre image de marque.',
+      iconName: 'Coins',
+      title: 'Pour toutes les bourses',
+      desc: 'Forfaits dès 199€ (Pack 5h, 1h offerte). Finançables CPF, ALMA, ADIE, aide mobilité France Travail.',
     },
     {
       iconName: 'ShieldCheck',
-      title: 'Maintenance & support',
-      desc: 'Mises à jour, sécurité et accompagnement continu pour garder votre site performant.',
+      title: 'Cadre légal L221-7',
+      desc: "Conduite supervisée ou accompagnée encadrée par le Code de la route. Assurance apprentissage incluse.",
+    },
+    {
+      iconName: 'Users',
+      title: 'Partenaires institutionnels',
+      desc: 'France Travail, Missions Locales, GEIQ, Département de la Moselle, ADAM, Région Grand Est.',
+    },
+  ],
+}
+
+export const storyContent = {
+  eyebrow: 'Comment ça marche',
+  title: 'Simple comme 1, 2, 3',
+  steps: [
+    {
+      title: 'Vérifiez votre éligibilité',
+      desc: 'Quelques questions sur votre NEPH, votre code, et votre accompagnateur proche. Réponse en 24h.',
+    },
+    {
+      title: 'Choisissez votre forfait',
+      desc: 'Pack 5h, 10h ou 20h finançable CPF, tarif ajusté selon votre zone (A, B ou C).',
+    },
+    {
+      title: 'Récupérez le véhicule',
+      desc: "Au point de dépôt le plus proche (Sarrebourg, Château-Salins…), prêt à l'emploi avec double commande.",
+    },
+  ],
+  ctaLabel: 'En savoir plus',
+  image: images.story,
+}
+
+// Alias rétro-compat (servicesPreviewContent → whyContent)
+export const servicesPreviewContent = {
+  eyebrow: whyContent.eyebrow,
+  title: whyContent.title,
+  description: whyContent.description,
+  items: whyContent.items,
+}
+
+export const partnersContent = {
+  eyebrow: 'Partenaires institutionnels',
+  title: 'Ils nous font confiance',
+  items: [
+    {
+      name: 'France Travail',
+      logo: 'https://i.ibb.co/d0F4KXvL/France-travail-2023-svg.png',
+    },
+    {
+      name: 'Mission Locale',
+      logo: 'https://i.ibb.co/0RsZ1C9X/ml-logo-long-rvb.png',
+    },
+    {
+      name: 'Région Grand Est',
+      logo: 'https://i.ibb.co/35NMns1v/grand-est-logo.jpg',
+    },
+    {
+      name: 'GEIQ Alemploi',
+      logo: 'https://i.ibb.co/zTG3tr0b/Alemploi.png',
+    },
+    {
+      name: 'ADAM',
+      logo: null,
     },
   ],
 }
 
 export const testimonialsContent = {
   eyebrow: 'Témoignages',
-  title: 'Ils nous font confiance',
+  title: 'Ils ont choisi Auto Conduite',
   description:
-    'Des entreprises de tous horizons qui ont gagné en visibilité et en crédibilité.',
+    'Bénéficiaires, accompagnateurs, prescripteurs : ils témoignent de leur expérience.',
   items: [
-    { name: 'Marie D.', company: 'Boulangerie Le Fournil', text: "Depuis le nouveau site, je reçois 3 fois plus d'appels. Les clients nous trouvent enfin sur Google.", stars: 5 },
-    { name: 'Thomas L.', company: 'Cabinet Conseil TLR', text: 'Un travail soigné, un site clair et professionnel. Mes prospects comprennent immédiatement ce que je propose.', stars: 5 },
-    { name: 'Camille B.', company: 'Atelier Camille', text: "Le site reflète parfaitement l'univers de ma marque. J'ai gagné en crédibilité auprès de mes clients.", stars: 5 },
-    { name: 'Laurent M.', company: 'LM Rénovation', text: 'En trois mois, mon chiffre a augmenté de 40 %. Le site et le SEO font vraiment la différence.', stars: 5 },
-    { name: 'Nadia K.', company: 'Agence NovaTour', text: 'Un accompagnement au top, des délais respectés et un résultat qui dépasse mes attentes.', stars: 5 },
-    { name: 'Sophie R.', company: 'Studio Pilates Zen', text: "L'équipe a su capter l'ambiance de mon studio. Les réservations ont décollé.", stars: 5 },
-    { name: 'Pierre V.', company: 'Transports Vallée', text: 'Un investissement rentabilisé en quelques semaines. Des contacts qualifiés chaque jour.', stars: 5 },
-    { name: 'Julie A.', company: "Les Jardins d'Alice", text: 'Ils ont transformé notre présence en ligne. Le site est magnifique et nos ventes ont triplé.', stars: 5 },
-    { name: 'Franck G.', company: 'Studio FG', text: 'Design épuré, navigation fluide, exactement ce que je voulais pour présenter mes projets.', stars: 4 },
-    { name: 'Émilie T.', company: 'Clinique Vétérinaire du Parc', text: 'Nos clients trouvent toutes les infos facilement. La prise de rendez-vous a changé notre quotidien.', stars: 5 },
+    {
+      name: 'Yassine K.',
+      company: 'Bénéficiaire · Sarrebourg',
+      text: "Sans Auto Conduite je n'aurais jamais pu m'entraîner autant. Le tarif est abordable et le cadre est rassurant.",
+      stars: 5,
+    },
+    {
+      name: 'Marie D.',
+      company: 'Accompagnatrice proche',
+      text: "J'accompagne mon fils chaque week-end. Le véhicule à double commande me donne confiance, je sais que je peux reprendre la main si besoin.",
+      stars: 5,
+    },
+    {
+      name: 'Thomas L.',
+      company: 'Bénéficiaire · Demandeur d\'emploi',
+      text: "Sans permis, pas d'embauche dans ma zone. Avec l'aide mobilité France Travail et Auto Conduite, j'ai enfin pu passer le cap.",
+      stars: 5,
+    },
+    {
+      name: 'Camille B.',
+      company: 'Bénéficiaire · Jeune Mission Locale',
+      text: "Ma conseillère m'a orienté vers Auto Conduite. Tout s'est fait en ligne, c'était simple et rapide.",
+      stars: 5,
+    },
+    {
+      name: 'Laurent M.',
+      company: 'Père accompagnateur',
+      text: 'On peut louer à la séance, à la journée, au pack. Très flexible et bien expliqué dès le départ.',
+      stars: 5,
+    },
+    {
+      name: 'Sophie R.',
+      company: 'Conseillère Mission Locale Sud Mosellan',
+      text: "Un dispositif idéal pour nos jeunes en parcours d'insertion. Le coût réduit et le cadre légal sont de vrais atouts.",
+      stars: 5,
+    },
+    {
+      name: 'Pierre V.',
+      company: 'Bénéficiaire RSA',
+      text: "Avec l'ADIE et le CPF, j'ai pu boucler le financement de mon Pack 20h. Le bilan IA après chaque séance m'aide à progresser.",
+      stars: 5,
+    },
+    {
+      name: 'Julie A.',
+      company: 'Bénéficiaire · Conduite accompagnée',
+      text: 'Avec mon père on a roulé partout dans la région. Le forfait à la semaine est vraiment avantageux.',
+      stars: 5,
+    },
   ],
 }
 
 export const galleryContent = {
   eyebrow: 'Galerie',
-  title: 'En coulisses',
+  title: 'Nos véhicules pédagogiques',
   images: images.homeGallery,
 }
 
 export const ctaContent = {
-  eyebrow: 'Prêt à démarrer ?',
-  title: 'Parlons de votre projet',
+  eyebrow: 'Prêt à vous lancer ?',
+  title: 'Vérifiez votre éligibilité en quelques minutes',
   description:
-    "Un échange simple et sans engagement pour comprendre vos besoins et vous proposer la meilleure approche.",
-  button: 'Demander un devis gratuit',
+    "Un premier échange gratuit pour comprendre votre situation, vérifier votre éligibilité et vous orienter vers le forfait et le financement adaptés. Bénéficiaires et prescripteurs bienvenus.",
+  button: 'Vérifier mon éligibilité',
   scrollImages: images.ctaScrollColumns,
 }
 
+// Rétro-compat (non affichée sur la home v1)
 export const faqContent = {
   eyebrow: 'FAQ',
   title: 'Questions fréquentes',
-  description:
-    "Les réponses aux questions que vous vous posez avant de nous confier votre projet.",
+  description: 'Les réponses aux questions courantes sur le dispositif Auto Conduite.',
   items: [
     {
-      question: 'Combien coûte un site internet ?',
+      question: 'Suis-je éligible au dispositif ?',
       answer:
-        "Le tarif dépend de votre besoin : un site vitrine simple démarre autour de 1 500 €, une application web sur mesure peut aller bien au-delà. Nous établissons toujours un devis clair et détaillé après un premier échange gratuit.",
+        "Il faut avoir obtenu son code de la route (NEPH), être en parcours d'insertion (ou particulier majeur) et disposer d'un accompagnateur proche titulaire du permis B depuis 5 ans minimum.",
     },
     {
-      question: 'Combien de temps faut-il pour livrer un site ?',
+      question: 'Le véhicule est-il assuré ?',
       answer:
-        "Comptez 3 à 6 semaines pour un site vitrine standard, 2 à 4 mois pour un projet plus complexe. Nous vous fournissons un planning détaillé dès le début du projet, avec des jalons clairs.",
+        "Oui. Chaque véhicule pédagogique est couvert par une assurance spécifique apprentissage. L'élève et l'accompagnateur proche sont couverts pendant toute la durée de la location.",
     },
     {
-      question: 'Êtes-vous disponibles après la livraison ?',
+      question: 'Quels sont les financements possibles ?',
       answer:
-        "Oui, nous proposons des contrats de maintenance qui incluent les mises à jour, la sécurité, les sauvegardes et un support réactif. Vous restez accompagnés dans la durée.",
+        "Selon votre profil : CPF (Pack 20h via ADAM), ALMA (paiement fractionné), ADIE (microcrédit personnel), aide mobilité France Travail (jusqu'à 1200€), Fonds d'Aide aux Jeunes via Mission Locale.",
     },
     {
-      question: "Le site m'appartient-il une fois livré ?",
+      question: 'Où récupérer le véhicule ?',
       answer:
-        "Totalement. Vous êtes propriétaire de votre site, de son code source, de son nom de domaine et de tous les contenus. Nous vous fournissons les accès et la documentation nécessaire.",
-    },
-    {
-      question: 'Comment se passe le référencement (SEO) ?',
-      answer:
-        "Le SEO technique est intégré dès la conception : performance, structure sémantique, données structurées, accessibilité. Nous proposons aussi un accompagnement éditorial pour renforcer votre positionnement sur le long terme.",
-    },
-    {
-      question: 'Acceptez-vous les paiements échelonnés ?',
-      answer:
-        "Oui. Le règlement se fait habituellement en 3 fois : 30 % à la signature, 40 % à mi-projet, 30 % à la livraison. Nous adaptons cette répartition selon vos contraintes.",
+        "Aux points de dépôt du bassin Sarrebourg / Château-Salins : Parking Leclerc Sarrebourg (24/7), Gare de Sarrebourg, France Travail Sarrebourg, Intermarché Château-Salins (24/7).",
     },
   ],
 }
 
 // ============================================================================
-//                          ABOUT — page À propos
+//                          ABOUT (page À propos)
 // ============================================================================
 
 export const aboutContent = {
   hero: {
-    eyebrow: 'À propos',
-    title: 'Une équipe engagée à vos côtés',
+    eyebrow: 'Qui sommes-nous',
+    title: 'La mobilité pour toutes les bourses',
     description:
-      "Nous croyons que chaque entreprise mérite une présence en ligne à la hauteur de ses ambitions. Depuis notre création, nous accompagnons artisans, PME et indépendants avec des solutions simples, efficaces et soignées.",
+      "Auto Conduite est une initiative de mobilité solidaire portée par M. Faé en Moselle. Notre mission : rendre la pratique de la conduite accessible aux personnes en parcours d'insertion, dans un cadre légal et sécurisé, en complément des dispositifs publics.",
     image: images.aboutHero,
   },
-  stats: [
-    { value: '200+', label: 'Projets livrés' },
-    { value: '98%', label: 'Clients satisfaits' },
-    { value: '5 ans', label: "D'expertise" },
-    { value: '24/7', label: 'Support continu' },
-  ],
   values: [
     {
-      iconName: 'Heart',
-      title: 'Proximité',
+      iconName: 'Sparkles',
+      title: 'Pour toutes les bourses',
       description:
-        'Un interlocuteur unique, disponible, qui connaît votre projet sur le bout des doigts.',
+        "Le permis ne doit plus être un frein à l'emploi. Nos forfaits sont pensés pour être compatibles avec le CPF, l'aide mobilité, le FAJ et les microcrédits ADIE.",
     },
     {
-      iconName: 'Lightbulb',
-      title: 'Clarté',
-      description: "Pas de jargon inutile. Des explications simples, des livrables concrets.",
+      iconName: 'ShieldCheck',
+      title: 'Sécurité & cadre légal',
+      description:
+        "Véhicule pédagogique à double commande, assurance apprentissage incluse, dispositif conforme à la loi L221-7 (conduite accompagnée / supervisée).",
     },
     {
       iconName: 'Users',
-      title: 'Sur mesure',
+      title: 'Brique de mobilité',
       description:
-        "Chaque projet est différent. Nous adaptons nos solutions à votre réalité, pas l'inverse.",
+        "Nous complétons l'écosystème existant (auto-écoles, prescripteurs, financeurs), nous ne le remplaçons pas. Notre rôle : fournir le véhicule et le cadre.",
+    },
+  ],
+  legal: [
+    {
+      iconName: 'Scale',
+      title: 'Loi L221-7 : un cadre clair',
+      paragraphs: [
+        "La conduite accompagnée (AAC) et la conduite supervisée sont des dispositifs encadrés par le Code de la route. Le bénéficiaire doit avoir obtenu son NEPH, son code, et validé au minimum 20h de conduite en auto-école.",
+        "L'accompagnateur proche doit être titulaire du permis B depuis au moins 5 ans, sans annulation ni suspension en cours, et sobre pendant toute la séance.",
+      ],
+    },
+    {
+      iconName: 'ShieldCheck',
+      title: 'Candidat libre : expliqué simplement',
+      paragraphs: [
+        "Le candidat libre s'inscrit à l'examen via l'ANTS (ants.gouv.fr) sans passer par une auto-école. Auto Conduite met à disposition le véhicule pédagogique pour la phase d'entraînement, dans le respect total de la réglementation.",
+        "Chaque véhicule pédagogique est régulièrement contrôlé, entretenu et équipé d'un double pédalier (frein + embrayage) homologué.",
+      ],
+    },
+  ],
+  institutions: [
+    {
+      title: 'France Travail',
+      desc: "Aide mobilité jusqu'à 1200€ pour les demandeurs d'emploi.",
+    },
+    {
+      title: 'Missions Locales',
+      desc: "Accompagnement des jeunes 16-25 ans (FAJ, suivi parcours d'insertion).",
+    },
+    {
+      title: 'GEIQ Alemploi',
+      desc: "Levée du frein mobilité pour les salariés en insertion.",
+    },
+    {
+      title: 'Département de la Moselle',
+      desc: 'Abondement et conventions ESS (en cours de négociation).',
     },
   ],
   gallery: images.aboutGallery,
 }
 
 // ============================================================================
-//                          SERVICES — page Services
+//                          FORFAITS (page Nos offres)
 // ============================================================================
+
+// Zones kilométriques officielles (cf. cahier des charges §3.3)
+export const zones = [
+  {
+    code: 'A',
+    range: '0 à 15 km',
+    surcharge: 0,
+    description: 'Zone proche d\'un point de dépôt',
+  },
+  {
+    code: 'B',
+    range: '15 à 35 km',
+    surcharge: 15,
+    description: 'Zone intermédiaire',
+  },
+  {
+    code: 'C',
+    range: '+ 35 km',
+    surcharge: 30,
+    description: 'Zone éloignée, supplément carburant',
+  },
+]
+
+// Points de dépôt officiels (bassin Sarrebourg / Château-Salins)
+export const depositPoints = [
+  {
+    name: 'Parking Leclerc Sarrebourg',
+    address: 'Sarrebourg (57400)',
+    hours: 'Accessible 24h/24, 7j/7',
+  },
+  {
+    name: 'Parking Gare de Sarrebourg',
+    address: 'Gare SNCF, Sarrebourg',
+    hours: 'Pour bénéficiaires arrivant en train',
+  },
+  {
+    name: 'France Travail Sarrebourg',
+    address: 'ZAC les Terrasses de la Sarre',
+    hours: 'Horaires d\'ouverture France Travail',
+  },
+  {
+    name: 'Parking Intermarché Château-Salins',
+    address: 'Château-Salins (57170)',
+    hours: 'Accessible 24h/24, 7j/7',
+  },
+  {
+    name: 'Mission Locale Sud Mosellan',
+    address: 'À confirmer',
+    hours: 'Horaires Mission Locale',
+  },
+]
 
 export const servicesContent = {
   hero: {
-    eyebrow: 'Nos services',
-    title: "Tout ce qu'il faut pour réussir en ligne",
+    eyebrow: 'Forfaits & Tarifs',
+    title: 'Des forfaits pour toutes les bourses',
     description:
-      "Des prestations complètes, de la conception à l'accompagnement continu, adaptées à toutes les tailles d'entreprise.",
+      "3 packs au choix, ajustés selon votre zone kilométrique. Finançables CPF (Pack 20h), ALMA, ADIE ou aide mobilité France Travail.",
   },
-  kpis: [
-    { value: '8', label: 'prestations' },
-    { value: '200+', label: 'projets livrés' },
-    { value: '100%', label: 'sur mesure' },
-  ],
-  // Chaque service : icône, titre, description, 3 points clés, image
-  list: [
+  pricing: {
+    eyebrow: 'Forfaits et Tarifs',
+    title: 'Choisissez votre Pack',
+    description:
+      "Tous nos packs incluent un véhicule pédagogique à double commande récent, l'assurance apprentissage et le kilométrage illimité.",
+    plans: [
+      {
+        iconName: 'Clock',
+        name: 'Pack 5h',
+        offer: '6h avec 1h offerte',
+        prices: { A: 199, B: 214, C: 229 },
+        description: 'Idéal pour une première prise en main ou des sessions ponctuelles.',
+        features: [
+          'Véhicule pédagogique à double commande',
+          'Assurance apprentissage incluse',
+          '1h offerte sur le pack',
+          'Kilométrage illimité',
+        ],
+      },
+      {
+        iconName: 'Calendar',
+        name: 'Pack 10h',
+        offer: 'Le plus populaire',
+        prices: { A: 329, B: 344, C: 359 },
+        description: "Pour un entraînement régulier avant l'examen.",
+        features: [
+          'Véhicule pédagogique à double commande',
+          'Assurance apprentissage incluse',
+          'Validité 3 mois',
+          'Créneaux prioritaires',
+        ],
+        popular: true,
+      },
+      {
+        iconName: 'GraduationCap',
+        name: 'Pack 20h CPF',
+        offer: 'Finançable CPF',
+        prices: { A: 620, B: 635, C: 650 },
+        description: 'Le forfait complet finançable via votre Compte Personnel de Formation.',
+        features: [
+          'Véhicule pédagogique à double commande',
+          'Assurance apprentissage incluse',
+          'Finançable CPF via ADAM',
+          'Idéal préparation examen',
+        ],
+      },
+    ],
+  },
+  zones: {
+    eyebrow: 'Zones kilométriques',
+    title: 'Le tarif s\'ajuste selon votre zone',
+    description:
+      "Le supplément carburant est calculé selon la distance entre votre domicile et le point de dépôt le plus proche.",
+  },
+  deposits: {
+    eyebrow: 'Points de dépôt',
+    title: 'Où récupérer le véhicule',
+    description:
+      'Bassin Sarrebourg / Château-Salins. D\'autres points de dépôt arriveront progressivement sur le département.',
+  },
+  funding: {
+    eyebrow: 'Financements',
+    title: "Plusieurs solutions selon votre profil",
+    items: [
+      {
+        title: 'CPF (Pack 20h)',
+        desc: 'Pack 20h finançable via moncompteformation.gouv.fr, portage assuré par ADAM. Plafond 900€ pour les demandeurs d\'emploi inscrits.',
+      },
+      {
+        title: 'ALMA : paiement fractionné',
+        desc: 'Paiement en 2x, 3x ou 4x pour le reste à charge. (Solution en cours d\'activation.)',
+      },
+      {
+        title: 'Aide mobilité France Travail',
+        desc: 'Jusqu\'à 1200€ pour les demandeurs d\'emploi. À demander auprès de votre conseiller.',
+      },
+      {
+        title: 'FAJ : Fonds d\'Aide aux Jeunes',
+        desc: 'Via Mission Locale, pour les 16-25 ans en parcours d\'insertion.',
+      },
+      {
+        title: 'ADIE Lorraine',
+        desc: 'Microcrédit personnel pour les bénéficiaires RSA sans solution CPF ou ALMA. adie.org',
+      },
+      {
+        title: 'Abondement Département Moselle',
+        desc: 'Convention en cours de négociation pour les publics du Département.',
+      },
+    ],
+  },
+  conditions: {
+    eyebrow: 'Conditions',
+    title: 'Qui peut en bénéficier ?',
+    description:
+      'Le dispositif est ouvert à tous les profils, dans un cadre légal et sécurisé.',
+    groups: [
+      {
+        iconName: 'GraduationCap',
+        title: "Pour le bénéficiaire",
+        items: [
+          'Avoir obtenu le code de la route (NEPH validé)',
+          'Avoir validé 20h minimum en auto-école',
+          'Être inscrit en conduite accompagnée (AAC) ou supervisée',
+          'Fournir l\'attestation de fin de formation initiale',
+        ],
+      },
+      {
+        iconName: 'Users',
+        title: "Pour l'accompagnateur proche",
+        items: [
+          'Titulaire du permis B depuis 5 ans minimum',
+          "Pas d'annulation ou suspension en cours",
+          "Sobre pendant toute la séance",
+          'Désigné sur le contrat de location',
+        ],
+      },
+      {
+        iconName: 'Building2',
+        title: 'Pour les prescripteurs',
+        items: [
+          'Convention de partenariat possible (FT, ML, GEIQ, social)',
+          'Facturation directe ou prise en charge',
+          'Reporting et suivi anonymisé',
+          'Fiche synthétique téléchargeable',
+        ],
+      },
+    ],
+  },
+}
+
+// ============================================================================
+//                  COMMENT ÇA MARCHE (page parcours bénéficiaire)
+// ============================================================================
+// Source : cahier des charges §3.2
+
+export const howItWorksContent = {
+  hero: {
+    eyebrow: 'Comment ça marche',
+    title: 'Votre parcours pas à pas',
+    description:
+      "Du NEPH à votre première séance, un parcours simple, légal et accompagné. Sept étapes claires pour bénéficier du dispositif Auto Conduite.",
+  },
+  // Parcours bénéficiaire en 7 étapes (cf. §3.2 du cahier : NEPH → inscription → forfait → paiement → briefing → réservation → séance)
+  journey: [
     {
-      iconName: 'Globe',
-      title: 'Création de site vitrine',
-      description: 'Un site moderne, rapide et responsive qui présente clairement votre activité et inspire confiance à vos visiteurs.',
-      points: ['Design sur mesure', 'Mobile-first', 'Optimisé Google'],
-      image: images.services[0],
+      iconName: 'FileText',
+      title: 'Obtenez votre NEPH',
+      desc: "Le NEPH (Numéro d'Enregistrement Préfectoral Harmonisé) est obligatoire pour s'inscrire à l'examen. Il s'obtient en ligne sur ants.gouv.fr, on vous guide pas à pas. Le code de la route peut être passé en parallèle via Codeclic (17€) ou en candidat libre dans un centre agréé.",
+      link: { label: 'ants.gouv.fr', href: 'https://ants.gouv.fr', external: true },
     },
     {
-      iconName: 'Smartphone',
-      title: 'Application web',
-      description: 'Outils métier, plateformes de réservation, espaces clients : des applications pensées pour simplifier votre quotidien.',
-      points: ['Architecture évolutive', 'Sécurité renforcée', 'Hébergement haute dispo'],
-      image: images.services[1],
+      iconName: 'UserCheck',
+      title: 'Inscrivez-vous au dispositif',
+      desc: "Quelques questions simples : âge, NEPH, accompagnateur proche disponible. M. Faé vérifie votre éligibilité et vous répond en moins de 24h.",
+      link: { label: 'Formulaire d\'éligibilité', href: '/contact', external: false },
     },
     {
-      iconName: 'Search',
-      title: 'Référencement naturel (SEO)',
-      description: 'Optimisation technique, contenu stratégique et suivi de positionnement pour gagner en visibilité sur Google.',
-      points: ['Audit technique', 'Stratégie de contenu', 'Suivi mensuel'],
-      image: images.services[2],
+      iconName: 'Coins',
+      title: 'Choisissez votre forfait',
+      desc: 'Pack 5h (avec 1h offerte), Pack 10h ou Pack 20h finançable CPF, tarif ajusté selon votre zone kilométrique (A, B ou C).',
+      link: { label: 'Voir les forfaits', href: '/services', external: false },
     },
     {
-      iconName: 'Palette',
-      title: 'Identité visuelle',
-      description: 'Logo, charte graphique, supports de communication : une image cohérente qui vous ressemble.',
-      points: ['Logo & déclinaisons', 'Charte graphique', 'Supports print & web'],
-      image: images.services[3],
-    },
-    {
-      iconName: 'Megaphone',
-      title: 'Communication digitale',
-      description: 'Stratégie de contenu, réseaux sociaux et campagnes pour développer votre audience en ligne.',
-      points: ['Stratégie éditoriale', 'Réseaux sociaux', 'Campagnes Ads'],
-      image: images.services[4],
-    },
-    {
-      iconName: 'Code',
-      title: 'Développement sur mesure',
-      description: 'Intégrations, automatisations, API : des solutions techniques taillées pour vos besoins spécifiques.',
-      points: ['Intégrations sur mesure', 'API & automatisation', 'Code propre & testé'],
-      image: images.services[5],
+      iconName: 'CreditCard',
+      title: 'Réglez votre forfait',
+      desc: 'Plusieurs financements possibles : CPF via ADAM, ALMA fractionné, aide mobilité France Travail, FAJ Mission Locale, ADIE pour les RSA.',
+      link: { label: 'Voir le financement', href: '/financement', external: false },
     },
     {
       iconName: 'ShieldCheck',
-      title: 'Maintenance & sécurité',
-      description: 'Mises à jour, sauvegardes, monitoring et corrections pour un site toujours performant et sécurisé.',
-      points: ['Sauvegardes quotidiennes', 'Mises à jour sécu', 'Monitoring 24/7'],
-      image: images.services[6],
+      title: 'Validez le briefing sécurité',
+      desc: "Une fois le dossier validé, vous recevez le briefing sécurité obligatoire (vidéo + quiz, score minimum 80%). Indispensable avant d'accéder au véhicule.",
+      link: null,
     },
     {
-      iconName: 'BarChart3',
-      title: 'Analyse & reporting',
-      description: 'Tableaux de bord clairs pour suivre vos performances, comprendre vos visiteurs et ajuster votre stratégie.',
-      points: ['Dashboards clairs', 'Recommandations', 'Suivi mensuel'],
-      image: images.services[7],
+      iconName: 'Calendar',
+      title: 'Réservez votre créneau',
+      desc: "Choisissez votre point de dépôt (Sarrebourg, Château-Salins…), votre date et l'horaire qui vous arrange. La réservation est confirmée par SMS et email.",
+      link: null,
+    },
+    {
+      iconName: 'CarFront',
+      title: 'Effectuez votre séance',
+      desc: "Récupérez le véhicule pédagogique à double commande au point de dépôt, démarrez la séance avec votre accompagnateur proche. Bilan IA automatique dans les 5 minutes qui suivent.",
+      link: null,
+    },
+  ],
+  // Vidéos prévues (cf. §5, contenus vidéo)
+  videos: [
+    {
+      number: 1,
+      title: "Comment s'inscrire",
+      duration: '2-3 min',
+      desc: 'NEPH → code → forfait → paiement → confirmation',
+    },
+    {
+      number: 2,
+      title: "Déroulement d'une séance",
+      duration: '3-4 min',
+      desc: 'Récupération du véhicule → rôle de l\'accompagnateur → séance → bilan',
+    },
+    {
+      number: 4,
+      title: "L'IA Auto Conduite",
+      duration: '1-2 min',
+      desc: 'Bilan post-séance automatique, rapport mensuel, conseils personnalisés',
+    },
+  ],
+  // Bloc rôle de l'accompagnateur (cf. §3.2)
+  accompagnateur: {
+    eyebrow: 'Rôle clé',
+    title: "L'accompagnateur proche",
+    description:
+      "Une personne de confiance, titulaire du permis B depuis 5 ans minimum, sobre et non suspendue. Elle accompagne le bénéficiaire pendant chaque séance, dans le respect strict du dispositif.",
+    cta: { label: 'Page accompagnateur', href: '/accompagnateur' },
+  },
+  // FAQ courte (cf. §3.2)
+  faq: {
+    eyebrow: 'FAQ',
+    title: 'Questions fréquentes',
+    items: [
+      {
+        question: "Qu'est-ce que le NEPH et comment l'obtenir ?",
+        answer:
+          "Le NEPH est votre numéro candidat unique pour l'examen du permis. Vous l'obtenez sur ants.gouv.fr en quelques étapes (pièce d'identité, justificatif de domicile, photo d'identité numérique). Délai moyen : 7 à 15 jours.",
+      },
+      {
+        question: 'Auto Conduite remplace-t-elle une auto-école ?',
+        answer:
+          "Non. Auto Conduite met à disposition un véhicule pédagogique à double commande pour la phase d'entraînement. Vous devez avoir validé au minimum 20h en auto-école avant d'accéder au dispositif. Auto Conduite est une brique de mobilité complémentaire.",
+      },
+      {
+        question: 'Quelles sont les conditions pour mon accompagnateur ?',
+        answer:
+          "L'accompagnateur proche doit être titulaire du permis B depuis 5 ans minimum, sans annulation ni suspension en cours, et sobre pendant toute la séance. Voir la page Accompagnateur pour tous les détails.",
+      },
+      {
+        question: 'Que se passe-t-il après ma demande ?',
+        answer:
+          "M. Faé valide votre dossier sous 24h. Vous recevez ensuite par email et SMS le briefing sécurité obligatoire (vidéo + quiz de validation). Une fois le quiz validé, vous pouvez réserver vos créneaux.",
+      },
+      {
+        question: 'Comment se passe la première séance ?',
+        answer:
+          "Votre accompagnateur récupère le véhicule au point de dépôt convenu (Sarrebourg, Château-Salins…) à l'horaire réservé, vous rejoint, puis la séance démarre. Un bilan IA personnalisé vous est envoyé dans les 5 minutes qui suivent.",
+      },
+    ],
+  },
+}
+
+// ============================================================================
+//                  FINANCEMENT (page Financement)
+// ============================================================================
+// Source : cahier des charges §3.4
+
+export const fundingContent = {
+  hero: {
+    eyebrow: 'Financement',
+    title: 'Pour toutes les bourses, vraiment',
+    description:
+      "Le permis ne doit plus être un frein à l'emploi ou à l'insertion. Voici toutes les solutions de financement mobilisables selon votre profil et votre situation.",
+  },
+  // Tableau des financeurs selon profil (cf. §3.4)
+  profiles: [
+    {
+      profile: "Demandeur d'emploi inscrit France Travail",
+      solutions: ['CPF (Pack 20h)', "Aide mobilité France Travail jusqu'à 1200€", 'ALMA paiement fractionné'],
+    },
+    {
+      profile: 'Jeune 16-25 ans suivi Mission Locale',
+      solutions: ['Fonds d\'Aide aux Jeunes (FAJ)', 'CPF si solde disponible', 'ALMA paiement fractionné'],
+    },
+    {
+      profile: 'Bénéficiaire RSA',
+      solutions: ['ADIE : microcrédit personnel', 'Abondement Département de la Moselle', 'CPF si solde disponible'],
+    },
+    {
+      profile: "Salarié en insertion (IAE / GEIQ)",
+      solutions: ['CPF (Pack 20h)', "Cofinancement employeur via GEIQ Alemploi", 'ALMA paiement fractionné'],
+    },
+    {
+      profile: 'Sans solution identifiée',
+      solutions: ['ADIE : microcrédit', 'ALMA paiement fractionné', 'Contactez-nous pour un montage personnalisé'],
+    },
+  ],
+  // Solutions de financement détaillées (cf. §3.4 et §4.3)
+  solutions: [
+    {
+      iconName: 'GraduationCap',
+      title: 'CPF : Compte Personnel de Formation',
+      desc:
+        "Le Pack 20h Auto Conduite est finançable via votre CPF. Plafond de 900€ pour les demandeurs d'emploi inscrits à France Travail. Portage assuré par notre partenaire ADAM.",
+      link: { label: 'moncompteformation.gouv.fr', href: 'https://moncompteformation.gouv.fr', external: true },
+    },
+    {
+      iconName: 'CreditCard',
+      title: 'ALMA : paiement fractionné',
+      desc:
+        "Paiement en 2x, 3x ou 4x sans frais pour le reste à charge. Une solution simple si votre CPF ne couvre pas tout le forfait. (Solution en cours d'activation.)",
+      link: null,
+      status: 'À mettre en place',
+    },
+    {
+      iconName: 'HandCoins',
+      title: 'Aide mobilité France Travail',
+      desc:
+        "Jusqu'à 1200€ pour les demandeurs d'emploi. À demander auprès de votre conseiller France Travail dans le cadre d'un projet de retour à l'emploi.",
+      link: null,
+    },
+    {
+      iconName: 'PiggyBank',
+      title: 'FAJ : Fonds d\'Aide aux Jeunes',
+      desc:
+        "Aide ponctuelle pour les jeunes de 16 à 25 ans en parcours d'insertion, mobilisable via votre conseiller Mission Locale.",
+      link: null,
+    },
+    {
+      iconName: 'Landmark',
+      title: 'ADIE Lorraine : microcrédit personnel',
+      desc:
+        "Microcrédit personnel destiné aux bénéficiaires RSA sans CPF suffisant ni accès à ALMA. Accompagnement personnalisé et conditions adaptées.",
+      link: { label: 'adie.org', href: 'https://adie.org', external: true },
+      status: 'Partenariat à formaliser',
+    },
+    {
+      iconName: 'Building2',
+      title: 'Abondement Département de la Moselle',
+      desc:
+        "Convention en cours de négociation avec le Département de la Moselle pour un abondement spécifique aux publics du Département (RSA, ASE, jeunes…).",
+      link: null,
+      status: 'Convention en cours',
     },
   ],
 }
 
 // ============================================================================
-//                          CONTACT — page Contact
+//                  PRESCRIPTEURS (page Prescripteurs)
+// ============================================================================
+// Source : cahier des charges §3.5
+
+export const prescriberContent = {
+  hero: {
+    eyebrow: 'Prescripteurs',
+    title: 'Un dispositif clé en main pour vos publics',
+    description:
+      "France Travail, Missions Locales, GEIQ, services sociaux, CCAS, associations d'insertion : orientez rapidement un bénéficiaire vers Auto Conduite et suivez son parcours.",
+  },
+  // Bénéfices pour le prescripteur (cf. §3.5)
+  benefits: [
+    {
+      iconName: 'UserCheck',
+      title: 'Orientation rapide',
+      desc: "Formulaire en ligne de 5 champs max. Réponse de M. Faé sous 24h. Pas de paperasse côté prescripteur.",
+    },
+    {
+      iconName: 'ShieldCheck',
+      title: 'Conformité légale',
+      desc: 'Dispositif conforme à la loi L221-7 (conduite accompagnée/supervisée). Véhicule pédagogique à double commande, assurance apprentissage incluse.',
+    },
+    {
+      iconName: 'BarChart3',
+      title: 'Reporting anonymisé',
+      desc: "Espace prescripteur sécurisé (à venir) : rapports anonymisés mensuels sur les parcours des bénéficiaires que vous avez orientés.",
+    },
+    {
+      iconName: 'FileText',
+      title: 'Fiche synthétique',
+      desc: 'Fiche PDF téléchargeable à présenter à votre bénéficiaire ou à votre équipe. (Document en cours de finalisation.)',
+      action: { label: 'Télécharger la fiche (à venir)', href: '#', disabled: true },
+    },
+  ],
+  // Formulaire d'orientation bénéficiaire (5 champs max, cf. §3.5)
+  form: {
+    eyebrow: 'Orientation bénéficiaire',
+    title: 'Orienter un bénéficiaire',
+    description: "Remplissez ces 5 informations, nous prenons contact directement avec votre bénéficiaire sous 24h.",
+    fields: [
+      { name: 'prescriber_org', label: 'Votre structure', placeholder: 'France Travail, Mission Locale, GEIQ Alemploi…', type: 'text' },
+      { name: 'prescriber_name', label: 'Votre nom et contact', placeholder: 'Nom + téléphone ou email', type: 'text' },
+      { name: 'beneficiary_name', label: 'Nom du bénéficiaire', placeholder: 'Prénom Nom', type: 'text' },
+      { name: 'beneficiary_contact', label: 'Contact du bénéficiaire', placeholder: 'Téléphone ou email', type: 'text' },
+      { name: 'beneficiary_profile', label: 'Profil / contexte', placeholder: 'DE / RSA / jeune / autre + besoin (Pack 5h, 10h, 20h)', type: 'textarea' },
+    ],
+    submitLabel: 'Envoyer la demande',
+  },
+  // Espace prescripteur (cf. §3.5 + §8.2, à venir)
+  space: {
+    title: 'Espace prescripteur sécurisé',
+    description:
+      "Bientôt disponible : un espace connecté avec suivi des bénéficiaires orientés (données anonymisées), rapport mensuel d'impact automatique, téléchargement des fiches synthétiques.",
+    status: 'À venir',
+  },
+  // Clauses sociales (cf. §3.5, section dédiée)
+  clauses: {
+    title: 'Clauses sociales & insertion en Moselle',
+    paragraphs: [
+      "Auto Conduite peut intervenir comme support de levée du frein mobilité dans le cadre de marchés intégrant des clauses sociales d'insertion. Notre dispositif est compatible avec les exigences des donneurs d'ordre (collectivités, bailleurs, opérateurs).",
+      "Nous mobilisons des données Moselle (taux de motorisation, taux d'emploi, situations d'isolement géographique) pour qualifier l'impact de notre intervention auprès des publics suivis.",
+    ],
+  },
+  // Contacts directs (cf. §3.5)
+  contact: {
+    title: 'Contacts directs',
+    name: 'M. Faé',
+    phone: '06 37 53 43 26',
+    email: 'faeladg@icloud.com',
+  },
+}
+
+// ============================================================================
+//                  ACCOMPAGNATEUR (page Accompagnateur proche)
+// ============================================================================
+// Source : cahier des charges §3.6
+
+export const companionContent = {
+  hero: {
+    eyebrow: 'Accompagnateur proche',
+    title: 'Un rôle clé pour la réussite du bénéficiaire',
+    description:
+      "Vous êtes la personne de confiance qui accompagne un bénéficiaire pendant chaque séance. Voici tout ce qu'il faut savoir avant de prendre le volant à droite.",
+  },
+  // Conditions obligatoires (cf. §3.6)
+  conditions: [
+    {
+      iconName: 'ShieldCheck',
+      title: 'Permis B depuis 5 ans minimum',
+      desc: "Vous devez être titulaire du permis B (catégorie voiture) depuis au moins 5 ans révolus, sans interruption.",
+    },
+    {
+      iconName: 'Scale',
+      title: 'Sans suspension ni annulation',
+      desc: "Aucune suspension ni annulation en cours. Votre permis doit être valide et vous devez avoir tous vos points.",
+    },
+    {
+      iconName: 'UserCheck',
+      title: 'Sobre pendant toute la séance',
+      desc: "Aucune consommation d'alcool ni de stupéfiants avant ou pendant la séance. Vous êtes responsable du véhicule et du bénéficiaire.",
+    },
+    {
+      iconName: 'FileText',
+      title: 'Désigné sur le contrat',
+      desc: "Vous devez être nommément désigné sur le contrat de location et avoir transmis une copie de votre permis B (recto-verso).",
+    },
+  ],
+  // Ce qu'il peut faire (cf. §3.6)
+  do: {
+    title: "Ce que vous pouvez faire",
+    items: [
+      'Récupérer le véhicule pédagogique au point de dépôt convenu',
+      'Prendre le volant pour amener le bénéficiaire au point de départ de la séance',
+      'Surveiller la conduite du bénéficiaire pendant toute la séance',
+      "Intervenir via le double pédalier (frein et embrayage) en cas de besoin",
+      "Reprendre le volant à tout moment si la situation l'exige",
+      "Rapporter le véhicule au point de dépôt à la fin de la séance",
+    ],
+  },
+  // Ce qu'il ne peut pas faire (cf. §3.6)
+  dont: {
+    title: 'Ce que vous ne pouvez pas faire',
+    items: [
+      "Confier la conduite à une autre personne que le bénéficiaire désigné",
+      "Faire conduire le bénéficiaire sans être présent à ses côtés",
+      "Consommer de l'alcool ou des stupéfiants avant ou pendant la séance",
+      "Utiliser le véhicule en dehors de la séance d'apprentissage",
+      "Faire monter d'autres passagers que ceux prévus au contrat",
+      "Donner des consignes contraires au Code de la route",
+    ],
+  },
+  // Guide pédagogique téléchargeable (cf. §3.6)
+  guide: {
+    title: "Guide pédagogique de l'accompagnateur",
+    description: "Un document complet (PDF) à lire avant la première séance : bonnes pratiques pédagogiques, posture, gestion des situations de stress, sécurité.",
+    action: { label: 'Télécharger le guide (à venir)', href: '#', disabled: true },
+  },
+  // Vidéo de briefing sécurité (cf. §3.6 + §5 vidéo n°3)
+  video: {
+    number: 3,
+    title: 'Briefing sécurité obligatoire',
+    duration: '5-8 min',
+    desc: "Double commande, posture accompagnateur, règles de sécurité. Vidéo obligatoire à visionner et quiz à valider (score minimum 80%) avant l'accès au véhicule.",
+    note: "La vidéo de briefing est délivrée dans votre espace personnel après validation du dossier.",
+  },
+}
+
+// ============================================================================
+//                          CONTACT (page Contact)
 // ============================================================================
 
 export const contactContent = {
   hero: {
     eyebrow: 'Contact',
-    title: 'Parlons de votre projet',
+    title: 'Vérifiez votre éligibilité ou posez vos questions',
     description:
-      'Remplissez le formulaire ci-dessous ou contactez-nous directement. Nous répondons sous 24h.',
+      "Bénéficiaires, accompagnateurs, prescripteurs : remplissez le formulaire et nous vous recontactons sous 24h. Vous pouvez aussi nous joindre directement par téléphone ou WhatsApp.",
   },
-  // Les coordonnées (phone, email, address) viennent de siteConfig dans seo.ts
+  form: {
+    title: 'Demande de contact / éligibilité',
+    profileOptions: [
+      'Bénéficiaire en parcours d\'insertion',
+      'Accompagnateur proche',
+      'Prescripteur (France Travail / Mission Locale / GEIQ / social)',
+      'Visiteur institutionnel / partenaire',
+      'Autre',
+    ],
+    submitLabel: 'Envoyer ma demande',
+  },
 }
-
-// ============================================================================
-//                       PRESETS — exemples par métier
-// ============================================================================
-//
-// Pour basculer rapidement la template sur un autre domaine, décommente l'un
-// des presets ci-dessous et remplace les exports correspondants.
-// (Tu peux aussi créer un fichier par métier et importer celui qui convient.)
-//
-// ─── PRESET RESTAURANT ────────────────────────────────────────────────────
-// export const heroContent = {
-//   eyebrow: 'Restaurant',
-//   title: 'Une cuisine de saison, généreuse et authentique',
-//   description: 'Tous les jours, des produits frais cuisinés à la minute par notre chef.',
-//   button1: 'Réserver une table',
-//   button2: 'Voir notre carte',
-//   images: [...],
-// }
-// servicesPreviewContent.items = [
-//   { iconName: 'Utensils', title: 'Carte du midi', desc: 'Plat + dessert à 18 €' },
-//   { iconName: 'Wine', title: 'Carte des vins', desc: 'Sélection de 40 références…' },
-//   ...
-// ]
-//
-// ─── PRESET ARTISAN ───────────────────────────────────────────────────────
-// servicesPreviewContent.items = [
-//   { iconName: 'Hammer', title: 'Rénovation', desc: '...' },
-//   { iconName: 'Paintbrush', title: 'Peinture', desc: '...' },
-//   ...
-// ]
-//
-// ─── PRESET AVOCAT / CONSEIL ──────────────────────────────────────────────
-// servicesPreviewContent.items = [
-//   { iconName: 'Scale', title: 'Droit du travail', desc: '...' },
-//   { iconName: 'FileText', title: 'Droit des contrats', desc: '...' },
-//   ...
-// ]

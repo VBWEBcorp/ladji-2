@@ -10,7 +10,7 @@ const defaults = {
     eyebrow: 'Services',
     title: 'Tout ce qu\'il faut pour réussir en ligne',
     description: 'Des prestations complètes, de la conception à l\'accompagnement continu, adaptées à toutes les tailles d\'entreprise.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=80',
+    image: 'https://i.ibb.co/KpjN0Vqc/Voiture-basic-2-Copie.webp',
   },
   services: [
     { title: 'Création de site vitrine', description: 'Un site moderne, rapide et responsive qui présente clairement votre activité et inspire confiance à vos visiteurs.' },

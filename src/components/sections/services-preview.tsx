@@ -81,7 +81,7 @@ export function ServicesPreview() {
         >
           <Button variant="outline" className="group" asChild>
             <Link href="/services">
-              Voir tous nos services
+              Voir nos forfaits
               <ArrowRight className="transition-transform group-hover:translate-x-0.5" />
             </Link>
           </Button>

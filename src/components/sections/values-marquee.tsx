@@ -1,24 +1,24 @@
 import {
-  Eye,
-  Handshake,
+  CarFront,
+  Coins,
   HeartHandshake,
-  Lightbulb,
-  Rocket,
+  Settings2,
   Shield,
   Sparkles,
-  Target,
+  UserCheck,
+  Users,
   type LucideIcon,
 } from 'lucide-react'
 
 const values: { icon: LucideIcon; label: string }[] = [
-  { icon: Sparkles, label: 'Excellence' },
-  { icon: Handshake, label: 'Confiance' },
-  { icon: Lightbulb, label: 'Innovation' },
-  { icon: Eye, label: 'Transparence' },
-  { icon: Rocket, label: 'Performance' },
-  { icon: HeartHandshake, label: 'Proximité' },
-  { icon: Shield, label: 'Fiabilité' },
-  { icon: Target, label: 'Sur mesure' },
+  { icon: Shield, label: 'Sécurité' },
+  { icon: Coins, label: 'Accessibilité' },
+  { icon: HeartHandshake, label: 'Confiance' },
+  { icon: CarFront, label: 'Double commande' },
+  { icon: UserCheck, label: 'Accompagnement' },
+  { icon: Users, label: 'Inclusion' },
+  { icon: Sparkles, label: 'Simplicité' },
+  { icon: Settings2, label: 'Flexibilité' },
 ]
 
 function ValuesTrack({

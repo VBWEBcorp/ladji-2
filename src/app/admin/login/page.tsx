@@ -54,7 +54,7 @@ export default function AdminLoginPage() {
       {/* Background image */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=75"
+          src="https://i.ibb.co/rfspRRnL/Conduite-coaching-3.jpg"
           alt=""
           fill
           sizes="100vw"

@@ -6,7 +6,7 @@ import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { siteConfig } from '@/lib/seo'
 
 const description =
-  'Politique de confidentialité : découvrez comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD.'
+  "Politique de confidentialité d'Auto Conduite : données traitées, finalités, durées de conservation, droits RGPD des bénéficiaires, accompagnateurs et prescripteurs."
 
 export const metadata: Metadata = {
   title: 'Politique de confidentialité',
@@ -49,354 +49,246 @@ export default function PrivacyPage() {
             Politique de confidentialité
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Dernière mise à jour : [JJ/MM/AAAA]
+            Dernière mise à jour : <span className="text-foreground">[à compléter]</span>
+          </p>
+          <p className="mt-3 text-sm text-muted-foreground">
+            La présente politique décrit la manière dont {siteConfig.name} traite
+            les données personnelles des personnes qui utilisent le site et le
+            dispositif, conformément au Règlement Général sur la Protection des
+            Données (Règlement (UE) 2016/679, dit RGPD) et à la loi française
+            n° 78-17 du 6 janvier 1978 modifiée.
           </p>
 
           <article className="mt-10 space-y-10 text-sm leading-relaxed text-muted-foreground [&_h2]:font-display [&_h2]:text-lg [&_h2]:font-semibold [&_h2]:text-foreground [&_h3]:text-sm [&_h3]:font-semibold [&_h3]:text-foreground">
 
             <section className="space-y-3">
-              <p>
-                La société {siteConfig.name} (&quot;nous&quot;, &quot;notre&quot;,{' '}
-                &quot;nos&quot;) accorde une grande importance à la protection de
-                vos données personnelles. La présente politique de
-                confidentialité décrit les données que nous collectons, pourquoi
-                nous les collectons et comment nous les utilisons, conformément
-                au Règlement Général sur la Protection des Données (RGPD,
-                Règlement UE 2016/679) et à la loi Informatique et Libertés
-                n°78-17 du 6 janvier 1978 modifiée.
-              </p>
-            </section>
-
-            <section className="space-y-3">
               <h2>1. Responsable du traitement</h2>
-              <p>Le responsable du traitement des données est :</p>
+              <p>
+                Le responsable du traitement des données collectées via le site
+                et le dispositif est :
+              </p>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li><strong>Raison sociale :</strong> {siteConfig.name}</li>
-                <li>
-                  <strong>Adresse :</strong> {siteConfig.address.street}, {siteConfig.address.postalCode}{' '}
-                  {siteConfig.address.city}
+                <li><strong>{siteConfig.name}</strong></li>
+                <li>Porteur du projet : M. Faé</li>
+                <li>Email :{' '}
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                  >
+                    {siteConfig.email}
+                  </a>
                 </li>
-                <li><strong>Email :</strong> {siteConfig.email}</li>
-                <li><strong>Téléphone :</strong> {siteConfig.phone}</li>
+                <li>Téléphone : {siteConfig.phone}</li>
+                <li>Adresse : {siteConfig.address.street}, {siteConfig.address.postalCode} {siteConfig.address.city}</li>
               </ul>
               <p>
-                Délégué à la protection des données (DPO) : [Nom du DPO ou &quot;non désigné&quot;]
+                Compte tenu de la taille de la structure, {siteConfig.name} n&apos;est
+                pas tenue de désigner un délégué à la protection des données (DPO).
+                Toute demande relative à vos données peut être adressée à l&apos;email
+                ci-dessus.
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2>2. Données personnelles collectées</h2>
+              <h2>2. Données collectées</h2>
               <p>
-                Nous collectons uniquement les données strictement nécessaires
-                aux finalités décrites ci-dessous, dans le respect du principe
-                de minimisation des données (article 5.1.c du RGPD).
+                Nous appliquons le principe de minimisation prévu à l&apos;article 5.1.c)
+                du RGPD : nous ne collectons que les données strictement nécessaires
+                à la finalité poursuivie.
               </p>
-              <h3 className="pt-2">a) Données collectées via le formulaire de contact</h3>
+
+              <h3 className="pt-2">a) Formulaire de contact / d&apos;éligibilité</h3>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li>Nom et prénom</li>
-                <li>Adresse email</li>
-                <li>Numéro de téléphone (optionnel)</li>
-                <li>Objet et contenu du message</li>
+                <li>Identité : prénom, nom.</li>
+                <li>Coordonnées : email, téléphone.</li>
+                <li>Profil déclaré : bénéficiaire en insertion, accompagnateur, prescripteur, visiteur institutionnel.</li>
+                <li>Message libre et contexte (forfait souhaité, dates, questions).</li>
               </ul>
-              <h3 className="pt-2">b) Données collectées via l&apos;espace administration</h3>
+
+              <h3 className="pt-2">b) Formulaire d&apos;orientation prescripteur</h3>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li>Adresse email du compte administrateur</li>
-                <li>Mot de passe (stocké sous forme de hash chiffré, jamais en clair)</li>
-                <li>Nom d&apos;affichage</li>
+                <li>Structure prescriptrice et coordonnées du conseiller.</li>
+                <li>Identité et contact du bénéficiaire orienté.</li>
+                <li>Contexte (profil, type de besoin, forfait pressenti).</li>
               </ul>
-              <h3 className="pt-2">c) Données collectées automatiquement</h3>
+
+              <h3 className="pt-2">c) Dossier d&apos;inscription (lorsque déployé)</h3>
+              <p>
+                Pour les bénéficiaires qui choisissent d&apos;intégrer le dispositif,
+                les documents suivants seront sollicités lors d&apos;une étape ultérieure
+                (hors du site vitrine actuel) :
+              </p>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li>Adresse IP</li>
-                <li>Type de navigateur et système d&apos;exploitation</li>
-                <li>Pages consultées et durée de visite</li>
-                <li>Source de trafic (referrer)</li>
-                <li>Préférences de thème (clair/sombre)</li>
+                <li>Pièce d&apos;identité (CNI ou passeport).</li>
+                <li>Numéro NEPH et attestation de code de la route.</li>
+                <li>Coordonnées et copie du permis B de l&apos;accompagnateur proche (numéro, date de validité).</li>
+                <li>Justificatif de domicile (pour le calcul de la zone kilométrique).</li>
+              </ul>
+
+              <h3 className="pt-2">d) Données de navigation</h3>
+              <ul className="list-inside list-disc space-y-1 pl-1">
+                <li>Données techniques minimales (adresse IP tronquée, type de navigateur, pages visitées) pour la sécurité et le bon fonctionnement du site.</li>
+                <li>Cookies : voir la{' '}
+                  <Link
+                    href="/politique-cookies"
+                    className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                  >
+                    Politique de cookies
+                  </Link>.
+                </li>
               </ul>
             </section>
 
             <section className="space-y-3">
-              <h2>3. Finalités et base légale du traitement</h2>
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse text-sm">
-                  <thead>
-                    <tr className="border-b border-border/60">
-                      <th className="py-2 pr-4 text-left font-semibold text-foreground">Finalité</th>
-                      <th className="py-2 pr-4 text-left font-semibold text-foreground">Base légale</th>
-                      <th className="py-2 text-left font-semibold text-foreground">Conservation</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border/40">
-                    <tr>
-                      <td className="py-2.5 pr-4">Répondre à vos demandes de contact</td>
-                      <td className="py-2.5 pr-4">Consentement (art. 6.1.a RGPD)</td>
-                      <td className="py-2.5">3 ans après le dernier contact</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4">Établir un devis ou une proposition commerciale</td>
-                      <td className="py-2.5 pr-4">Mesures précontractuelles (art. 6.1.b)</td>
-                      <td className="py-2.5">3 ans après le dernier contact</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4">Gestion de l&apos;espace d&apos;administration</td>
-                      <td className="py-2.5 pr-4">Intérêt légitime (art. 6.1.f)</td>
-                      <td className="py-2.5">Durée du compte</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4">Analyser la fréquentation du site</td>
-                      <td className="py-2.5 pr-4">Intérêt légitime (art. 6.1.f)</td>
-                      <td className="py-2.5">25 mois maximum</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4">Assurer la sécurité et la disponibilité du site</td>
-                      <td className="py-2.5 pr-4">Intérêt légitime (art. 6.1.f)</td>
-                      <td className="py-2.5">12 mois</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <h2>3. Finalités du traitement</h2>
+              <p>Les données sont collectées pour les finalités suivantes :</p>
+              <ul className="list-inside list-disc space-y-1 pl-1">
+                <li>Répondre aux demandes de contact et d&apos;information.</li>
+                <li>Vérifier l&apos;éligibilité au dispositif.</li>
+                <li>Constituer le dossier d&apos;inscription et le suivre.</li>
+                <li>Émettre les contrats de location et factures correspondantes.</li>
+                <li>Assurer la sécurité du dispositif (briefing, traçabilité du visionnage).</li>
+                <li>Établir des statistiques anonymisées (reporting institutionnel auprès des prescripteurs et financeurs).</li>
+                <li>Respecter nos obligations légales et comptables.</li>
+              </ul>
             </section>
 
             <section className="space-y-3">
-              <h2>4. Technologies et sous-traitants</h2>
-              <p>
-                Le site utilise les technologies et services suivants pour son fonctionnement.
-                Chaque sous-traitant est lié par un contrat conforme à l&apos;article 28 du RGPD.
-              </p>
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse text-sm">
-                  <thead>
-                    <tr className="border-b border-border/60">
-                      <th className="py-2 pr-4 text-left font-semibold text-foreground">Service</th>
-                      <th className="py-2 pr-4 text-left font-semibold text-foreground">Fournisseur</th>
-                      <th className="py-2 pr-4 text-left font-semibold text-foreground">Usage</th>
-                      <th className="py-2 text-left font-semibold text-foreground">Localisation</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border/40">
-                    <tr>
-                      <td className="py-2.5 pr-4">Framework web</td>
-                      <td className="py-2.5 pr-4">Next.js (Vercel Inc.)</td>
-                      <td className="py-2.5 pr-4">Rendu des pages, routage, API</td>
-                      <td className="py-2.5">USA (clauses contractuelles types)</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4">Hébergement</td>
-                      <td className="py-2.5 pr-4">[Vercel / OVH / autre - à compléter]</td>
-                      <td className="py-2.5 pr-4">Hébergement du site et des API</td>
-                      <td className="py-2.5">[À compléter]</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4">Base de données</td>
-                      <td className="py-2.5 pr-4">MongoDB Atlas (MongoDB Inc.)</td>
-                      <td className="py-2.5 pr-4">Stockage du contenu, comptes admin, messages</td>
-                      <td className="py-2.5">Europe (région configurable)</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4">Stockage d&apos;images</td>
-                      <td className="py-2.5 pr-4">Cloudflare R2 (Cloudflare Inc.)</td>
-                      <td className="py-2.5 pr-4">Hébergement des images uploadées</td>
-                      <td className="py-2.5">Europe (auto, région la plus proche)</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4">Optimisation d&apos;images</td>
-                      <td className="py-2.5 pr-4">Sharp (open source)</td>
-                      <td className="py-2.5 pr-4">Compression et conversion WebP côté serveur</td>
-                      <td className="py-2.5">Traitement local (serveur)</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4">Authentification</td>
-                      <td className="py-2.5 pr-4">JSON Web Tokens (open source)</td>
-                      <td className="py-2.5 pr-4">Gestion des sessions admin sécurisées</td>
-                      <td className="py-2.5">Traitement local (serveur)</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4">Chiffrement</td>
-                      <td className="py-2.5 pr-4">bcrypt (open source)</td>
-                      <td className="py-2.5 pr-4">Hachage des mots de passe</td>
-                      <td className="py-2.5">Traitement local (serveur)</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <p>
-                <strong>Note :</strong> Aucune donnée personnelle n&apos;est transmise à
-                des régies publicitaires, réseaux sociaux ou services de profilage.
-              </p>
+              <h2>4. Bases légales</h2>
+              <p>Conformément à l&apos;article 6 du RGPD, nos traitements reposent sur :</p>
+              <ul className="list-inside list-disc space-y-1 pl-1">
+                <li><strong>L&apos;exécution d&apos;un contrat ou de mesures précontractuelles</strong> (article 6.1.b) : pour la gestion du dossier, la signature du contrat de location, la facturation.</li>
+                <li><strong>Le consentement</strong> (article 6.1.a) : pour les communications non essentielles, les cookies de mesure d&apos;audience, et le formulaire de contact.</li>
+                <li><strong>L&apos;intérêt légitime</strong> (article 6.1.f) : pour la sécurité du site, la prévention de la fraude, et l&apos;orientation par prescripteur (transmission qualifiée).</li>
+                <li><strong>L&apos;obligation légale</strong> (article 6.1.c) : conservation comptable, traçabilité de la formation initiale, conformité au Code de la route.</li>
+              </ul>
             </section>
 
             <section className="space-y-3">
               <h2>5. Destinataires des données</h2>
-              <p>Vos données personnelles ne sont ni vendues, ni louées, ni cédées à des tiers à des fins commerciales.</p>
-              <p>Elles peuvent être transmises uniquement :</p>
-              <ul className="list-inside list-disc space-y-1 pl-1">
-                <li>Aux sous-traitants techniques listés ci-dessus, dans le cadre strict de leurs missions et sous contrat de confidentialité</li>
-                <li>Aux autorités compétentes si la loi l&apos;exige (réquisition judiciaire, obligation légale)</li>
-              </ul>
-            </section>
-
-            <section className="space-y-3">
-              <h2>6. Transferts de données hors Union européenne</h2>
               <p>
-                Certains de nos sous-traitants techniques (Vercel, MongoDB Atlas, Cloudflare)
-                peuvent traiter des données aux États-Unis. Ces transferts sont encadrés par :
+                Les données sont accessibles à {siteConfig.name} (M. Faé) et,
+                strictement dans la limite de leur mission, à nos sous-traitants
+                et partenaires :
               </p>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li>Le EU-US Data Privacy Framework (décision d&apos;adéquation de la Commission européenne du 10 juillet 2023)</li>
-                <li>Des clauses contractuelles types (SCCs) conformes aux modèles adoptés par la Commission européenne</li>
-                <li>Des mesures techniques complémentaires (chiffrement en transit et au repos)</li>
+                <li><strong>Hébergeur du site</strong> : serveurs en Union européenne.</li>
+                <li><strong>Stripe</strong> (lorsque le paiement en ligne sera activé) : Stripe Payments Europe Ltd., Irlande. Données : informations de paiement, montants. Stripe agit en tant que responsable de traitement pour la conformité PCI-DSS.</li>
+                <li><strong>ADAM</strong> : partenaire de portage CPF pour le Pack 20h. Données transmises uniquement avec accord du bénéficiaire.</li>
+                <li><strong>LIMOVA</strong> (chatbot, lorsque activé) : messages échangés via le chatbot.</li>
+                <li><strong>Prestataire SMS / email</strong> (lorsque activé) : pour les rappels de séance.</li>
+                <li><strong>Prescripteurs orientants</strong> : uniquement les données anonymisées de suivi, après accord du bénéficiaire.</li>
               </ul>
               <p>
-                Nous privilégions systématiquement les régions de stockage européennes
-                lorsque le service le permet (MongoDB Atlas Europe, Cloudflare R2 Europe).
+                Aucune donnée n&apos;est cédée ni revendue à des tiers à des fins
+                commerciales.
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2>7. Cookies et traceurs</h2>
-              <h3 className="pt-2">a) Cookies strictement nécessaires</h3>
+              <h2>6. Transferts hors Union européenne</h2>
               <p>
-                Ces cookies sont indispensables au fonctionnement du site. Ils ne
-                nécessitent pas votre consentement conformément à l&apos;article 82 de
-                la loi Informatique et Libertés.
-              </p>
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse text-sm">
-                  <thead>
-                    <tr className="border-b border-border/60">
-                      <th className="py-2 pr-4 text-left font-semibold text-foreground">Cookie</th>
-                      <th className="py-2 pr-4 text-left font-semibold text-foreground">Finalité</th>
-                      <th className="py-2 text-left font-semibold text-foreground">Durée</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border/40">
-                    <tr>
-                      <td className="py-2.5 pr-4 font-mono text-xs">theme</td>
-                      <td className="py-2.5 pr-4">Sauvegarde de votre préférence de thème (clair/sombre)</td>
-                      <td className="py-2.5">1 an</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4 font-mono text-xs">cookie-consent</td>
-                      <td className="py-2.5 pr-4">Mémorisation de votre choix de consentement aux cookies</td>
-                      <td className="py-2.5">6 mois</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <h3 className="pt-2">b) Cookies d&apos;analyse (optionnels)</h3>
-              <p>
-                Si un outil d&apos;analyse de fréquentation est activé, les cookies correspondants
-                ne sont déposés qu&apos;après votre consentement explicite via le bandeau de cookies.
-              </p>
-
-              <h3 className="pt-2">c) Cookies publicitaires</h3>
-              <p>
-                <strong>Aucun cookie publicitaire, de profilage ou de pistage tiers</strong> n&apos;est
-                utilisé sur ce site.
-              </p>
-
-              <p>
-                Vous pouvez à tout moment modifier vos préférences via le bandeau de
-                consentement ou dans les paramètres de votre navigateur.
-                Pour en savoir plus, consultez notre{' '}
-                <Link href="/politique-cookies" className="font-medium text-primary underline underline-offset-4 hover:text-primary/80">
-                  Politique de cookies
-                </Link>.
+                Nous privilégions des prestataires hébergés en Union européenne.
+                Lorsqu&apos;un transfert hors UE s&apos;avère nécessaire (par exemple
+                certains services techniques), il est encadré par les clauses
+                contractuelles types de la Commission européenne ou un mécanisme
+                de transfert reconnu (décision d&apos;adéquation, BCR).
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2>8. Sécurité des données</h2>
-              <p>
-                Nous mettons en oeuvre des mesures techniques et organisationnelles
-                conformes à l&apos;état de l&apos;art pour protéger vos données :
-              </p>
+              <h2>7. Durée de conservation</h2>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li><strong>Chiffrement en transit :</strong> toutes les communications sont protégées par TLS 1.3 (HTTPS)</li>
-                <li><strong>Chiffrement au repos :</strong> les données stockées sur MongoDB Atlas et Cloudflare R2 sont chiffrées (AES-256)</li>
-                <li><strong>Hachage des mots de passe :</strong> algorithme bcrypt avec salage automatique (aucun mot de passe stocké en clair)</li>
-                <li><strong>Authentification sécurisée :</strong> tokens JWT à durée de vie limitée pour l&apos;espace d&apos;administration</li>
-                <li><strong>Accès restreints :</strong> seuls les administrateurs autorisés peuvent accéder au back-office</li>
-                <li><strong>Sauvegardes :</strong> sauvegardes automatiques quotidiennes de la base de données</li>
-                <li><strong>Mises à jour :</strong> dépendances logicielles régulièrement mises à jour pour corriger les vulnérabilités connues</li>
+                <li>Demandes de contact non suivies d&apos;inscription : 3 ans à compter du dernier échange.</li>
+                <li>Dossier de bénéficiaire actif : durée de la relation contractuelle + 5 ans (obligations comptables et de preuve).</li>
+                <li>Documents d&apos;identité et pièces justificatives sensibles : durée du dossier actif, puis suppression dans les 6 mois.</li>
+                <li>Cookies : durée maximale de 13 mois, voir la{' '}
+                  <Link
+                    href="/politique-cookies"
+                    className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                  >
+                    Politique de cookies
+                  </Link>.
+                </li>
+                <li>Données de facturation : 10 ans (obligation comptable, article L.123-22 du Code de commerce).</li>
               </ul>
+            </section>
+
+            <section className="space-y-3">
+              <h2>8. Sécurité</h2>
+              <p>
+                Nous mettons en place des mesures techniques et organisationnelles
+                pour préserver la confidentialité, l&apos;intégrité et la disponibilité
+                des données : chiffrement HTTPS du site, authentification renforcée
+                des accès administrateurs, chiffrement des bases de données et des
+                fichiers uploadés, journalisation des accès, hébergement européen,
+                politique de sauvegarde.
+              </p>
             </section>
 
             <section className="space-y-3">
               <h2>9. Vos droits</h2>
-              <p>Conformément au RGPD (articles 15 à 22) et à la loi Informatique et Libertés, vous disposez des droits suivants :</p>
+              <p>
+                Conformément aux articles 12 à 23 du RGPD, vous disposez à tout
+                moment des droits suivants sur vos données :
+              </p>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li><strong>Droit d&apos;accès (art. 15)</strong> :obtenir la confirmation du traitement de vos données et en recevoir une copie</li>
-                <li><strong>Droit de rectification (art. 16)</strong> :corriger des données inexactes ou incomplètes</li>
-                <li><strong>Droit à l&apos;effacement (art. 17)</strong> :demander la suppression de vos données (&quot;droit à l&apos;oubli&quot;)</li>
-                <li><strong>Droit à la limitation (art. 18)</strong> :restreindre temporairement le traitement de vos données</li>
-                <li><strong>Droit à la portabilité (art. 20)</strong> :recevoir vos données dans un format structuré, couramment utilisé et lisible par machine</li>
-                <li><strong>Droit d&apos;opposition (art. 21)</strong> :vous opposer au traitement de vos données pour des motifs légitimes</li>
-                <li><strong>Droit de retirer votre consentement</strong> : à tout moment, sans affecter la licéité du traitement antérieur</li>
-                <li><strong>Droit de définir des directives post-mortem</strong> : définir le sort de vos données après votre décès (art. 85 loi Informatique et Libertés)</li>
+                <li><strong>Droit d&apos;accès</strong> : obtenir confirmation que vos données sont traitées et en recevoir copie.</li>
+                <li><strong>Droit de rectification</strong> : corriger des données inexactes ou incomplètes.</li>
+                <li><strong>Droit à l&apos;effacement</strong> (« droit à l&apos;oubli ») : sous réserve de nos obligations légales de conservation.</li>
+                <li><strong>Droit à la limitation</strong> : geler temporairement l&apos;usage de vos données.</li>
+                <li><strong>Droit d&apos;opposition</strong> : vous opposer à un traitement, notamment à des fins de prospection.</li>
+                <li><strong>Droit à la portabilité</strong> : recevoir vos données dans un format structuré et réutilisable.</li>
+                <li><strong>Droit de retirer votre consentement</strong> à tout moment, sans porter atteinte à la licéité des traitements passés.</li>
+                <li><strong>Droit de définir des directives</strong> sur le sort de vos données après votre décès.</li>
               </ul>
               <p>
-                Pour exercer vos droits, contactez-nous par email à{' '}
-                <a href={`mailto:${siteConfig.email}`} className="font-medium text-primary underline underline-offset-4 hover:text-primary/80">
+                Pour exercer ces droits, écrivez-nous à{' '}
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                >
                   {siteConfig.email}
                 </a>{' '}
-                ou par courrier à l&apos;adresse indiquée ci-dessus. Nous répondons dans un délai
-                maximum de <strong>30 jours</strong> (prolongeable une fois de 60 jours en cas de
-                demande complexe, avec notification).
-              </p>
-              <p>
-                En cas de différend, vous pouvez introduire une réclamation auprès de la{' '}
-                <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener noreferrer" className="font-medium text-primary underline underline-offset-4 hover:text-primary/80">
-                  CNIL
-                </a>{' '}
-                (Commission Nationale de l&apos;Informatique et des Libertés, 3 Place de Fontenoy, TSA 80715, 75334 Paris Cedex 07).
+                en précisant l&apos;objet de votre demande. Nous répondrons dans un
+                délai d&apos;un mois (prolongeable de deux mois pour les demandes
+                complexes, conformément à l&apos;article 12.3 du RGPD).
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2>10. Données des mineurs</h2>
+              <h2>10. Réclamation auprès de la CNIL</h2>
               <p>
-                Ce site ne s&apos;adresse pas aux mineurs de moins de 16 ans. Nous ne collectons
-                pas sciemment de données personnelles de mineurs. Si un représentant légal
-                constate qu&apos;un mineur nous a transmis des données sans consentement parental,
-                il peut nous contacter pour en demander la suppression immédiate.
+                Si vous estimez, après nous avoir contactés, que vos droits sur
+                vos données ne sont pas respectés, vous pouvez introduire une
+                réclamation auprès de la Commission Nationale de l&apos;Informatique
+                et des Libertés (CNIL) :
               </p>
+              <ul className="list-inside list-disc space-y-1 pl-1">
+                <li>
+                  En ligne :{' '}
+                  <a
+                    href="https://www.cnil.fr/fr/plaintes"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                  >
+                    cnil.fr/fr/plaintes
+                  </a>
+                </li>
+                <li>
+                  Par courrier : Commission Nationale de l&apos;Informatique et des
+                  Libertés, 3 Place de Fontenoy, TSA 80715, 75334 Paris CEDEX 07.
+                </li>
+              </ul>
             </section>
 
             <section className="space-y-3">
-              <h2>11. Modification de la politique</h2>
+              <h2>11. Modifications de la politique</h2>
               <p>
-                Nous nous réservons le droit de modifier la présente politique de
-                confidentialité à tout moment. Toute modification substantielle sera
-                signalée par un bandeau sur le site pendant 30 jours. La version en
-                vigueur est celle accessible sur cette page, identifiée par sa date de
-                dernière mise à jour.
-              </p>
-            </section>
-
-            <section className="space-y-3 rounded-xl border border-border/60 bg-muted/20 p-5">
-              <p className="text-foreground">
-                Consultez également nos{' '}
-                <Link
-                  href="/mentions-legales"
-                  className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
-                >
-                  Mentions légales
-                </Link>
-                ,{' '}
-                <Link
-                  href="/conditions-generales"
-                  className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
-                >
-                  Conditions générales d&apos;utilisation
-                </Link>
-                {' '}et notre{' '}
-                <Link
-                  href="/politique-cookies"
-                  className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
-                >
-                  Politique de cookies
-                </Link>.
+                La présente politique peut être mise à jour à tout moment pour
+                refléter une évolution du dispositif, des sous-traitants ou de la
+                réglementation. La date de mise à jour figure en haut du document.
               </p>
             </section>
           </article>

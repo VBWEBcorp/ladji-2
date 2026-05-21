@@ -8,7 +8,7 @@ const defaults = {
     eyebrow: 'Contact',
     title: 'Parlons de votre projet',
     description: 'Remplissez le formulaire ci-dessous ou contactez-nous directement. Nous répondons sous 24h.',
-    image: 'https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1920&q=80',
+    image: 'https://i.ibb.co/r2Pvm6J0/Conduite-coaching.jpg',
   },
   info: {
     phone: '',

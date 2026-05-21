@@ -8,7 +8,7 @@ const defaults = {
     eyebrow: 'À propos',
     title: 'Une équipe engagée à vos côtés',
     description: 'Nous croyons que chaque entreprise mérite une présence en ligne à la hauteur de ses ambitions. Depuis notre création, nous accompagnons artisans, PME et indépendants avec des solutions simples, efficaces et soignées.',
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80',
+    image: 'https://i.ibb.co/KpjN0Vqc/Voiture-basic-2-Copie.webp',
   },
   values: [
     { title: 'Proximité', description: 'Un interlocuteur unique, disponible, qui connaît votre projet sur le bout des doigts.' },
@@ -16,10 +16,10 @@ const defaults = {
     { title: 'Sur mesure', description: 'Chaque projet est différent. Nous adaptons nos solutions à votre réalité, pas l\'inverse.' },
   ],
   gallery: [
-    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80',
-    'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80',
-    'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&q=80',
-    'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80',
+    'https://i.ibb.co/rfspRRnL/Conduite-coaching-3.jpg',
+    'https://i.ibb.co/27RyB3JM/Conduite-coaching-2.jpg',
+    'https://i.ibb.co/r2Pvm6J0/Conduite-coaching.jpg',
+    'https://i.ibb.co/HDM862hg/Voiture-basic-Copie.jpg',
   ],
 }
 

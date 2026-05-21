@@ -122,6 +122,10 @@ export function TestimonialsSection() {
             title={data.title ?? defaults.title}
             description={data.description ?? defaults.description}
           />
+          <p className="mx-auto mt-4 max-w-2xl text-center text-xs italic leading-relaxed text-muted-foreground/85">
+            Témoignages d&rsquo;illustration : les premiers retours de bénéficiaires
+            alimenteront cette section progressivement.
+          </p>
         </div>
       </div>
 

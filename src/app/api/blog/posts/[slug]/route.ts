@@ -8,7 +8,7 @@ type Params = Promise<{ slug: string }>
 
 // GET single post by slug
 // Admin sees own drafts + visible posts. Posts with future publishedAt are
-// hidden everywhere — even admin gets a 404 here, so they cannot be edited
+// hidden everywhere, even admin gets a 404 here, so they cannot be edited
 // or deleted via the CMS (only via direct DB access).
 export async function GET(request: NextRequest, { params }: { params: Params }) {
   try {

@@ -45,8 +45,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const defaultSettings = {
   enabled: true,
-  title: 'Nos dernières actualités',
-  description: 'Retrouvez nos conseils, nos projets récents et les tendances du secteur.',
+  title: 'Actualités & insertion',
+  description:
+    "Retrouvez nos actualités, nos partenariats avec les acteurs de l'insertion en Moselle et les évolutions du dispositif Auto Conduite. Les premiers articles arrivent prochainement.",
   eyebrow: 'Blog',
 }
 

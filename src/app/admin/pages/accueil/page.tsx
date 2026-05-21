@@ -11,9 +11,9 @@ const defaults = {
     button1: 'Prendre contact',
     button2: 'Découvrir nos services',
     images: [
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1920&q=80',
+      'https://i.ibb.co/rfspRRnL/Conduite-coaching-3.jpg',
+      'https://i.ibb.co/KpjN0Vqc/Voiture-basic-2-Copie.webp',
+      'https://i.ibb.co/r2Pvm6J0/Conduite-coaching.jpg',
     ],
   },
   story: {
@@ -21,7 +21,7 @@ const defaults = {
     title: 'Une approche humaine, des résultats concrets',
     paragraph1: 'Depuis nos débuts, nous croyons qu\'un bon site commence par une bonne écoute. Nous prenons le temps de comprendre votre métier, vos clients et vos objectifs avant de concevoir quoi que ce soit.',
     paragraph2: 'Le résultat : des projets qui vous ressemblent, qui parlent à votre audience, et qui travaillent pour vous 24h/24.',
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
+    image: 'https://i.ibb.co/27RyB3JM/Conduite-coaching-2.jpg',
   },
   cta: {
     eyebrow: 'Prêt à démarrer ?',

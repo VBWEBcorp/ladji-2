@@ -7,7 +7,7 @@ import { visiblePostFilter } from '@/lib/blog-filters'
 // GET all posts (admin: all visible + own drafts; public: visible only)
 // "Visible" = published AND publishedAt <= now (articles with future publishedAt
 // are hidden everywhere, including from the admin UI, so they cannot be seen
-// or edited via this CMS — only via direct DB access.
+// or edited via this CMS, only via direct DB access.
 export async function GET(request: NextRequest) {
   try {
     await connectDB()

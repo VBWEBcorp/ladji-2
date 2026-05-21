@@ -20,7 +20,7 @@ const jakarta = Plus_Jakarta_Sans({
   display: 'swap',
 })
 
-// Serif italic — pour mots accentués dans les titres (style éditorial premium)
+// Serif italic : pour mots accentués dans les titres (style éditorial premium)
 const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
   variable: '--font-serif',
@@ -29,7 +29,7 @@ const instrumentSerif = Instrument_Serif({
   display: 'swap',
 })
 
-// Mono — pour eyebrows, KPIs, labels techniques (style Linear/Vercel)
+// Mono : pour eyebrows, KPIs, labels techniques (style Linear/Vercel)
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-mono',

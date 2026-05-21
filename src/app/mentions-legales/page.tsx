@@ -6,7 +6,7 @@ import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { siteConfig } from '@/lib/seo'
 
 const description =
-  "Mentions légales du site : informations sur l'éditeur, l'hébergement, la propriété intellectuelle et les conditions d'utilisation."
+  "Mentions légales du site Auto Conduite : éditeur, hébergeur, propriété intellectuelle, médiation, conformément aux articles 6-III de la LCEN."
 
 export const metadata: Metadata = {
   title: 'Mentions légales',
@@ -42,7 +42,13 @@ export default function LegalPage() {
             Mentions légales
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Dernière mise à jour : [JJ/MM/AAAA]
+            Dernière mise à jour : <span className="text-foreground">[à compléter]</span>
+          </p>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Conformément aux dispositions de l&apos;article 6-III de la loi n° 2004-575
+            du 21 juin 2004 pour la confiance dans l&apos;économie numérique (LCEN),
+            les informations suivantes sont portées à la connaissance des utilisateurs
+            du site.
           </p>
 
           <article className="mt-10 space-y-10 text-sm leading-relaxed text-muted-foreground [&_h2]:font-display [&_h2]:text-lg [&_h2]:font-semibold [&_h2]:text-foreground [&_h3]:text-sm [&_h3]:font-semibold [&_h3]:text-foreground">
@@ -50,24 +56,42 @@ export default function LegalPage() {
             <section className="space-y-3">
               <h2>1. Éditeur du site</h2>
               <p>
-                Le site accessible à l&apos;adresse <strong>{siteConfig.url}</strong> est édité par :
+                Le site accessible à l&apos;adresse <strong>{siteConfig.url}</strong>{' '}
+                est édité par :
               </p>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li><strong>Raison sociale :</strong> {siteConfig.name}</li>
-                <li><strong>Forme juridique :</strong> [SARL / SAS / EI / Auto-entrepreneur - à compléter]</li>
-                <li><strong>Capital social :</strong> [Montant] € (si applicable)</li>
-                <li><strong>SIRET :</strong> [N° SIRET à compléter]</li>
-                <li><strong>RCS :</strong> [Ville] B [N° RCS] (si applicable)</li>
-                <li><strong>N° TVA intracommunautaire :</strong> [FR XX XXXXXXXXX - à compléter]</li>
+                <li><strong>Nom commercial :</strong> {siteConfig.name}</li>
+                <li><strong>Porteur du projet :</strong> M. Faé</li>
+                <li><strong>Forme juridique :</strong> <span className="text-foreground">[à compléter : entreprise individuelle, micro-entreprise, association ou société]</span></li>
+                <li><strong>SIRET :</strong> <span className="text-foreground">[à compléter]</span></li>
+                <li><strong>RCS / RM :</strong> <span className="text-foreground">[à compléter si applicable]</span></li>
+                <li><strong>Capital social :</strong> <span className="text-foreground">[le cas échéant]</span></li>
+                <li><strong>N° TVA intracommunautaire :</strong> <span className="text-foreground">[si assujetti]</span></li>
                 <li>
-                  <strong>Siège social :</strong> {siteConfig.address.street},{' '}
+                  <strong>Adresse :</strong> {siteConfig.address.street},{' '}
                   {siteConfig.address.postalCode} {siteConfig.address.city}
                 </li>
-                <li><strong>Téléphone :</strong> {siteConfig.phone}</li>
-                <li><strong>Email :</strong> {siteConfig.email}</li>
+                <li>
+                  <strong>Téléphone :</strong>{' '}
+                  <a
+                    href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`}
+                    className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                  >
+                    {siteConfig.phone}
+                  </a>
+                </li>
+                <li>
+                  <strong>Email :</strong>{' '}
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                  >
+                    {siteConfig.email}
+                  </a>
+                </li>
               </ul>
               <p>
-                <strong>Directeur de la publication :</strong> [Nom et prénom du responsable - à compléter]
+                <strong>Directeur de la publication :</strong> M. Faé
               </p>
             </section>
 
@@ -75,135 +99,157 @@ export default function LegalPage() {
               <h2>2. Hébergement</h2>
               <p>Le site est hébergé par :</p>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li><strong>Raison sociale :</strong> [Vercel Inc. / OVHcloud / autre - à compléter]</li>
-                <li><strong>Adresse :</strong> [Adresse de l&apos;hébergeur]</li>
-                <li><strong>Site web :</strong> [URL de l&apos;hébergeur]</li>
+                <li><strong>Hébergeur :</strong> <span className="text-foreground">[à compléter, ex. Vercel Inc., OVHcloud, Scaleway]</span></li>
+                <li><strong>Adresse :</strong> <span className="text-foreground">[adresse de l&apos;hébergeur]</span></li>
+                <li><strong>Site web :</strong> <span className="text-foreground">[URL de l&apos;hébergeur]</span></li>
+                <li><strong>Localisation des serveurs :</strong> Union européenne (conformément aux exigences RGPD).</li>
               </ul>
-              <h3 className="pt-2">Services techniques complémentaires</h3>
+              <h3 className="pt-2">Prestataires techniques tiers</h3>
+              <p>
+                Dans un souci de transparence, voici les principaux prestataires
+                techniques susceptibles de traiter des données dans le cadre du
+                fonctionnement du site :
+              </p>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li><strong>Base de données :</strong> MongoDB Atlas (MongoDB Inc.) - Serveurs en Union européenne</li>
-                <li><strong>Stockage de fichiers :</strong> Cloudflare R2 (Cloudflare Inc.) - Stockage objet compatible S3, serveurs en Europe</li>
-                <li><strong>CDN et sécurité réseau :</strong> Cloudflare (Cloudflare Inc.) - Réseau de diffusion de contenu mondial</li>
+                <li><strong>Stripe</strong> (paiement, lorsque activé) : Stripe Payments Europe Ltd., Irlande.</li>
+                <li><strong>ADAM</strong> (portage CPF du Pack 20h) : partenaire de financement.</li>
+                <li><strong>LIMOVA</strong> (chatbot, lorsque activé) : serveurs Union européenne.</li>
+                <li><strong>n8n</strong> (orchestration de workflows internes) : auto-hébergé en Union européenne.</li>
               </ul>
+              <p>
+                Pour le détail des données traitées, consultez notre{' '}
+                <Link
+                  href="/politique-de-confidentialite"
+                  className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                >
+                  Politique de confidentialité
+                </Link>.
+              </p>
             </section>
 
             <section className="space-y-3">
-              <h2>3. Technologies utilisées</h2>
+              <h2>3. Activité du site</h2>
               <p>
-                Conformément à notre engagement de transparence, voici les principales
-                technologies utilisées pour le fonctionnement de ce site :
+                Le site présente le dispositif {siteConfig.name}, service de
+                mobilité solidaire basé en Moselle. Auto Conduite met à disposition
+                des véhicules pédagogiques à double commande pour les personnes en
+                parcours d&apos;insertion engagées dans la conduite supervisée ou
+                accompagnée, dans le cadre des articles L211-1 A à L221-7 du Code
+                de la route.
               </p>
-              <ul className="list-inside list-disc space-y-1 pl-1">
-                <li><strong>Framework :</strong> Next.js 15 (React 19) - framework open source développé par Vercel</li>
-                <li><strong>Langage :</strong> TypeScript - surensemble typé de JavaScript</li>
-                <li><strong>Interface :</strong> Tailwind CSS, Shadcn/UI, Framer Motion</li>
-                <li><strong>Base de données :</strong> MongoDB avec Mongoose (ODM)</li>
-                <li><strong>Authentification :</strong> JSON Web Tokens (JWT) avec hachage bcrypt</li>
-                <li><strong>Optimisation d&apos;images :</strong> Sharp (conversion WebP, compression côté serveur)</li>
-                <li><strong>Stockage de médias :</strong> Cloudflare R2 (compatible S3)</li>
-              </ul>
+              <p>
+                Auto Conduite n&apos;est pas une auto-école et n&apos;intervient
+                pas dans la formation initiale dispensée par les établissements
+                agréés. Voir la page{' '}
+                <Link
+                  href="/cadre-legal"
+                  className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                >
+                  Cadre légal
+                </Link>{' '}
+                pour le détail.
+              </p>
             </section>
 
             <section className="space-y-3">
               <h2>4. Propriété intellectuelle</h2>
               <p>
-                L&apos;ensemble des contenus présents sur le site (textes,
-                photographies, illustrations, logos, icônes, éléments
-                graphiques, vidéos, bases de données, code source, structure,
-                design) est protégé par les lois françaises et internationales
-                relatives à la propriété intellectuelle, notamment les articles
-                L.111-1 et suivants du Code de la propriété intellectuelle.
+                L&apos;ensemble des éléments composant le site (textes, identité
+                visuelle, photographies, vidéos, icônes, illustrations,
+                architecture, code source) est protégé par le droit français et
+                international de la propriété intellectuelle (articles L.111-1 et
+                suivants du Code de la propriété intellectuelle).
               </p>
               <p>
-                Toute reproduction, représentation, modification, publication,
-                adaptation, totale ou partielle, de ces éléments, quel que soit
-                le moyen ou le procédé utilisé, est interdite sauf autorisation
-                écrite préalable de {siteConfig.name}.
+                Toute reproduction, représentation, modification ou exploitation,
+                en tout ou partie, sans autorisation écrite préalable de{' '}
+                {siteConfig.name} est interdite et constitue une contrefaçon
+                sanctionnée par les articles L.335-2 et suivants du Code de la
+                propriété intellectuelle.
               </p>
+              <h3 className="pt-2">Composants open source</h3>
               <p>
-                Toute exploitation non autorisée sera considérée comme constitutive
-                d&apos;une contrefaçon et poursuivie conformément aux articles L.335-2
-                et suivants du Code de la propriété intellectuelle.
-              </p>
-              <h3 className="pt-2">Licences open source</h3>
-              <p>
-                Ce site utilise des bibliothèques et frameworks open source sous licences
-                MIT, Apache 2.0 et ISC. Les droits d&apos;auteur de ces composants appartiennent
-                à leurs auteurs respectifs. L&apos;utilisation de ces technologies n&apos;implique
-                aucune cession de droits de propriété intellectuelle.
+                Le site repose sur des bibliothèques open source (notamment React,
+                Next.js, Tailwind CSS, Lucide Icons, Framer Motion) distribuées
+                sous licences MIT, Apache 2.0 ou ISC. Leur usage respecte les
+                conditions de chaque licence et n&apos;emporte aucune cession de
+                droits sur le contenu propre du site.
               </p>
             </section>
 
             <section className="space-y-3">
               <h2>5. Limitation de responsabilité</h2>
               <p>
-                {siteConfig.name} s&apos;efforce de fournir des informations aussi
-                précises et actualisées que possible. Toutefois, il ne saurait
-                être tenu responsable des omissions, inexactitudes ou carences
-                dans la mise à jour, qu&apos;elles soient de son fait ou du fait de
-                tiers partenaires.
+                {siteConfig.name} apporte un soin particulier à la qualité des
+                informations diffusées sur le site, mais ne peut garantir leur
+                exhaustivité ni leur exactitude permanente. Les contenus relatifs
+                aux dispositifs publics (CPF, aides France Travail, FAJ, ADIE,
+                etc.) sont susceptibles d&apos;évoluer indépendamment de notre volonté.
               </p>
               <p>
-                {siteConfig.name} décline toute responsabilité en cas de :
+                {siteConfig.name} ne saurait être tenu responsable :
               </p>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li>Interruption temporaire du site pour maintenance ou mise à jour</li>
-                <li>Dommages résultant d&apos;une intrusion frauduleuse d&apos;un tiers</li>
-                <li>Impossibilité d&apos;accès au site en raison d&apos;un dysfonctionnement du réseau Internet</li>
-                <li>Dommages causés au matériel de l&apos;utilisateur lors de l&apos;accès au site</li>
+                <li>D&apos;interruptions temporaires du site pour maintenance ou mise à jour.</li>
+                <li>De dommages liés à une intrusion frauduleuse d&apos;un tiers.</li>
+                <li>D&apos;une impossibilité d&apos;accès due à un dysfonctionnement du réseau Internet.</li>
+                <li>De l&apos;usage qui serait fait par un utilisateur d&apos;informations issues du site.</li>
               </ul>
             </section>
 
             <section className="space-y-3">
               <h2>6. Liens hypertextes</h2>
               <p>
-                Le site peut contenir des liens hypertextes vers des sites tiers.
-                {siteConfig.name} ne dispose d&apos;aucun moyen de contrôle sur le contenu
-                de ces sites et décline toute responsabilité quant à leur contenu,
-                publicités, produits, services ou tout autre matériel.
+                Le site peut renvoyer vers des ressources externes (ants.gouv.fr,
+                moncompteformation.gouv.fr, adie.org, etc.) que {siteConfig.name}{' '}
+                ne contrôle pas. Notre responsabilité ne saurait être engagée du
+                fait du contenu de ces sites tiers.
               </p>
               <p>
-                La création de liens hypertextes vers ce site est soumise à
-                autorisation préalable et écrite de {siteConfig.name}, sauf pour
-                les liens simples pointant vers la page d&apos;accueil.
+                La création d&apos;un lien hypertexte vers le site est libre dès lors
+                qu&apos;elle ne porte pas atteinte à l&apos;image de {siteConfig.name} et
+                qu&apos;il ne s&apos;agit pas d&apos;un détournement de contenu.
               </p>
             </section>
 
             <section className="space-y-3">
               <h2>7. Accessibilité</h2>
               <p>
-                Nous nous efforçons de rendre ce site accessible au plus grand nombre
-                conformément au Référentiel Général d&apos;Amélioration de l&apos;Accessibilité (RGAA).
-                Si vous rencontrez des difficultés d&apos;accès, contactez-nous à{' '}
-                <a href={`mailto:${siteConfig.email}`} className="font-medium text-primary underline underline-offset-4 hover:text-primary/80">
-                  {siteConfig.email}
-                </a>.
+                Nous nous engageons à améliorer progressivement l&apos;accessibilité
+                de ce site dans le respect du RGAA 4.1. Voir notre{' '}
+                <Link
+                  href="/accessibilite"
+                  className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                >
+                  Déclaration d&apos;accessibilité
+                </Link>.
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2>8. Droit applicable et juridiction compétente</h2>
+              <h2>8. Médiation et droit applicable</h2>
               <p>
-                Les présentes mentions légales sont régies par le droit français.
-                En cas de litige, et après l&apos;échec de toute tentative de
-                résolution amiable dans un délai de 30 jours, les tribunaux
-                compétents du ressort de [Ville - à compléter] seront seuls
-                compétents.
+                Les présentes mentions sont régies par le droit français. En cas
+                de litige, et après échec d&apos;une tentative de résolution amiable
+                dans un délai de trente (30) jours à compter de la réclamation,
+                les juridictions compétentes seront celles du ressort du siège
+                de {siteConfig.name}.
               </p>
               <p>
                 Conformément à l&apos;article L.612-1 du Code de la consommation,
-                le consommateur a le droit de recourir gratuitement à un médiateur
-                de la consommation. Médiateur : [Nom et coordonnées du médiateur - à compléter].
+                le consommateur peut recourir gratuitement au médiateur de la
+                consommation. Coordonnées du médiateur :{' '}
+                <span className="text-foreground">[à compléter par l&apos;éditeur]</span>.
               </p>
               <p>
-                Plateforme de règlement en ligne des litiges de la Commission européenne :{' '}
+                Plateforme européenne de règlement en ligne des litiges :{' '}
                 <a
                   href="https://ec.europa.eu/consumers/odr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
                 >
-                  https://ec.europa.eu/consumers/odr
+                  ec.europa.eu/consumers/odr
                 </a>
               </p>
             </section>
@@ -211,17 +257,17 @@ export default function LegalPage() {
             <section className="space-y-3">
               <h2>9. Crédits</h2>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li><strong>Conception et développement :</strong> [À compléter]</li>
-                <li><strong>Design :</strong> [À compléter]</li>
-                <li><strong>Crédits photos :</strong> [À compléter - ex: Unsplash, photographe, etc.]</li>
-                <li><strong>Icônes :</strong> Lucide Icons (licence ISC)</li>
-                <li><strong>Polices :</strong> Inter et Plus Jakarta Sans (Google Fonts, licence Open Font)</li>
+                <li><strong>Conception et développement :</strong> <span className="text-foreground">[à compléter]</span></li>
+                <li><strong>Photographies :</strong> visuels fournis par {siteConfig.name} (M. Faé), droits réservés.</li>
+                <li><strong>Icônes :</strong> Lucide Icons (licence ISC).</li>
+                <li><strong>Polices :</strong> Inter, Plus Jakarta Sans, Instrument Serif, JetBrains Mono (Google Fonts, Open Font License).</li>
               </ul>
             </section>
 
             <section className="space-y-3 rounded-xl border border-border/60 bg-muted/20 p-5">
               <p className="text-foreground">
-                Pour connaître nos pratiques en matière de données personnelles, consultez notre{' '}
+                Pour nos pratiques en matière de données personnelles, consultez
+                notre{' '}
                 <Link
                   href="/politique-de-confidentialite"
                   className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 
 import { CtaSection } from '@/components/sections/cta-section'
-import { FaqSection } from '@/components/sections/faq-section'
 import { GalleryCarousel } from '@/components/sections/gallery-carousel'
 import { HeroSection } from '@/components/sections/hero-section'
+import { HomeVideos } from '@/components/sections/home-videos'
+import { PartnersSection } from '@/components/sections/partners-section'
 import { ServicesPreview } from '@/components/sections/services-preview'
 import { StorySection } from '@/components/sections/story-section'
 import { TestimonialsSection } from '@/components/sections/testimonials-section'
@@ -39,8 +40,9 @@ export default function HomePage() {
       />
       <HeroSection />
       <ServicesPreview />
-      <FaqSection />
       <StorySection />
+      <HomeVideos />
+      <PartnersSection />
       <TestimonialsSection />
       <GalleryCarousel />
       <CtaSection />
