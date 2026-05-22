@@ -55,14 +55,14 @@ export function Navbar() {
           className={cn(
             'relative rounded-2xl transition-all duration-500',
             scrolled
-              ? 'shadow-[0_20px_50px_-20px_oklch(0.2_0.02_264/0.25),0_0_0_1px_oklch(0.55_0.2_285/0.08)]'
+              ? 'shadow-[0_20px_50px_-20px_oklch(0.2_0.02_264/0.25),0_0_0_1px_oklch(0.62_0.10_200/0.08)]'
               : 'shadow-[0_8px_24px_-12px_oklch(0.2_0.02_264/0.12)]'
           )}
         >
           {/* Halo gradient subtil derrière la navbar quand on scroll */}
           <div
             className={cn(
-              'pointer-events-none absolute -inset-x-8 -inset-y-4 -z-10 rounded-[2rem] bg-gradient-to-r from-primary/0 via-primary/[0.07] to-primary/0 blur-2xl transition-opacity duration-700',
+              'pointer-events-none absolute -inset-x-8 -inset-y-4 -z-10 rounded-[2rem] bg-gradient-to-r via-primary/[0.07] blur-2xl transition-opacity duration-700',
               scrolled ? 'opacity-100' : 'opacity-0'
             )}
             aria-hidden
@@ -74,7 +74,7 @@ export function Navbar() {
             aria-hidden
             style={{
               background:
-                'linear-gradient(135deg, oklch(0.55 0.2 285 / 0.35) 0%, oklch(0.91 0.012 264 / 0.4) 35%, oklch(0.91 0.012 264 / 0.4) 65%, oklch(0.55 0.2 285 / 0.35) 100%)',
+                'linear-gradient(135deg, oklch(0.62 0.10 200 / 0.35) 0%, oklch(0.91 0.012 264 / 0.4) 35%, oklch(0.91 0.012 264 / 0.4) 65%, oklch(0.62 0.10 200 / 0.35) 100%)',
               WebkitMask:
                 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
               WebkitMaskComposite: 'xor',
@@ -139,11 +139,11 @@ export function Navbar() {
               {/* CTA premium : gradient + shimmer + arrow */}
               <Link
                 href="/contact"
-                className="group/cta relative hidden h-8 items-center gap-1.5 overflow-hidden rounded-xl px-3 text-[13px] font-medium text-primary-foreground shadow-[0_4px_14px_-4px_oklch(0.48_0.22_285/0.5)] transition-all hover:shadow-[0_6px_20px_-4px_oklch(0.48_0.22_285/0.6)] active:translate-y-px sm:inline-flex"
+                className="group/cta relative hidden h-8 items-center gap-1.5 overflow-hidden rounded-xl px-3 text-[13px] font-medium text-primary-foreground shadow-[0_4px_14px_-4px_oklch(0.58_0.10_200/0.5)] transition-all hover:shadow-[0_6px_20px_-4px_oklch(0.58_0.10_200/0.6)] active:translate-y-px sm:inline-flex"
               >
                 {/* Fond gradient */}
                 <span
-                  className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-[oklch(0.42_0.22_280)] dark:from-primary dark:via-primary dark:to-[oklch(0.65_0.18_280)]"
+                  className="absolute inset-0 bg-primary"
                   aria-hidden
                 />
                 {/* Shimmer animé au hover */}
@@ -219,7 +219,7 @@ export function Navbar() {
                 aria-hidden
                 style={{
                   background:
-                    'linear-gradient(135deg, oklch(0.55 0.2 285 / 0.3) 0%, oklch(0.91 0.012 264 / 0.4) 50%, oklch(0.55 0.2 285 / 0.3) 100%)',
+                    'linear-gradient(135deg, oklch(0.62 0.10 200 / 0.3) 0%, oklch(0.91 0.012 264 / 0.4) 50%, oklch(0.62 0.10 200 / 0.3) 100%)',
                   WebkitMask:
                     'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
                   WebkitMaskComposite: 'xor',
@@ -254,7 +254,7 @@ export function Navbar() {
                         <span>{l.label}</span>
                         {isActive && (
                           <span
-                            className="size-1.5 rounded-full bg-primary shadow-[0_0_10px_oklch(0.55_0.2_285/0.7)]"
+                            className="size-1.5 rounded-full bg-primary shadow-[0_0_10px_oklch(0.62_0.10_200/0.7)]"
                             aria-hidden
                           />
                         )}
@@ -276,10 +276,10 @@ export function Navbar() {
                   <Link
                     href="/contact"
                     onClick={() => setOpen(false)}
-                    className="group/cta relative flex h-10 w-full items-center justify-center gap-1.5 overflow-hidden rounded-xl text-sm font-medium text-primary-foreground shadow-[0_8px_24px_-8px_oklch(0.48_0.22_285/0.5)]"
+                    className="group/cta relative flex h-10 w-full items-center justify-center gap-1.5 overflow-hidden rounded-xl text-sm font-medium text-primary-foreground shadow-[0_8px_24px_-8px_oklch(0.58_0.10_200/0.5)]"
                   >
                     <span
-                      className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-[oklch(0.42_0.22_280)] dark:to-[oklch(0.65_0.18_280)]"
+                      className="absolute inset-0 bg-primary"
                       aria-hidden
                     />
                     <span

@@ -50,10 +50,10 @@ function Orb({
   opacity?: number
 }) {
   const colors = {
-    violet: 'oklch(0.55 0.2 285 / 0.4)',
-    indigo: 'oklch(0.55 0.2 260 / 0.35)',
-    cyan: 'oklch(0.7 0.13 210 / 0.3)',
-    rose: 'oklch(0.65 0.18 0 / 0.25)',
+    violet: 'oklch(0.62 0.10 200 / 0.4)',
+    indigo: 'oklch(0.52 0.09 205 / 0.35)',
+    cyan: 'oklch(0.78 0.08 195 / 0.3)',
+    rose: 'oklch(0.68 0.06 200 / 0.2)',
   }
   return (
     <div
@@ -77,9 +77,9 @@ function Blob({
   opacity?: number
 }) {
   const colors = {
-    violet: 'oklch(0.55 0.2 285)',
-    indigo: 'oklch(0.55 0.2 260)',
-    cyan: 'oklch(0.7 0.13 210)',
+    violet: 'oklch(0.62 0.10 200)',
+    indigo: 'oklch(0.52 0.09 205)',
+    cyan: 'oklch(0.78 0.08 195)',
   }
   return (
     <svg

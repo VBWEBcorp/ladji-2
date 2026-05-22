@@ -1,8 +1,9 @@
-import { CarFront } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 
-import { cn } from '@/lib/utils'
+import { brandLogos } from '@/lib/site-content'
 import { siteConfig } from '@/lib/seo'
+import { cn } from '@/lib/utils'
 
 type LogoProps = {
   className?: string
@@ -12,15 +13,20 @@ export function Logo({ className }: LogoProps) {
   return (
     <Link
       href="/"
+      aria-label={siteConfig.name}
       className={cn(
-        'group inline-flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-foreground transition-opacity hover:opacity-90',
+        'group inline-flex items-center transition-opacity hover:opacity-90',
         className
       )}
     >
-      <span className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15 transition-transform duration-300 group-hover:scale-[1.03]">
-        <CarFront className="size-[18px]" aria-hidden />
-      </span>
-      <span>{siteConfig.name}</span>
+      <Image
+        src={brandLogos.logoTransparent}
+        alt={siteConfig.name}
+        width={220}
+        height={56}
+        priority
+        className="h-11 w-auto sm:h-12"
+      />
     </Link>
   )
 }

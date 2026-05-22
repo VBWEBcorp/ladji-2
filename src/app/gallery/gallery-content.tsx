@@ -55,7 +55,7 @@ export default function GalleryContent({ initialSettings, initialImages }: Props
               className="object-cover"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-primary/20 via-primary/10 to-background" />
+            <div className="w-full h-full bg-primary/10" />
           )}
         </div>
         <div className="absolute inset-0 bg-black/50" />

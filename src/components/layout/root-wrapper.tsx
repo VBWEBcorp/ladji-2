@@ -8,7 +8,7 @@ import { Footer } from '@/components/layout/footer'
 import { MarketingBanner } from '@/components/marketing-banner'
 import { MarketingPopup } from '@/components/marketing-popup'
 import { Navbar } from '@/components/layout/navbar'
-import { ScrollToTop } from '@/components/scroll-to-top'
+import { LimovaBubble } from '@/components/limova-bubble'
 
 export function RootWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -33,7 +33,7 @@ export function RootWrapper({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />
-      <ScrollToTop />
+      <LimovaBubble />
       <MarketingPopup />
       <CookieConsent />
     </>

@@ -13,35 +13,41 @@
 // ============================================================================
 //                          IMAGES (pool de visuels)
 // ============================================================================
-// Photos fournies par le client (M. Faé), hébergées sur ibb.co.
-// 5 visuels mélangés sur tout le site pour garder de la variété.
+// 12 photos officielles Auto Conduite fournies par M. Faé (hébergées sur ibb.co)
+// + 2 logos officiels. Mélangées sur tout le site pour garder de la variété.
 
-const photoCoaching3 = 'https://i.ibb.co/rfspRRnL/Conduite-coaching-3.jpg'
-const photoCoaching2 = 'https://i.ibb.co/27RyB3JM/Conduite-coaching-2.jpg'
-const photoCoaching1 = 'https://i.ibb.co/r2Pvm6J0/Conduite-coaching.jpg'
-const photoVoiture2 = 'https://i.ibb.co/KpjN0Vqc/Voiture-basic-2-Copie.webp'
-const photoVoiture1 = 'https://i.ibb.co/HDM862hg/Voiture-basic-Copie.jpg'
+const p1 = 'https://i.ibb.co/s9nxFLMN/Auto-conduite-1.png'
+const p2 = 'https://i.ibb.co/Cpm57Lvs/Auto-conduite-2.png'
+const p3 = 'https://i.ibb.co/dJX10gqz/Auto-conduite-3.png'
+const p4 = 'https://i.ibb.co/N6znKXSv/Auto-conduite-4.png'
+const p5 = 'https://i.ibb.co/mF9HzxmG/Auto-conduite-5.png'
+const p6 = 'https://i.ibb.co/xtgs8Mk3/Auto-conduite-6.png'
+const p7 = 'https://i.ibb.co/vCWqNCyw/Auto-conduite-7.png'
+const p8 = 'https://i.ibb.co/Gv62z1F2/Auto-conduite-8.png'
+const p9 = 'https://i.ibb.co/hFcSPF7B/Auto-conduite-9.png'
+const p10 = 'https://i.ibb.co/KzbnqX94/Auto-conduite-10.png'
+const p11 = 'https://i.ibb.co/NdTtDcp4/Auto-conduite-11.png'
+const p12 = 'https://i.ibb.co/Xr5051tP/Auto-conduite-12-Belle.png'
+
+export const brandLogos = {
+  logo1: 'https://i.ibb.co/rKvMMqF4/Auto-conduite-logo-1.png',
+  logo2: 'https://i.ibb.co/zVvC9JYy/Auto-conduite-logo-2.png',
+  logoTransparent: 'https://i.ibb.co/v6wnKbcR/7b424a54-05ce-45bf-bbad-aff184417e09-removalai-preview.png',
+}
 
 export const images = {
-  heroCarousel: [photoCoaching3, photoVoiture2, photoCoaching1],
-  story: photoCoaching2,
-  aboutHero: photoCoaching1,
-  servicesHero: photoVoiture2,
-  contactHero: photoVoiture1,
-  aboutGallery: [photoCoaching3, photoVoiture1, photoCoaching2, photoVoiture2],
-  services: [photoVoiture2, photoCoaching2, photoVoiture1, photoCoaching1],
+  heroCarousel: [p12, p7, p3],
+  story: p5,
+  aboutHero: p9,
+  servicesHero: p6,
+  contactHero: p4,
+  aboutGallery: [p1, p8, p11, p2],
+  services: [p10, p7, p3, p5],
   ctaScrollColumns: {
-    col1: [photoCoaching3, photoVoiture1, photoCoaching1, photoCoaching2],
-    col2: [photoVoiture2, photoCoaching2, photoVoiture1, photoCoaching3],
+    col1: [p12, p2, p9, p6],
+    col2: [p4, p11, p1, p8],
   },
-  homeGallery: [
-    photoCoaching1,
-    photoCoaching3,
-    photoVoiture1,
-    photoVoiture2,
-    photoCoaching2,
-    photoCoaching1,
-  ],
+  homeGallery: [p12, p7, p9, p3, p11, p5],
 }
 
 // ============================================================================

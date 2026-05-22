@@ -51,7 +51,7 @@ export function PremiumHero({
   return (
     <section
       className={`relative isolate overflow-hidden border-b border-border/60 ${
-        hasBgImage ? 'bg-background' : 'bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]'
+        hasBgImage ? 'bg-background' : 'bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]'
       }`}
     >
       {/* Image de fond plein largeur + overlay sombre + fade vers le bas (style Blog) */}
@@ -138,7 +138,7 @@ export function PremiumHero({
                   {lead}{' '}
                   <span
                     className={`relative inline-block pb-1 font-serif italic font-normal tracking-[-0.01em] ${
-                      darkOver ? 'text-[oklch(0.78_0.15_285)]' : 'text-primary'
+                      darkOver ? 'text-[oklch(0.72_0.10_200)]' : 'text-primary'
                     }`}
                   >
                     {accent}
@@ -174,7 +174,7 @@ export function PremiumHero({
                 aria-hidden
                 style={{
                   background:
-                    'radial-gradient(ellipse at center, oklch(0.55 0.2 285 / 0.3) 0%, transparent 70%)',
+                    'radial-gradient(ellipse at center, oklch(0.62 0.10 200 / 0.3) 0%, transparent 70%)',
                 }}
               />
 
@@ -184,7 +184,7 @@ export function PremiumHero({
                   aria-hidden
                   style={{
                     background:
-                      'linear-gradient(135deg, oklch(0.55 0.2 285 / 0.4) 0%, oklch(0.91 0.012 264 / 0.5) 50%, oklch(0.55 0.2 285 / 0.4) 100%)',
+                      'linear-gradient(135deg, oklch(0.62 0.10 200 / 0.4) 0%, oklch(0.91 0.012 264 / 0.5) 50%, oklch(0.62 0.10 200 / 0.4) 100%)',
                     WebkitMask:
                       'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
                     WebkitMaskComposite: 'xor',

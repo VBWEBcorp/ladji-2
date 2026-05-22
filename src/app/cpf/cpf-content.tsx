@@ -27,7 +27,7 @@ export function CpfContent() {
           aria-hidden
           style={{
             background:
-              'radial-gradient(ellipse at top left, oklch(0.55 0.2 285 / 0.18), transparent 50%), radial-gradient(ellipse at bottom right, oklch(0.42 0.22 280 / 0.12), transparent 50%)',
+              'radial-gradient(ellipse at top left, oklch(0.62 0.10 200 / 0.18), transparent 50%), radial-gradient(ellipse at bottom right, oklch(0.48 0.10 200 / 0.12), transparent 50%)',
           }}
         />
 
@@ -75,16 +75,16 @@ export function CpfContent() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.15, ease }}
-              className="relative rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/[0.08] via-card/80 to-primary/[0.04] p-8 shadow-[0_30px_60px_-20px_oklch(0.55_0.2_285/0.35)] ring-1 ring-primary/10 backdrop-blur-sm sm:p-10"
+              className="relative rounded-3xl border border-primary/30 bg-card/80 p-8 shadow-[0_30px_60px_-20px_oklch(0.62_0.10_200/0.35)] ring-1 ring-primary/10 backdrop-blur-sm sm:p-10"
             >
               <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-primary">
                 Votre reste à charge
               </p>
               <div className="mt-3 flex items-baseline gap-2">
-                <span className="font-display text-[80px] font-black leading-none tracking-[-0.05em] text-foreground sm:text-[120px]">
+                <span className="font-display text-[56px] font-black leading-none tracking-[-0.04em] text-foreground sm:text-[72px]">
                   {cpf.monthly}
                 </span>
-                <span className="font-display text-3xl font-bold text-foreground sm:text-5xl">
+                <span className="font-display text-2xl font-bold text-foreground sm:text-3xl">
                   €
                 </span>
               </div>
@@ -129,7 +129,7 @@ export function CpfContent() {
       </section>
 
       {/* Ce qui est inclus */}
-      <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+      <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
         <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <SectionTitle
             eyebrow="Ce que comprend le Pack 20h CPF"
@@ -198,7 +198,7 @@ export function CpfContent() {
                 key={item.step}
                 className="relative rounded-2xl border border-border/80 bg-card/70 p-6 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5"
               >
-                <span className="absolute -top-3 left-6 inline-flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[oklch(0.42_0.22_280)] font-display text-xs font-bold text-primary-foreground shadow-[0_8px_20px_-8px_oklch(0.55_0.2_285/0.5)] ring-4 ring-background">
+                <span className="absolute -top-3 left-6 inline-flex size-9 items-center justify-center rounded-xl bg-primary font-display text-xs font-bold text-primary-foreground shadow-[0_8px_20px_-8px_oklch(0.62_0.10_200/0.5)] ring-4 ring-background">
                   {item.step}
                 </span>
                 <h3 className="mt-4 font-display text-base font-semibold text-foreground">

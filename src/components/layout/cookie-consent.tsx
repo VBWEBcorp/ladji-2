@@ -44,7 +44,7 @@ export function CookieConsent() {
           aria-describedby="cookie-desc"
         >
           <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card px-5 py-4 shadow-[0_20px_50px_-12px_oklch(0.2_0.02_264/0.2)]">
-            {/* Halo violet subtil top-right (cohérent DA) */}
+            {/* Halo couleur d'accent subtil top-right */}
             <div
               className="pointer-events-none absolute -top-16 -right-16 size-40 rounded-full bg-primary/10 blur-3xl"
               aria-hidden
@@ -55,7 +55,7 @@ export function CookieConsent() {
               aria-hidden
               style={{
                 background:
-                  'linear-gradient(135deg, oklch(0.55 0.2 285 / 0.35) 0%, oklch(0.91 0.012 264 / 0.5) 50%, oklch(0.55 0.2 285 / 0.35) 100%)',
+                  'linear-gradient(135deg, oklch(0.62 0.10 200 / 0.35) 0%, oklch(0.91 0.012 264 / 0.5) 50%, oklch(0.62 0.10 200 / 0.35) 100%)',
                 WebkitMask:
                   'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
                 WebkitMaskComposite: 'xor',
@@ -75,7 +75,7 @@ export function CookieConsent() {
                   damping: 14,
                 }}
                 whileHover={{ scale: 1.08, rotate: -6 }}
-                className="relative flex size-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary ring-1 ring-primary/20"
+                className="relative flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20"
               >
                 {/* Halo pulsant subtil */}
                 <span
@@ -141,10 +141,10 @@ export function CookieConsent() {
                 </button>
                 <button
                   onClick={handleAccept}
-                  className="group/cta relative inline-flex h-9 items-center overflow-hidden rounded-xl px-4 text-xs font-semibold text-primary-foreground shadow-[0_4px_14px_-4px_oklch(0.48_0.22_285/0.5)] transition-all hover:shadow-[0_6px_20px_-4px_oklch(0.48_0.22_285/0.6)] active:translate-y-px"
+                  className="group/cta relative inline-flex h-9 items-center overflow-hidden rounded-xl px-4 text-xs font-semibold text-primary-foreground shadow-[0_4px_14px_-4px_oklch(0.58_0.10_200/0.5)] transition-all hover:shadow-[0_6px_20px_-4px_oklch(0.58_0.10_200/0.6)] active:translate-y-px"
                 >
                   <span
-                    className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-[oklch(0.42_0.22_280)] dark:from-primary dark:via-primary dark:to-[oklch(0.65_0.18_280)]"
+                    className="absolute inset-0 bg-primary"
                     aria-hidden
                   />
                   <span

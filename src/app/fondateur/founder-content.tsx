@@ -25,7 +25,7 @@ export function FounderContent() {
           aria-hidden
           style={{
             background:
-              'radial-gradient(ellipse at top right, oklch(0.55 0.2 285 / 0.15), transparent 50%)',
+              'radial-gradient(ellipse at top right, oklch(0.62 0.10 200 / 0.15), transparent 50%)',
           }}
         />
 
@@ -52,7 +52,7 @@ export function FounderContent() {
       </section>
 
       {/* Bio */}
-      <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+      <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
         <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
             {bio.eyebrow}
@@ -119,7 +119,7 @@ export function FounderContent() {
       </section>
 
       {/* Contact direct */}
-      <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+      <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
         <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
             {contact.eyebrow}

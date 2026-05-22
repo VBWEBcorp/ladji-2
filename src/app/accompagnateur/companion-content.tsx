@@ -79,7 +79,7 @@ export function CompanionContent() {
       </section>
 
       {/* Do / Don't */}
-      <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+      <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <SectionTitle
             eyebrow="Pendant la séance"
@@ -169,10 +169,10 @@ export function CompanionContent() {
       </section>
 
       {/* Vidéo briefing sécurité */}
-      <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+      <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
         <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-card/70 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5">
-            <div className="relative aspect-video bg-gradient-to-br from-primary/15 to-primary/5">
+            <div className="relative aspect-video bg-primary/10">
               <div className="absolute inset-0 flex items-center justify-center">
                 <span className="flex size-16 items-center justify-center rounded-full bg-background/85 text-primary shadow-lg backdrop-blur-sm ring-1 ring-border/60">
                   <PlayCircle className="size-8" aria-hidden />

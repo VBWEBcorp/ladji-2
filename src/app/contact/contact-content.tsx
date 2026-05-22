@@ -50,7 +50,7 @@ export function ContactContent() {
                   aria-hidden
                   style={{
                     background:
-                      'linear-gradient(135deg, oklch(0.55 0.2 285 / 0.35) 0%, oklch(0.91 0.012 264 / 0.5) 50%, oklch(0.55 0.2 285 / 0.35) 100%)',
+                      'linear-gradient(135deg, oklch(0.62 0.10 200 / 0.35) 0%, oklch(0.91 0.012 264 / 0.5) 50%, oklch(0.62 0.10 200 / 0.35) 100%)',
                     WebkitMask:
                       'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
                     WebkitMaskComposite: 'xor',
@@ -74,7 +74,7 @@ export function ContactContent() {
                           name="firstname"
                           placeholder="Jean"
                           autoComplete="given-name"
-                          className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.55_0.2_285/0.1)]"
+                          className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)]"
                         />
                       </div>
                       <div className="space-y-2">
@@ -84,7 +84,7 @@ export function ContactContent() {
                           name="lastname"
                           placeholder="Dupont"
                           autoComplete="family-name"
-                          className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.55_0.2_285/0.1)]"
+                          className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)]"
                         />
                       </div>
                     </div>
@@ -96,7 +96,7 @@ export function ContactContent() {
                         type="email"
                         placeholder="jean@email.fr"
                         autoComplete="email"
-                        className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.55_0.2_285/0.1)]"
+                        className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)]"
                       />
                     </div>
                     <div className="space-y-2">
@@ -107,7 +107,7 @@ export function ContactContent() {
                         type="tel"
                         placeholder="06 12 34 56 78"
                         autoComplete="tel"
-                        className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.55_0.2_285/0.1)]"
+                        className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)]"
                       />
                     </div>
                     <div className="space-y-2">
@@ -116,7 +116,7 @@ export function ContactContent() {
                         id="profile"
                         name="profile"
                         defaultValue=""
-                        className="h-11 w-full rounded-xl border border-input bg-background/70 px-3.5 text-sm text-foreground transition-shadow focus-visible:border-ring focus-visible:shadow-[0_0_0_4px_oklch(0.55_0.2_285/0.1)] focus-visible:outline-none"
+                        className="h-11 w-full rounded-xl border border-input bg-background/70 px-3.5 text-sm text-foreground transition-shadow focus-visible:border-ring focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)] focus-visible:outline-none"
                       >
                         <option value="" disabled>
                           Sélectionnez votre profil
@@ -135,7 +135,7 @@ export function ContactContent() {
                         name="message"
                         rows={5}
                         placeholder="Dites-nous en quoi nous pouvons vous aider : forfait souhaité, dates, questions…"
-                        className="w-full rounded-xl border border-input bg-background/70 px-3.5 py-3 text-sm leading-relaxed text-foreground transition-shadow placeholder:text-muted-foreground focus-visible:border-ring focus-visible:shadow-[0_0_0_4px_oklch(0.55_0.2_285/0.1)] focus-visible:outline-none"
+                        className="w-full rounded-xl border border-input bg-background/70 px-3.5 py-3 text-sm leading-relaxed text-foreground transition-shadow placeholder:text-muted-foreground focus-visible:border-ring focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)] focus-visible:outline-none"
                       />
                     </div>
                     <Button type="submit" size="lg" className="w-full">
@@ -160,7 +160,7 @@ export function ContactContent() {
                   aria-hidden
                   style={{
                     background:
-                      'linear-gradient(135deg, oklch(0.55 0.2 285 / 0.35) 0%, oklch(0.91 0.012 264 / 0.5) 50%, oklch(0.55 0.2 285 / 0.35) 100%)',
+                      'linear-gradient(135deg, oklch(0.62 0.10 200 / 0.35) 0%, oklch(0.91 0.012 264 / 0.5) 50%, oklch(0.62 0.10 200 / 0.35) 100%)',
                     WebkitMask:
                       'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
                     WebkitMaskComposite: 'xor',
@@ -173,7 +173,7 @@ export function ContactContent() {
                     href={`tel:${siteConfig.phone}`}
                     className="group flex items-start gap-4 -mx-3 rounded-xl px-3 py-2 transition-colors hover:bg-foreground/[0.04]"
                   >
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary ring-1 ring-primary/20 transition-transform duration-300 group-hover:scale-105">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20 transition-transform duration-300 group-hover:scale-105">
                       <Phone className="size-4" aria-hidden />
                     </span>
                     <div>
@@ -186,7 +186,7 @@ export function ContactContent() {
                     href={`mailto:${siteConfig.email}`}
                     className="group flex items-start gap-4 -mx-3 rounded-xl px-3 py-2 transition-colors hover:bg-foreground/[0.04]"
                   >
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary ring-1 ring-primary/20 transition-transform duration-300 group-hover:scale-105">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20 transition-transform duration-300 group-hover:scale-105">
                       <Mail className="size-4" aria-hidden />
                     </span>
                     <div>
@@ -198,7 +198,7 @@ export function ContactContent() {
                   </a>
 
                   <div className="flex items-start gap-4 -mx-3 rounded-xl px-3 py-2">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary ring-1 ring-primary/20">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
                       <MapPin className="size-4" aria-hidden />
                     </span>
                     <div>

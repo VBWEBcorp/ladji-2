@@ -80,12 +80,12 @@ export function ServicesContent() {
                   }}
                   className={`relative flex flex-col rounded-2xl border bg-card/70 p-6 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-md)] ${
                     popular
-                      ? 'border-primary/60 ring-primary/30 shadow-[0_20px_50px_-20px_oklch(0.55_0.2_285/0.45)]'
+                      ? 'border-primary/60 ring-primary/30 shadow-[0_20px_50px_-20px_oklch(0.62_0.10_200/0.45)]'
                       : 'border-border/80'
                   }`}
                 >
                   {popular && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow-[0_8px_20px_-8px_oklch(0.55_0.2_285/0.5)]">
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow-[0_8px_20px_-8px_oklch(0.62_0.10_200/0.5)]">
                       Populaire
                     </span>
                   )}
@@ -144,14 +144,14 @@ export function ServicesContent() {
       </section>
 
       {/* Pack 20h CPF — bloc séparé (cf. brief Ouibo : 1450€, 183€/mois) */}
-      <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+      <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease }}
-            className="grid gap-10 rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/[0.08] via-card/80 to-primary/[0.04] p-8 shadow-[0_30px_60px_-20px_oklch(0.55_0.2_285/0.3)] ring-1 ring-primary/10 backdrop-blur-sm lg:grid-cols-[1.1fr_1fr] lg:items-center lg:p-12"
+            className="grid gap-10 rounded-3xl border border-primary/30 bg-card/80 p-8 shadow-[0_30px_60px_-20px_oklch(0.62_0.10_200/0.3)] ring-1 ring-primary/10 backdrop-blur-sm lg:grid-cols-[1.1fr_1fr] lg:items-center lg:p-12"
           >
             <div>
               <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
@@ -199,10 +199,10 @@ export function ServicesContent() {
                   Votre reste à charge
                 </p>
                 <div className="mt-3 flex items-baseline gap-2">
-                  <span className="font-display text-[72px] font-black leading-none tracking-[-0.05em] text-foreground sm:text-[96px]">
+                  <span className="font-display text-[48px] font-black leading-none tracking-[-0.04em] text-foreground sm:text-[64px]">
                     {cpfPack.monthly}
                   </span>
-                  <span className="font-display text-3xl font-bold text-foreground sm:text-4xl">
+                  <span className="font-display text-2xl font-bold text-foreground sm:text-3xl">
                     €
                   </span>
                 </div>
@@ -230,7 +230,7 @@ export function ServicesContent() {
       </section>
 
       {/* Zones kilométriques : tableau */}
-      <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+      <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <SectionTitle
             eyebrow={zonesSection.eyebrow}
@@ -305,7 +305,7 @@ export function ServicesContent() {
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
                 }}
-                className="group relative overflow-hidden rounded-3xl border border-border/80 bg-card/70 p-7 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 backdrop-blur-sm transition-[border-color,box-shadow] duration-500 ease-out hover:border-primary/30 hover:shadow-[0_20px_50px_-20px_oklch(0.55_0.2_285/0.25)] sm:p-8"
+                className="group relative overflow-hidden rounded-3xl border border-border/80 bg-card/70 p-7 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 backdrop-blur-sm transition-[border-color,box-shadow] duration-500 ease-out hover:border-primary/30 hover:shadow-[0_20px_50px_-20px_oklch(0.62_0.10_200/0.25)] sm:p-8"
               >
                 {/* Gros chiffre fantôme en arrière-plan */}
                 <span
@@ -322,7 +322,7 @@ export function ServicesContent() {
                 />
 
                 {/* Pin icon en relief */}
-                <div className="relative flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 text-primary shadow-[inset_0_1px_0_oklch(1_0_0/0.3)] ring-1 ring-primary/20">
+                <div className="relative flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary shadow-[inset_0_1px_0_oklch(1_0_0/0.3)] ring-1 ring-primary/20">
                   <MapPin className="size-6" aria-hidden />
                 </div>
 
@@ -358,7 +358,7 @@ export function ServicesContent() {
       </section>
 
       {/* Financements */}
-      <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+      <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <SectionTitle eyebrow={funding.eyebrow} title={funding.title} />
           <motion.div

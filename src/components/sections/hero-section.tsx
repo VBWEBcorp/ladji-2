@@ -83,9 +83,9 @@ export function HeroSection() {
                   className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.08] px-3 py-1 font-display text-[11px] font-medium tracking-wide text-white/80 backdrop-blur-sm"
                 >
                   {i === 0 ? (
-                    <span className="size-1.5 rounded-full bg-[oklch(0.78_0.15_285)]" aria-hidden />
+                    <span className="size-1.5 rounded-full bg-[oklch(0.72_0.10_200)]" aria-hidden />
                   ) : (
-                    <Check className="size-3 text-[oklch(0.78_0.15_285)]" aria-hidden />
+                    <Check className="size-3 text-[oklch(0.72_0.10_200)]" aria-hidden />
                   )}
                   {chip.trim()}
                 </span>
@@ -93,12 +93,12 @@ export function HeroSection() {
             </div>
           )}
 
-          {/* Titre avec mot accentué en serif italic + violet uni */}
+          {/* Titre avec mot accentué en serif italic + couleur d'accent */}
           <h1 className="mt-8 font-display text-balance pb-1 text-4xl leading-[1.15] font-semibold tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl">
             {lead ? (
               <>
                 {lead}{' '}
-                <span className="relative inline-block pb-1 font-serif italic font-normal tracking-[-0.01em] text-[oklch(0.78_0.15_285)]">
+                <span className="relative inline-block pb-1 font-serif italic font-normal tracking-[-0.01em] text-[oklch(0.72_0.10_200)]">
                   {accent}
                 </span>
               </>
@@ -116,7 +116,7 @@ export function HeroSection() {
             <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/70">
               {(hero as any).features.map((f: string) => (
                 <span key={f} className="inline-flex items-center gap-1.5">
-                  <Check className="size-3.5 text-[oklch(0.78_0.15_285)]" aria-hidden />
+                  <Check className="size-3.5 text-[oklch(0.72_0.10_200)]" aria-hidden />
                   {f}
                 </span>
               ))}
@@ -128,10 +128,10 @@ export function HeroSection() {
             {/* CTA primary premium */}
             <Link
               href="/contact"
-              className="group/cta relative inline-flex h-11 items-center gap-2 overflow-hidden rounded-xl px-5 text-sm font-medium text-primary-foreground shadow-[0_8px_24px_-8px_oklch(0.48_0.22_285/0.5)] transition-all hover:shadow-[0_12px_32px_-8px_oklch(0.48_0.22_285/0.6)] active:translate-y-px"
+              className="group/cta relative inline-flex h-11 items-center gap-2 overflow-hidden rounded-xl px-5 text-sm font-medium text-primary-foreground shadow-[0_8px_24px_-8px_oklch(0.58_0.10_200/0.5)] transition-all hover:shadow-[0_12px_32px_-8px_oklch(0.58_0.10_200/0.6)] active:translate-y-px"
             >
               <span
-                className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-[oklch(0.42_0.22_280)] dark:from-primary dark:via-primary dark:to-[oklch(0.65_0.18_280)]"
+                className="absolute inset-0 bg-primary"
                 aria-hidden
               />
               <span

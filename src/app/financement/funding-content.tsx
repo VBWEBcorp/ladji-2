@@ -59,7 +59,7 @@ export function FundingContent() {
                   }}
                   className="group relative flex flex-col rounded-2xl border border-border/80 bg-card/70 p-6 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 backdrop-blur-sm transition-[border-color,box-shadow] duration-500 ease-out hover:border-primary/30 hover:shadow-[var(--shadow-md)]"
                 >
-                  <span className="flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary ring-1 ring-primary/15">
+                  <span className="flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary ring-1 ring-primary/15">
                     <Icon className="size-5" aria-hidden />
                   </span>
                   <h3 className="mt-5 font-display text-xl font-semibold tracking-tight text-foreground">
@@ -87,7 +87,7 @@ export function FundingContent() {
       </section>
 
       {/* Note finale */}
-      <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+      <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
         <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
           <p className="font-display text-xs font-semibold tracking-[0.22em] uppercase text-primary">
             Pas sûr de votre éligibilité ?

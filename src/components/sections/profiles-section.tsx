@@ -19,7 +19,7 @@ export function ProfilesSection() {
   const entries = (data.entries ?? defaults.entries) as typeof defaults.entries
 
   return (
-    <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+    <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <SectionTitle eyebrow={eyebrow} title={title} description={description} />
 
@@ -45,7 +45,7 @@ export function ProfilesSection() {
               >
                 <Link
                   href={entry.href}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/80 bg-card/80 p-6 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 backdrop-blur-sm transition-[border-color,box-shadow,transform] duration-500 ease-out hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_20px_50px_-20px_oklch(0.55_0.2_285/0.3)]"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/80 bg-card/80 p-6 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 backdrop-blur-sm transition-[border-color,box-shadow,transform] duration-500 ease-out hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_20px_50px_-20px_oklch(0.62_0.10_200/0.3)]"
                 >
                   {/* Halo dégradé subtil */}
                   <span
@@ -54,7 +54,7 @@ export function ProfilesSection() {
                   />
 
                   {/* Icon */}
-                  <span className="relative flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 text-primary shadow-[inset_0_1px_0_oklch(1_0_0/0.3)] ring-1 ring-primary/20">
+                  <span className="relative flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary shadow-[inset_0_1px_0_oklch(1_0_0/0.3)] ring-1 ring-primary/20">
                     <Icon className="size-6" aria-hidden />
                   </span>
 

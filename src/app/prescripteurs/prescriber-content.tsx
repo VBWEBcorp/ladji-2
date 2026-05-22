@@ -143,7 +143,7 @@ export function PrescriberContent() {
                   className="relative flex flex-col rounded-3xl border border-border/80 bg-card/70 p-7 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 backdrop-blur-sm"
                 >
                   {/* Pastille numérotée */}
-                  <span className="flex size-12 items-center justify-center rounded-full bg-gradient-to-br from-primary to-[oklch(0.42_0.22_280)] font-display text-sm font-bold text-primary-foreground shadow-[0_8px_24px_-8px_oklch(0.55_0.2_285/0.55)] ring-4 ring-background">
+                  <span className="flex size-12 items-center justify-center rounded-full bg-primary font-display text-sm font-bold text-primary-foreground shadow-[0_8px_24px_-8px_oklch(0.62_0.10_200/0.55)] ring-4 ring-background">
                     {item.step}
                   </span>
                   <h3 className="mt-5 font-display text-lg font-semibold text-foreground">
@@ -160,7 +160,7 @@ export function PrescriberContent() {
       </section>
 
       {/* Formulaire d'orientation (5 champs) */}
-      <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+      <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
             <motion.div
@@ -192,14 +192,14 @@ export function PrescriberContent() {
                         name={f.name}
                         placeholder={f.placeholder}
                         rows={4}
-                        className="w-full rounded-xl border border-input bg-background/70 px-3.5 py-3 text-sm leading-relaxed text-foreground transition-shadow placeholder:text-muted-foreground focus-visible:border-ring focus-visible:shadow-[0_0_0_4px_oklch(0.55_0.2_285/0.1)] focus-visible:outline-none"
+                        className="w-full rounded-xl border border-input bg-background/70 px-3.5 py-3 text-sm leading-relaxed text-foreground transition-shadow placeholder:text-muted-foreground focus-visible:border-ring focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)] focus-visible:outline-none"
                       />
                     ) : (
                       <Input
                         id={f.name}
                         name={f.name}
                         placeholder={f.placeholder}
-                        className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.55_0.2_285/0.1)]"
+                        className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)]"
                       />
                     )}
                   </div>

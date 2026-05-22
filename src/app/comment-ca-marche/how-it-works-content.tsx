@@ -73,7 +73,7 @@ export function HowItWorksContent() {
                   >
                     {/* Pastille numérotée sur la ligne */}
                     <span
-                      className="absolute left-0 top-0 flex size-11 items-center justify-center rounded-full bg-gradient-to-br from-primary to-[oklch(0.42_0.22_280)] font-display text-sm font-bold text-primary-foreground shadow-[0_8px_24px_-8px_oklch(0.55_0.2_285/0.55)] ring-4 ring-background transition-transform duration-500 ease-out group-hover:scale-110 sm:size-12 sm:text-base"
+                      className="absolute left-0 top-0 flex size-11 items-center justify-center rounded-full bg-primary font-display text-sm font-bold text-primary-foreground shadow-[0_8px_24px_-8px_oklch(0.62_0.10_200/0.55)] ring-4 ring-background transition-transform duration-500 ease-out group-hover:scale-110 sm:size-12 sm:text-base"
                       aria-hidden
                     >
                       {String(i + 1).padStart(2, '0')}
@@ -126,7 +126,7 @@ export function HowItWorksContent() {
 
       {/* Section vidéos masquée tant que les vidéos ne sont pas tournées (cf. brief Ouibo) */}
       {false && (
-        <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+        <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
             <SectionTitle
               eyebrow="En vidéo"
@@ -139,7 +139,7 @@ export function HowItWorksContent() {
                   key={v.number}
                   className="group relative overflow-hidden rounded-2xl border border-border/80 bg-card/70 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5"
                 >
-                  <div className="relative aspect-video bg-gradient-to-br from-primary/15 to-primary/5">
+                  <div className="relative aspect-video bg-primary/10">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="flex size-14 items-center justify-center rounded-full bg-background/85 text-primary shadow-lg backdrop-blur-sm ring-1 ring-border/60 transition-transform duration-300 group-hover:scale-110">
                         <PlayCircle className="size-7" aria-hidden />
@@ -202,7 +202,7 @@ export function HowItWorksContent() {
       </section>
 
       {/* FAQ courte */}
-      <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+      <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <SectionTitle eyebrow={faq.eyebrow} title={faq.title} />
           <div className="mx-auto mt-14 max-w-3xl divide-y divide-border/60 overflow-hidden rounded-2xl border border-border/80 bg-card/70 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5">

@@ -421,7 +421,7 @@ export default function AdminBlogPage() {
                   placeholder="Blog"
                 />
                 <p className="text-[11px] text-muted-foreground/60">
-                  Le mot ou la phrase courte en violet au-dessus du titre principal
+                  Le mot ou la phrase courte en couleur d&apos;accent au-dessus du titre principal
                 </p>
               </div>
 

@@ -78,7 +78,7 @@ export function AboutContent() {
       </section>
 
       {/* Cadre légal : 2 cards */}
-      <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+      <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <SectionTitle eyebrow="Cadre légal" title="100% conforme, 100% assuré" />
           <motion.div
