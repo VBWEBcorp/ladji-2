@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 
-import { LanguageSwitcher } from '@/components/layout/language-switcher'
 import { Logo } from '@/components/layout/logo'
 import { ThemeToggle } from '@/components/theme/theme-toggle'
 import { cn } from '@/lib/utils'
@@ -135,7 +134,6 @@ export function Navbar() {
             </nav>
 
             <div className="flex shrink-0 items-center gap-1.5">
-              <LanguageSwitcher className="hidden lg:inline-flex" />
               <ThemeToggle />
 
               {/* CTA premium : gradient + shimmer + arrow */}
@@ -293,21 +291,6 @@ export function Navbar() {
                   </Link>
                 </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.24,
-                    delay: 0.08 + links.length * 0.035,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="mt-3 flex items-center justify-between gap-3 border-t border-border/60 pt-3"
-                >
-                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground/80">
-                    Langue
-                  </span>
-                  <LanguageSwitcher layoutId="lang-pill-mobile" />
-                </motion.div>
               </div>
             </motion.div>
           ) : null}
