@@ -17,12 +17,10 @@ interface NavLink {
 }
 
 const defaultLinks: NavLink[] = [
-  { to: '/', label: 'Accueil' },
   { to: '/comment-ca-marche', label: 'Comment ça marche' },
   { to: '/services', label: 'Forfaits' },
   { to: '/financement', label: 'Financement' },
   { to: '/a-propos', label: 'À propos' },
-  { to: '/contact', label: 'Contact' },
 ]
 
 export function Navbar() {

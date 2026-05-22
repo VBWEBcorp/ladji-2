@@ -8,7 +8,7 @@ export const siteConfig = {
   twitterHandle: '@autoconduite',
   themeColor: '#7c6bff',
   phone: '06 37 53 43 26',
-  email: 'faeladg@icloud.com',
+  email: 'contact@auto-conduite.com',
   address: {
     street: 'Bassin Sarrebourg / Château-Salins',
     city: 'Moselle',

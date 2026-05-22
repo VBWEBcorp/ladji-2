@@ -52,13 +52,13 @@ export const heroContent = {
   eyebrow: 'Mobilité solidaire · Moselle',
   title: 'Pour toutes les bourses',
   description:
-    "Auto Conduite met à disposition des véhicules pédagogiques à double commande pour les personnes en parcours d'insertion. Vous conduisez avec un accompagnateur proche, dans un cadre légal et sécurisé.",
+    "Pratiquez la conduite entre vos leçons d'auto-école ou en candidat libre, avec un proche, à votre rythme. Mobilité solidaire en Moselle, pour toutes les bourses.",
   button1: 'Vérifier mon éligibilité',
   button2: 'Voir les forfaits',
   features: [
-    'Véhicule pédagogique à double commande',
+    'Véhicule pédagogique fourni',
     'Assurance apprentissage incluse',
-    'Cadre légal L221-7',
+    'Cadre légal sécurisé',
   ],
   stats: [
     { value: 'Dès 199€', label: 'Pack 5h' },
@@ -86,7 +86,7 @@ export const whyContent = {
     },
     {
       iconName: 'ShieldCheck',
-      title: 'Cadre légal L221-7',
+      title: 'Cadre légal L211-4',
       desc: "Conduite supervisée ou accompagnée encadrée par le Code de la route. Assurance apprentissage incluse.",
     },
     {
@@ -111,7 +111,7 @@ export const storyContent = {
     },
     {
       title: 'Récupérez le véhicule',
-      desc: "Au point de dépôt le plus proche (Sarrebourg, Château-Salins…), prêt à l'emploi avec double commande.",
+      desc: "Au point de dépôt le plus proche (Sarrebourg, Château-Salins…), véhicule prêt à l'emploi.",
     },
   ],
   ctaLabel: 'En savoir plus',
@@ -124,6 +124,102 @@ export const servicesPreviewContent = {
   title: whyContent.title,
   description: whyContent.description,
   items: whyContent.items,
+}
+
+// 4 entrées profils sur la home (cf. brief Ouibo : "Le site doit parler quatre langages différents")
+export const profilesContent = {
+  eyebrow: 'À qui s\'adresse Auto Conduite',
+  title: 'Choisissez votre parcours',
+  description:
+    "Quatre profils, quatre entrées dédiées. Trouvez la formule adaptée à votre situation et accédez directement aux infos qui vous concernent.",
+  entries: [
+    {
+      iconName: 'GraduationCap',
+      label: 'Candidat auto-école',
+      title: 'Je suis inscrit en auto-école',
+      desc: "Je veux pratiquer entre mes leçons avec un proche qui a plus de 5 ans de permis, pour progresser plus vite.",
+      pricing: 'Forfaits dès 199€',
+      href: '/services',
+      cta: 'Voir les forfaits',
+    },
+    {
+      iconName: 'Compass',
+      label: 'Candidat libre',
+      title: 'Je passe mon permis sans auto-école',
+      desc: "Je veux gérer mon apprentissage en autonomie, à mon rythme, avec un véhicule pédagogique et un accompagnateur proche.",
+      pricing: 'Forfaits 5h / 10h / 20h',
+      href: '/services',
+      cta: 'Découvrir',
+    },
+    {
+      iconName: 'Building2',
+      label: 'Prescripteur',
+      title: 'Je suis prescripteur (France Travail, Mission Locale…)',
+      desc: "J'oriente un bénéficiaire en parcours d'insertion. Process en 3 étapes, fiche orientation, suivi.",
+      pricing: 'Orientation en 24h',
+      href: '/prescripteurs',
+      cta: 'Orienter un bénéficiaire',
+    },
+    {
+      iconName: 'Wallet',
+      label: 'Titulaire CPF',
+      title: "J'ai un CPF et je veux financer mon permis",
+      desc: "Formation à 1 450€ avec moniteur agréé ADAM. Le CPF couvre jusqu'à 900€, le reste est payable en 3 fois.",
+      pricing: '183€/mois',
+      href: '/cpf',
+      cta: 'Vérifier mon CPF',
+    },
+  ],
+}
+
+// Page Fondateur (cf. brief Ouibo : page indexable Kah Faé)
+export const founderContent = {
+  hero: {
+    eyebrow: 'Le fondateur',
+    title: 'Kah Faé',
+    subtitle: 'Fondateur Auto Conduite · Moselle',
+    description:
+      "Kah Faé est le fondateur d'Auto Conduite, dispositif de mobilité solidaire basé en Moselle. Engagé dans l'insertion par la mobilité, il porte un projet qui rapproche véhicules pédagogiques, accompagnement humain et financements adaptés.",
+  },
+  bio: {
+    eyebrow: 'Parcours',
+    title: 'Un projet ancré sur le terrain',
+    paragraphs: [
+      "Kah Faé fonde Auto Conduite en 2026 en Moselle pour répondre à un constat simple : le permis reste un frein majeur à l'emploi et à l'autonomie, particulièrement dans les zones rurales du Sud Mosellan.",
+      "Le dispositif s'appuie sur un réseau de partenaires institutionnels (France Travail, Missions Locales, Région Grand Est, GEIQ Alemploi, ADAM) et propose des forfaits adaptés à toutes les bourses, du Pack 5h à 199€ jusqu'au Pack 20h CPF avec moniteur agréé.",
+      "Au-delà de la location de véhicules pédagogiques, Auto Conduite porte une vision : faire de la mobilité une brique d'inclusion, accessible, légale et solidaire.",
+    ],
+  },
+  mission: {
+    eyebrow: 'La mission',
+    title: 'Lever le frein mobilité, durablement',
+    points: [
+      {
+        iconName: 'Sparkles',
+        title: 'Pour toutes les bourses',
+        desc: 'Tarifs solidaires, financements multiples (CPF, ALMA, ADIE, aide mobilité), pas de frais cachés.',
+      },
+      {
+        iconName: 'Users',
+        title: 'Réseau territorial',
+        desc: 'Partenariats avec les structures d\'insertion mosellanes, du Sud Mosellan au Bassin Houiller.',
+      },
+      {
+        iconName: 'ShieldCheck',
+        title: 'Cadre légal',
+        desc: 'Dispositif conforme aux articles L211-4 et R211-3 du Code de la route, assurance apprentissage incluse.',
+      },
+    ],
+  },
+  contact: {
+    eyebrow: 'Échanger',
+    title: 'Une question, un projet ?',
+    description:
+      "Pour toute demande institutionnelle, partenariat ou interview, contactez directement le fondateur.",
+    name: 'Kah Faé',
+    email: 'contact@auto-conduite.com',
+    phone: '06 37 53 43 26',
+  },
 }
 
 export const partnersContent = {
@@ -277,7 +373,7 @@ export const aboutContent = {
       iconName: 'ShieldCheck',
       title: 'Sécurité & cadre légal',
       description:
-        "Véhicule pédagogique à double commande, assurance apprentissage incluse, dispositif conforme à la loi L221-7 (conduite accompagnée / supervisée).",
+        "Véhicule pédagogique à double commande, assurance apprentissage incluse, dispositif conforme aux articles L211-4 et R211-3 du Code de la route (conduite accompagnée / supervisée). Service réservé aux majeurs (18 ans minimum).",
     },
     {
       iconName: 'Users',
@@ -289,7 +385,7 @@ export const aboutContent = {
   legal: [
     {
       iconName: 'Scale',
-      title: 'Loi L221-7 : un cadre clair',
+      title: 'Articles L211-4 et R211-3 : un cadre clair',
       paragraphs: [
         "La conduite accompagnée (AAC) et la conduite supervisée sont des dispositifs encadrés par le Code de la route. Le bénéficiaire doit avoir obtenu son NEPH, son code, et validé au minimum 20h de conduite en auto-école.",
         "L'accompagnateur proche doit être titulaire du permis B depuis au moins 5 ans, sans annulation ni suspension en cours, et sobre pendant toute la séance.",
@@ -356,27 +452,27 @@ export const depositPoints = [
   {
     name: 'Parking Leclerc Sarrebourg',
     address: 'Sarrebourg (57400)',
-    hours: 'Accessible 24h/24, 7j/7',
+    hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
   },
   {
     name: 'Parking Gare de Sarrebourg',
     address: 'Gare SNCF, Sarrebourg',
-    hours: 'Pour bénéficiaires arrivant en train',
+    hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
   },
   {
     name: 'France Travail Sarrebourg',
     address: 'ZAC les Terrasses de la Sarre',
-    hours: 'Horaires d\'ouverture France Travail',
+    hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
   },
   {
     name: 'Parking Intermarché Château-Salins',
     address: 'Château-Salins (57170)',
-    hours: 'Accessible 24h/24, 7j/7',
+    hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
   },
   {
     name: 'Mission Locale Sud Mosellan',
     address: 'À confirmer',
-    hours: 'Horaires Mission Locale',
+    hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
   },
 ]
 
@@ -391,7 +487,7 @@ export const servicesContent = {
     eyebrow: 'Forfaits et Tarifs',
     title: 'Choisissez votre Pack',
     description:
-      "Tous nos packs incluent un véhicule pédagogique à double commande récent, l'assurance apprentissage et le kilométrage illimité.",
+      "Tous nos packs incluent un véhicule pédagogique récent, l'assurance apprentissage et le kilométrage illimité.",
     plans: [
       {
         iconName: 'Clock',
@@ -422,18 +518,40 @@ export const servicesContent = {
       },
       {
         iconName: 'GraduationCap',
-        name: 'Pack 20h CPF',
-        offer: 'Finançable CPF',
+        name: 'Pack 20h Proche',
+        offer: 'Avec votre accompagnateur',
         prices: { A: 620, B: 635, C: 650 },
-        description: 'Le forfait complet finançable via votre Compte Personnel de Formation.',
+        description: 'Le forfait complet pour pratiquer avec un proche, à votre rythme.',
         features: [
-          'Véhicule pédagogique à double commande',
+          'Véhicule pédagogique récent',
           'Assurance apprentissage incluse',
-          'Finançable CPF via ADAM',
+          'Pratique avec accompagnateur proche',
           'Idéal préparation examen',
         ],
       },
     ],
+  },
+  // Pack 20h CPF séparé (cf. brief Ouibo : moniteur agréé ADAM, 1450€, reste à charge 550€ = 183€/mois)
+  cpfPack: {
+    eyebrow: 'Option CPF · Moniteur agréé',
+    name: 'Pack 20h CPF',
+    headline: '183€/mois',
+    subline: 'sur 3 fois sans frais',
+    price: 1450,
+    cpfCovered: 900,
+    remaining: 550,
+    monthly: 183,
+    operator: 'ADAM',
+    description:
+      "Formation officielle avec moniteur agréé, finançable via votre Compte Personnel de Formation. Le CPF couvre jusqu'à 900€, le reste à charge de 550€ est payable en 3 fois sans frais.",
+    features: [
+      'Moniteur agréé ADAM',
+      'Formation officielle reconnue',
+      'CPF jusqu\'à 900€ (selon solde)',
+      'Reste à charge 550€ en 3 fois',
+    ],
+    ctaPrimary: { label: 'Vérifier mon CPF', href: 'https://moncompteformation.gouv.fr', external: true },
+    ctaSecondary: { label: 'Nous contacter', href: '/contact' },
   },
   zones: {
     eyebrow: 'Zones kilométriques',
@@ -645,72 +763,43 @@ export const howItWorksContent = {
 export const fundingContent = {
   hero: {
     eyebrow: 'Financement',
-    title: 'Pour toutes les bourses, vraiment',
+    title: 'Quatre solutions pour financer votre permis',
     description:
-      "Le permis ne doit plus être un frein à l'emploi ou à l'insertion. Voici toutes les solutions de financement mobilisables selon votre profil et votre situation.",
+      "Le permis ne doit plus être un frein à l'emploi. Selon votre profil, plusieurs dispositifs peuvent prendre en charge tout ou partie de votre forfait. On vous oriente vers le bon.",
   },
-  // Tableau des financeurs selon profil (cf. §3.4)
-  profiles: [
-    {
-      profile: "Demandeur d'emploi inscrit France Travail",
-      solutions: ['CPF (Pack 20h)', "Aide mobilité France Travail jusqu'à 1200€", 'ALMA paiement fractionné'],
-    },
-    {
-      profile: 'Jeune 16-25 ans suivi Mission Locale',
-      solutions: ['Fonds d\'Aide aux Jeunes (FAJ)', 'CPF si solde disponible', 'ALMA paiement fractionné'],
-    },
-    {
-      profile: 'Bénéficiaire RSA',
-      solutions: ['ADIE : microcrédit personnel', 'Abondement Département de la Moselle', 'CPF si solde disponible'],
-    },
-    {
-      profile: "Salarié en insertion (IAE / GEIQ)",
-      solutions: ['CPF (Pack 20h)', "Cofinancement employeur via GEIQ Alemploi", 'ALMA paiement fractionné'],
-    },
-    {
-      profile: 'Sans solution identifiée',
-      solutions: ['ADIE : microcrédit', 'ALMA paiement fractionné', 'Contactez-nous pour un montage personnalisé'],
-    },
-  ],
-  // Solutions de financement détaillées (cf. §3.4 et §4.3)
+  // 4 dispositifs simples (cf. brief Ouibo : sans détailler les conditions)
   solutions: [
     {
       iconName: 'GraduationCap',
-      title: 'CPF : Compte Personnel de Formation',
+      title: 'CPF',
       desc:
-        "Le Pack 20h Auto Conduite est finançable via votre CPF. Plafond de 900€ pour les demandeurs d'emploi inscrits à France Travail. Portage assuré par notre partenaire ADAM.",
+        "Compte Personnel de Formation. Finance le Pack 20h via notre partenaire ADAM.",
       link: { label: 'moncompteformation.gouv.fr', href: 'https://moncompteformation.gouv.fr', external: true },
     },
     {
-      iconName: 'CreditCard',
-      title: 'ALMA : paiement fractionné',
-      desc:
-        "Paiement en 2x, 3x ou 4x sans frais pour le reste à charge. Une solution simple si votre CPF ne couvre pas tout le forfait. (Solution en cours d'activation.)",
-      link: null,
-      status: 'À mettre en place',
-    },
-    {
       iconName: 'HandCoins',
-      title: 'Aide mobilité France Travail',
+      title: 'Aide mobilité',
       desc:
-        "Jusqu'à 1200€ pour les demandeurs d'emploi. À demander auprès de votre conseiller France Travail dans le cadre d'un projet de retour à l'emploi.",
+        "Aide France Travail jusqu'à 1 200€, à demander auprès de votre conseiller.",
       link: null,
     },
     {
-      iconName: 'PiggyBank',
-      title: 'FAJ : Fonds d\'Aide aux Jeunes',
+      iconName: 'CreditCard',
+      title: 'ALMA',
       desc:
-        "Aide ponctuelle pour les jeunes de 16 à 25 ans en parcours d'insertion, mobilisable via votre conseiller Mission Locale.",
+        "Paiement fractionné en 3 fois sans frais sur le reste à charge.",
       link: null,
     },
     {
       iconName: 'Landmark',
-      title: 'ADIE Lorraine : microcrédit personnel',
+      title: 'ADIE',
       desc:
-        "Microcrédit personnel destiné aux bénéficiaires RSA sans CPF suffisant ni accès à ALMA. Accompagnement personnalisé et conditions adaptées.",
+        "Microcrédit personnel pour les bénéficiaires sans solution CPF ni ALMA.",
       link: { label: 'adie.org', href: 'https://adie.org', external: true },
-      status: 'Partenariat à formaliser',
     },
+  ],
+  // Rétro-compat : solutions détaillées masquées au rendu mais conservées
+  legacySolutions: [
     {
       iconName: 'Building2',
       title: 'Abondement Département de la Moselle',
@@ -744,7 +833,7 @@ export const prescriberContent = {
     {
       iconName: 'ShieldCheck',
       title: 'Conformité légale',
-      desc: 'Dispositif conforme à la loi L221-7 (conduite accompagnée/supervisée). Véhicule pédagogique à double commande, assurance apprentissage incluse.',
+      desc: 'Dispositif conforme aux articles L211-4 et R211-3 du Code de la route (conduite accompagnée/supervisée). Véhicule pédagogique à double commande, assurance apprentissage incluse. Service réservé aux majeurs.',
     },
     {
       iconName: 'BarChart3',
@@ -792,7 +881,7 @@ export const prescriberContent = {
     title: 'Contacts directs',
     name: 'M. Faé',
     phone: '06 37 53 43 26',
-    email: 'faeladg@icloud.com',
+    email: 'contact@auto-conduite.com',
   },
 }
 

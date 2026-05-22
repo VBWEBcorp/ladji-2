@@ -144,10 +144,10 @@ export default function PartnersPage() {
             <p className="mt-4 text-sm font-semibold text-foreground">
               Contact : M. Faé · 06 37 53 43 26 ·{' '}
               <a
-                href="mailto:faeladg@icloud.com"
+                href="mailto:contact@auto-conduite.com"
                 className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
               >
-                faeladg@icloud.com
+                contact@auto-conduite.com
               </a>
             </p>
             <div className="mt-5">

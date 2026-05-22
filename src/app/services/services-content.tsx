@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Check, MapPin } from 'lucide-react'
+import { ArrowUpRight, Check, ExternalLink, MapPin } from 'lucide-react'
 import Link from 'next/link'
 
 import { CtaSection } from '@/components/sections/cta-section'
@@ -31,6 +31,7 @@ export function ServicesContent() {
   const deposits = (data.deposits ?? defaults.deposits) as typeof defaults.deposits
   const funding = (data.funding ?? defaults.funding) as typeof defaults.funding
   const conditions = (data.conditions ?? defaults.conditions) as typeof defaults.conditions
+  const cpfPack = (data.cpfPack ?? defaults.cpfPack) as typeof defaults.cpfPack
 
   return (
     <>
@@ -138,6 +139,92 @@ export function ServicesContent() {
                 </motion.div>
               )
             })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Pack 20h CPF — bloc séparé (cf. brief Ouibo : 1450€, 183€/mois) */}
+      <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease }}
+            className="grid gap-10 rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/[0.08] via-card/80 to-primary/[0.04] p-8 shadow-[0_30px_60px_-20px_oklch(0.55_0.2_285/0.3)] ring-1 ring-primary/10 backdrop-blur-sm lg:grid-cols-[1.1fr_1fr] lg:items-center lg:p-12"
+          >
+            <div>
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
+                {cpfPack.eyebrow}
+              </p>
+              <h2 className="mt-4 font-display text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl">
+                {cpfPack.name}
+              </h2>
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+                {cpfPack.description}
+              </p>
+              <ul className="mt-6 space-y-2.5">
+                {cpfPack.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-sm text-foreground/90">
+                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary ring-1 ring-primary/20">
+                      <Check className="size-3" aria-hidden />
+                    </span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Button asChild size="lg">
+                  <Link href="/cpf">
+                    En savoir plus
+                    <ArrowUpRight className="size-4" aria-hidden />
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <a
+                    href={cpfPack.ctaPrimary.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Vérifier mon CPF
+                    <ExternalLink className="size-4" aria-hidden />
+                  </a>
+                </Button>
+              </div>
+            </div>
+
+            <div>
+              <div className="rounded-3xl border border-border/60 bg-background/70 p-6 ring-1 ring-foreground/5 backdrop-blur-sm sm:p-8">
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-primary">
+                  Votre reste à charge
+                </p>
+                <div className="mt-3 flex items-baseline gap-2">
+                  <span className="font-display text-[72px] font-black leading-none tracking-[-0.05em] text-foreground sm:text-[96px]">
+                    {cpfPack.monthly}
+                  </span>
+                  <span className="font-display text-3xl font-bold text-foreground sm:text-4xl">
+                    €
+                  </span>
+                </div>
+                <p className="mt-2 font-display text-base font-semibold text-foreground sm:text-lg">
+                  par mois <span className="text-muted-foreground">· {cpfPack.subline}</span>
+                </p>
+                <div className="mt-6 space-y-2 border-t border-border/40 pt-5 text-sm">
+                  <div className="flex justify-between gap-4">
+                    <span className="text-muted-foreground">Formation</span>
+                    <span className="font-semibold text-foreground">{cpfPack.price.toLocaleString('fr-FR')}€</span>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <span className="text-muted-foreground">CPF jusqu&apos;à</span>
+                    <span className="font-semibold text-primary">− {cpfPack.cpfCovered}€</span>
+                  </div>
+                  <div className="flex justify-between gap-4 border-t border-border/40 pt-2">
+                    <span className="font-medium text-foreground">Reste à charge</span>
+                    <span className="font-bold text-foreground">{cpfPack.remaining}€</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>

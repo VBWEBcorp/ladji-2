@@ -55,10 +55,15 @@ export default function LegalFrameworkPage() {
               <h2>1. Les textes de référence</h2>
               <p>
                 L&apos;apprentissage de la conduite est encadré par le Code de la route,
-                Livre 2 (Le conducteur), articles L211-1 A à L221-7, et leurs
-                articles d&apos;application R211-3 à R211-7. Ces textes définissent les
-                conditions, les acteurs et les responsabilités liées à la formation
+                en particulier les articles <strong>L211-4</strong> et <strong>R211-3</strong>,
+                qui définissent les conditions de la conduite accompagnée et supervisée
+                (rôle de l&apos;accompagnateur, véhicule, assurance). Ces textes définissent
+                les conditions, les acteurs et les responsabilités liées à la formation
                 à la conduite.
+              </p>
+              <p className="rounded-xl border border-primary/20 bg-primary/[0.04] p-3 text-foreground">
+                <strong>Service réservé aux majeurs.</strong> L&apos;accès au dispositif
+                Auto Conduite est réservé aux personnes âgées de 18 ans minimum.
               </p>
               <p>
                 À ces textes s&apos;ajoute l&apos;arrêté du 22 décembre 2009 relatif à

@@ -134,7 +134,7 @@ export default function LegalPage() {
                 mobilité solidaire basé en Moselle. Auto Conduite met à disposition
                 des véhicules pédagogiques à double commande pour les personnes en
                 parcours d&apos;insertion engagées dans la conduite supervisée ou
-                accompagnée, dans le cadre des articles L211-1 A à L221-7 du Code
+                accompagnée, dans le cadre des articles L211-4 et R211-3 du Code
                 de la route.
               </p>
               <p>

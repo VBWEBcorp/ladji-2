@@ -91,6 +91,74 @@ export function PrescriberContent() {
         </div>
       </section>
 
+      {/* Processus 3 étapes (cf. brief Ouibo : "processus 3 étapes") */}
+      <section className="border-b border-border/60 bg-background">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+          <SectionTitle
+            eyebrow="Le processus"
+            title="Orientation en 3 étapes"
+            description="Du formulaire à la première séance du bénéficiaire, un parcours rapide et clair pour vous."
+          />
+
+          <div className="relative mt-16">
+            {/* Ligne horizontale dégradée derrière (desktop) */}
+            <div
+              className="pointer-events-none absolute left-12 right-12 top-6 hidden h-px bg-gradient-to-r from-primary/40 via-primary/30 to-primary/10 md:block"
+              aria-hidden
+            />
+
+            <motion.ol
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } },
+              }}
+              className="grid gap-6 md:grid-cols-3"
+            >
+              {[
+                {
+                  step: '01',
+                  title: 'Vous remplissez le formulaire',
+                  desc: 'Formulaire en ligne de 5 champs maximum. Identité du bénéficiaire, profil, type de besoin. 2 minutes chrono.',
+                },
+                {
+                  step: '02',
+                  title: 'On contacte votre bénéficiaire',
+                  desc: 'Réponse sous 24h. On qualifie son éligibilité, on lui présente le dispositif et on monte son dossier de financement.',
+                },
+                {
+                  step: '03',
+                  title: 'Vous recevez le suivi',
+                  desc: 'Confirmation de la prise en charge, statut du dossier, et reporting anonymisé mensuel (à venir).',
+                },
+              ].map((item) => (
+                <motion.li
+                  key={item.step}
+                  variants={{
+                    hidden: { opacity: 0, y: 24 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
+                  }}
+                  className="relative flex flex-col rounded-3xl border border-border/80 bg-card/70 p-7 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 backdrop-blur-sm"
+                >
+                  {/* Pastille numérotée */}
+                  <span className="flex size-12 items-center justify-center rounded-full bg-gradient-to-br from-primary to-[oklch(0.42_0.22_280)] font-display text-sm font-bold text-primary-foreground shadow-[0_8px_24px_-8px_oklch(0.55_0.2_285/0.55)] ring-4 ring-background">
+                    {item.step}
+                  </span>
+                  <h3 className="mt-5 font-display text-lg font-semibold text-foreground">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {item.desc}
+                  </p>
+                </motion.li>
+              ))}
+            </motion.ol>
+          </div>
+        </div>
+      </section>
+
       {/* Formulaire d'orientation (5 champs) */}
       <section className="border-b border-border/60 bg-[oklch(0.975_0.012_285)] dark:bg-[oklch(0.16_0.02_285)]">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
