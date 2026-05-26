@@ -49,7 +49,7 @@ export default function PrivacyPage() {
             Politique de confidentialité
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Dernière mise à jour : <span className="text-foreground">[à compléter]</span>
+            Dernière mise à jour : <span className="text-foreground">mai 2026</span>
           </p>
           <p className="mt-3 text-sm text-muted-foreground">
             La présente politique décrit la manière dont {siteConfig.name} traite
@@ -68,8 +68,9 @@ export default function PrivacyPage() {
                 et le dispositif est :
               </p>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li><strong>{siteConfig.name}</strong></li>
-                <li>Porteur du projet : M. Faé</li>
+                <li><strong>AUTO-CONDUITE</strong> (SASU au capital de 400,00 euros)</li>
+                <li>SIRET : 990 202 616 00019, RCS Metz</li>
+                <li>Représentant légal : M. Paulin Faé Kah, Président</li>
                 <li>Email :{' '}
                   <a
                     href={`mailto:${siteConfig.email}`}
@@ -79,7 +80,7 @@ export default function PrivacyPage() {
                   </a>
                 </li>
                 <li>Téléphone : {siteConfig.phone}</li>
-                <li>Adresse : {siteConfig.address.street}, {siteConfig.address.postalCode} {siteConfig.address.city}</li>
+                <li>Siège social : 16D Rue du Château de Merten, 57360 Amnéville</li>
               </ul>
               <p>
                 Compte tenu de la taille de la structure, {siteConfig.name} n&apos;est

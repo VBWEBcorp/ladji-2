@@ -8,12 +8,14 @@ import { CtaSection } from '@/components/sections/cta-section'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
 import { SectionTitle } from '@/components/ui/section-title'
+import { useContent } from '@/hooks/use-content'
 import { servicesContent } from '@/lib/site-content'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
 export function CpfContent() {
-  const cpf = servicesContent.cpfPack
+  const { data } = useContent('cpf', { cpf: servicesContent.cpfPack })
+  const cpf = data.cpf ?? servicesContent.cpfPack
 
   return (
     <>

@@ -1,21 +1,15 @@
 import { MessageCircle, Phone } from 'lucide-react'
 
 import { siteConfig } from '@/lib/seo'
+import { whatsappBaseHref } from '@/lib/whatsapp'
 
 function toTelHref(phone: string) {
   return `tel:${phone.replace(/\s+/g, '')}`
 }
 
-function toWhatsappHref(phone: string) {
-  // 06 37 53 43 26 -> 33637534326 (format international sans +)
-  const digits = phone.replace(/\D/g, '')
-  const intl = digits.startsWith('0') ? `33${digits.slice(1)}` : digits
-  return `https://wa.me/${intl}`
-}
-
 export function FloatingCallButton() {
   const tel = toTelHref(siteConfig.phone)
-  const wa = toWhatsappHref(siteConfig.phone)
+  const wa = whatsappBaseHref
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">

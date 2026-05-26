@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react'
 
 import { Logo } from '@/components/layout/logo'
 import { ThemeToggle } from '@/components/theme/theme-toggle'
+import { WhatsAppButton } from '@/components/whatsapp-button'
 import { cn } from '@/lib/utils'
 
 interface NavLink {
@@ -135,6 +136,9 @@ export function Navbar() {
 
             <div className="flex shrink-0 items-center gap-1.5">
               <ThemeToggle />
+
+              {/* Bouton WhatsApp (icône) — contact direct */}
+              <WhatsAppButton iconOnly />
 
               {/* CTA premium : gradient + shimmer + arrow */}
               <Link
@@ -289,6 +293,11 @@ export function Navbar() {
                     <span className="relative">Vérifier mon éligibilité</span>
                     <ArrowRight className="relative size-4" aria-hidden />
                   </Link>
+
+                  <WhatsAppButton
+                    className="mt-2 w-full"
+                    label="Nous contacter sur WhatsApp"
+                  />
                 </motion.div>
 
               </div>

@@ -10,6 +10,7 @@ const navLinks = [
   { label: 'Forfaits', to: '/services' },
   { label: 'Financement', to: '/financement' },
   { label: 'À propos', to: '/a-propos' },
+  { label: 'Le fondateur', to: '/fondateur' },
   { label: 'Contact', to: '/contact' },
 ]
 

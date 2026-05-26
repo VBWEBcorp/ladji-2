@@ -15,6 +15,15 @@ import {
   ArrowRight,
   FileText,
   Database,
+  Sparkles,
+  Route,
+  Wallet,
+  GraduationCap,
+  UserCheck,
+  Handshake,
+  HeartHandshake,
+  UserRound,
+  ListChecks,
 } from 'lucide-react'
 
 interface AdminUser {
@@ -24,10 +33,19 @@ interface AdminUser {
 
 const modules = [
   { href: '/admin/pages/accueil', label: 'Accueil', desc: 'Hero, histoire, CTA, bandeau', icon: Home },
+  { href: '/admin/pages/profils', label: 'Profils (accueil)', desc: 'Les 4 cartes profils', icon: Sparkles },
   { href: '/admin/pages/a-propos', label: 'À propos', desc: 'Présentation, valeurs, galerie', icon: Users },
-  { href: '/admin/pages/services', label: 'Services', desc: 'Liste des services', icon: Briefcase },
+  { href: '/admin/pages/comment-ca-marche', label: 'Comment ça marche', desc: 'Parcours, vidéos, FAQ', icon: Route },
+  { href: '/admin/pages/services', label: 'Services', desc: 'Forfaits et tarifs', icon: Briefcase },
+  { href: '/admin/pages/financement', label: 'Financement', desc: 'Dispositifs de financement', icon: Wallet },
+  { href: '/admin/pages/cpf', label: 'Pack CPF', desc: 'Pack 20h CPF', icon: GraduationCap },
+  { href: '/admin/pages/prescripteurs', label: 'Prescripteurs', desc: 'Bénéfices, formulaire', icon: UserCheck },
+  { href: '/admin/pages/partenaires', label: 'Partenaires', desc: 'Réseau institutionnel', icon: Handshake },
+  { href: '/admin/pages/accompagnateur', label: 'Accompagnateur', desc: 'Conditions, rôle, vidéo', icon: HeartHandshake },
+  { href: '/admin/pages/fondateur', label: 'Le fondateur', desc: 'Bio, mission, contact', icon: UserRound },
   { href: '/admin/pages/contact', label: 'Contact', desc: 'Formulaire, coordonnées', icon: Phone },
   { href: '/admin/pages/temoignages', label: 'Témoignages', desc: 'Avis clients', icon: MessageSquare },
+  { href: '/admin/quiz', label: 'Quiz', desc: 'Vidéo, questions, résultats', icon: ListChecks },
   { href: '/admin/gallery', label: 'Galerie', desc: 'Photos du site', icon: Images },
   { href: '/admin/blog', label: 'Blog', desc: 'Articles et actualités', icon: FileText },
 ]

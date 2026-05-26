@@ -42,7 +42,7 @@ export default function CookiePolicyPage() {
             Politique de cookies
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Dernière mise à jour : <span className="text-foreground">[à compléter]</span>
+            Dernière mise à jour : <span className="text-foreground">mai 2026</span>
           </p>
           <p className="mt-3 text-sm text-muted-foreground">
             La présente politique précise les cookies et traceurs déposés sur votre

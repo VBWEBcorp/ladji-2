@@ -8,6 +8,7 @@ import { CtaSection } from '@/components/sections/cta-section'
 import { PremiumHero } from '@/components/sections/premium-hero'
 import { Button } from '@/components/ui/button'
 import { SectionTitle } from '@/components/ui/section-title'
+import { WhatsAppButton } from '@/components/whatsapp-button'
 import { useContent } from '@/hooks/use-content'
 import { getIcon } from '@/lib/icons'
 import {
@@ -16,6 +17,7 @@ import {
   servicesContent,
   zones,
 } from '@/lib/site-content'
+import { whatsappMessages } from '@/lib/whatsapp'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -140,6 +142,14 @@ export function ServicesContent() {
               )
             })}
           </motion.div>
+
+          {/* Contact direct WhatsApp pour toute question sur un forfait */}
+          <div className="mt-12 flex flex-col items-center gap-3 text-center">
+            <p className="text-sm text-muted-foreground">
+              Une question sur un forfait ou besoin d&apos;un conseil ?
+            </p>
+            <WhatsAppButton message={whatsappMessages.forfaits} />
+          </div>
         </div>
       </section>
 

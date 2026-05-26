@@ -19,10 +19,19 @@ interface PageEditorProps {
 
 const previewPaths: Record<string, string> = {
   home: '/',
+  profiles: '/',
   about: '/a-propos',
+  'how-it-works': '/comment-ca-marche',
   services: '/services',
+  funding: '/financement',
+  cpf: '/cpf',
+  prescribers: '/prescripteurs',
+  partners: '/partenaires',
+  companion: '/accompagnateur',
+  founder: '/fondateur',
   contact: '/contact',
   testimonials: '/#temoignages',
+  quiz: '/accompagnateur/quiz',
 }
 
 export function PageEditor({ pageId, title, defaultContent, children }: PageEditorProps) {

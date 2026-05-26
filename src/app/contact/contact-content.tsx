@@ -7,9 +7,11 @@ import { PremiumHero } from '@/components/sections/premium-hero'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { WhatsAppButton } from '@/components/whatsapp-button'
 import { useContent } from '@/hooks/use-content'
 import { siteConfig } from '@/lib/seo'
 import { contactContent, images as siteImages } from '@/lib/site-content'
+import { whatsappMessages } from '@/lib/whatsapp'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -209,6 +211,13 @@ export function ContactContent() {
                         {siteConfig.address.postalCode} {siteConfig.address.city}
                       </p>
                     </div>
+                  </div>
+
+                  <div className="border-t border-border/50 pt-5">
+                    <WhatsAppButton
+                      message={whatsappMessages.contact}
+                      className="w-full"
+                    />
                   </div>
                 </div>
               </div>

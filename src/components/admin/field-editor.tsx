@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { Upload, Link as LinkIcon, X, Loader2 } from 'lucide-react'
+import { Upload, Link as LinkIcon, X, Loader2, Plus, Trash2, ChevronUp, ChevronDown } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
@@ -55,6 +55,163 @@ export function SectionEditor({ title, children }: SectionEditorProps) {
       <div className="p-5 space-y-4">
         {children}
       </div>
+    </div>
+  )
+}
+
+/**
+ * StringListEditor : édite une liste de chaînes (paragraphes, points, items…)
+ * avec ajout, suppression et champ texte/textarea par entrée.
+ */
+interface StringListEditorProps {
+  label: string
+  items: string[]
+  onChange: (items: string[]) => void
+  type?: 'text' | 'textarea'
+  addLabel?: string
+  itemLabel?: (i: number) => string
+}
+
+export function StringListEditor({
+  label,
+  items,
+  onChange,
+  type = 'text',
+  addLabel = 'Ajouter',
+  itemLabel,
+}: StringListEditorProps) {
+  const list = items ?? []
+  return (
+    <div className="space-y-3 pt-2">
+      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{label}</p>
+      {list.map((item, i) => (
+        <div key={i} className="flex items-start gap-2">
+          <div className="flex-1">
+            <FieldEditor
+              label={itemLabel ? itemLabel(i) : `${i + 1}`}
+              value={item}
+              type={type}
+              onChange={(v) => {
+                const next = [...list]
+                next[i] = v
+                onChange(next)
+              }}
+            />
+          </div>
+          <button
+            type="button"
+            onClick={() => onChange(list.filter((_, j) => j !== i))}
+            className="mt-7 text-destructive hover:text-destructive/80"
+            title="Supprimer"
+          >
+            <Trash2 className="size-4" />
+          </button>
+        </div>
+      ))}
+      <Button
+        variant="outline"
+        size="sm"
+        className="gap-2"
+        onClick={() => onChange([...list, ''])}
+      >
+        <Plus className="size-4" />
+        {addLabel}
+      </Button>
+    </div>
+  )
+}
+
+/**
+ * RepeaterField : édite une liste d'objets. Pour chaque entrée, `renderItem`
+ * fournit l'UI d'édition. Gère ajout (via `makeNew`), suppression et ré-ordonnancement.
+ */
+interface RepeaterFieldProps<T> {
+  label: string
+  items: T[]
+  onChange: (items: T[]) => void
+  makeNew: () => T
+  addLabel?: string
+  renderItem: (item: T, update: (patch: Partial<T>) => void, index: number) => React.ReactNode
+  itemTitle?: (item: T, index: number) => string
+}
+
+export function RepeaterField<T>({
+  label,
+  items,
+  onChange,
+  makeNew,
+  addLabel = 'Ajouter',
+  renderItem,
+  itemTitle,
+}: RepeaterFieldProps<T>) {
+  const list = items ?? []
+
+  const updateAt = (index: number, patch: Partial<T>) => {
+    const next = [...list]
+    next[index] = { ...next[index], ...patch }
+    onChange(next)
+  }
+
+  const removeAt = (index: number) => onChange(list.filter((_, j) => j !== index))
+
+  const move = (index: number, dir: -1 | 1) => {
+    const target = index + dir
+    if (target < 0 || target >= list.length) return
+    const next = [...list]
+    ;[next[index], next[target]] = [next[target], next[index]]
+    onChange(next)
+  }
+
+  return (
+    <div className="space-y-3 pt-2">
+      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{label}</p>
+      {list.map((item, i) => (
+        <div key={i} className="rounded-lg border border-border/40 bg-muted/20 p-3 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-semibold text-muted-foreground/70 uppercase tracking-wide">
+              {itemTitle ? itemTitle(item, i) : `Entrée ${i + 1}`}
+            </span>
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={() => move(i, -1)}
+                disabled={i === 0}
+                className="text-muted-foreground hover:text-foreground disabled:opacity-30"
+                title="Monter"
+              >
+                <ChevronUp className="size-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => move(i, 1)}
+                disabled={i === list.length - 1}
+                className="text-muted-foreground hover:text-foreground disabled:opacity-30"
+                title="Descendre"
+              >
+                <ChevronDown className="size-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => removeAt(i)}
+                className="text-destructive hover:text-destructive/80"
+                title="Supprimer"
+              >
+                <Trash2 className="size-4" />
+              </button>
+            </div>
+          </div>
+          {renderItem(item, (patch) => updateAt(i, patch), i)}
+        </div>
+      ))}
+      <Button
+        variant="outline"
+        size="sm"
+        className="gap-2"
+        onClick={() => onChange([...list, makeNew()])}
+      >
+        <Plus className="size-4" />
+        {addLabel}
+      </Button>
     </div>
   )
 }

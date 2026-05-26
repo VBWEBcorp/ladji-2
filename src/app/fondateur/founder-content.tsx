@@ -2,17 +2,24 @@
 
 import { motion } from 'framer-motion'
 import { Mail, Phone } from 'lucide-react'
+import Image from 'next/image'
 
 import { CtaSection } from '@/components/sections/cta-section'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { SectionTitle } from '@/components/ui/section-title'
+import { useContent } from '@/hooks/use-content'
 import { getIcon } from '@/lib/icons'
 import { founderContent } from '@/lib/site-content'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
 export function FounderContent() {
-  const { hero, bio, mission, contact } = founderContent
+  const { data } = useContent('founder', founderContent)
+  const hero = data.hero ?? founderContent.hero
+  const photo = data.photo ?? founderContent.photo
+  const bio = data.bio ?? founderContent.bio
+  const mission = data.mission ?? founderContent.mission
+  const contact = data.contact ?? founderContent.contact
 
   return (
     <>
@@ -29,25 +36,45 @@ export function FounderContent() {
           }}
         />
 
-        <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease }}
-          >
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
-              {hero.eyebrow}
-            </p>
-            <h1 className="mt-4 font-display text-balance text-5xl font-bold leading-[1.05] tracking-[-0.02em] text-foreground sm:text-6xl lg:text-7xl">
-              {hero.title}
-            </h1>
-            <p className="mt-3 font-display text-lg font-medium text-muted-foreground sm:text-xl">
-              {hero.subtitle}
-            </p>
-            <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {hero.description}
-            </p>
-          </motion.div>
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto] lg:gap-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease }}
+            >
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
+                {hero.eyebrow}
+              </p>
+              <h1 className="mt-4 font-display text-balance text-5xl font-bold leading-[1.05] tracking-[-0.02em] text-foreground sm:text-6xl lg:text-7xl">
+                {hero.title}
+              </h1>
+              <p className="mt-3 font-display text-lg font-medium text-muted-foreground sm:text-xl">
+                {hero.subtitle}
+              </p>
+              <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                {hero.description}
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.75, ease, delay: 0.15 }}
+              className="relative mx-auto w-full max-w-xs lg:max-w-[320px]"
+            >
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-muted shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] ring-1 ring-foreground/5">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  priority
+                  sizes="(min-width:1024px) 320px, 80vw"
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

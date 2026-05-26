@@ -43,7 +43,7 @@ export default function AccessibilityPage() {
             Déclaration d&apos;accessibilité
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Dernière mise à jour : <span className="text-foreground">[à compléter]</span>
+            Dernière mise à jour : <span className="text-foreground">mai 2026</span>
           </p>
 
           <article className="mt-10 space-y-10 text-sm leading-relaxed text-muted-foreground [&_h2]:font-display [&_h2]:text-lg [&_h2]:font-semibold [&_h2]:text-foreground [&_h3]:text-sm [&_h3]:font-semibold [&_h3]:text-foreground">
@@ -111,7 +111,7 @@ export default function AccessibilityPage() {
             <section className="space-y-3">
               <h2>4. Établissement de la déclaration</h2>
               <p>
-                La présente déclaration a été établie le <span className="text-foreground">[à compléter]</span>{' '}
+                La présente déclaration a été établie en <span className="text-foreground">mai 2026</span>{' '}
                 par {siteConfig.name} sur la base d&apos;une auto-évaluation. Une
                 évaluation par un tiers spécialisé est prévue.
               </p>

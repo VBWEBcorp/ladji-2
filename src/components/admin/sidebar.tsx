@@ -21,6 +21,15 @@ import {
   Megaphone,
   FilePen,
   ChevronDown,
+  Sparkles,
+  Route,
+  Wallet,
+  GraduationCap,
+  UserCheck,
+  Handshake,
+  HeartHandshake,
+  UserRound,
+  ListChecks,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useSidebar } from '@/components/admin/sidebar-context'
@@ -31,13 +40,22 @@ const navItems = [
 
 const pageEditItems = [
   { href: '/admin/pages/accueil', label: 'Accueil', icon: Home },
+  { href: '/admin/pages/profils', label: 'Profils (accueil)', icon: Sparkles },
   { href: '/admin/pages/a-propos', label: 'À propos', icon: Users },
+  { href: '/admin/pages/comment-ca-marche', label: 'Comment ça marche', icon: Route },
   { href: '/admin/pages/services', label: 'Services', icon: Briefcase },
+  { href: '/admin/pages/financement', label: 'Financement', icon: Wallet },
+  { href: '/admin/pages/cpf', label: 'Pack CPF', icon: GraduationCap },
+  { href: '/admin/pages/prescripteurs', label: 'Prescripteurs', icon: UserCheck },
+  { href: '/admin/pages/partenaires', label: 'Partenaires', icon: Handshake },
+  { href: '/admin/pages/accompagnateur', label: 'Accompagnateur', icon: HeartHandshake },
+  { href: '/admin/pages/fondateur', label: 'Le fondateur', icon: UserRound },
   { href: '/admin/pages/contact', label: 'Contact', icon: Phone },
   { href: '/admin/pages/temoignages', label: 'Témoignages', icon: MessageSquare },
 ]
 
 const moduleItems = [
+  { href: '/admin/quiz', label: 'Quiz', icon: ListChecks },
   { href: '/admin/gallery', label: 'Galerie', icon: Images },
   { href: '/admin/blog', label: 'Blog', icon: FileText },
   { href: '/admin/marketing', label: 'Marketing', icon: Megaphone },

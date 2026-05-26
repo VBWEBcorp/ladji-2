@@ -42,7 +42,7 @@ export default function LegalPage() {
             Mentions légales
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Dernière mise à jour : <span className="text-foreground">[à compléter]</span>
+            Dernière mise à jour : <span className="text-foreground">mai 2026</span>
           </p>
           <p className="mt-3 text-sm text-muted-foreground">
             Conformément aux dispositions de l&apos;article 6-III de la loi n° 2004-575
@@ -60,17 +60,14 @@ export default function LegalPage() {
                 est édité par :
               </p>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li><strong>Nom commercial :</strong> {siteConfig.name}</li>
-                <li><strong>Porteur du projet :</strong> M. Faé</li>
-                <li><strong>Forme juridique :</strong> <span className="text-foreground">[à compléter : entreprise individuelle, micro-entreprise, association ou société]</span></li>
-                <li><strong>SIRET :</strong> <span className="text-foreground">[à compléter]</span></li>
-                <li><strong>RCS / RM :</strong> <span className="text-foreground">[à compléter si applicable]</span></li>
-                <li><strong>Capital social :</strong> <span className="text-foreground">[le cas échéant]</span></li>
-                <li><strong>N° TVA intracommunautaire :</strong> <span className="text-foreground">[si assujetti]</span></li>
-                <li>
-                  <strong>Adresse :</strong> {siteConfig.address.street},{' '}
-                  {siteConfig.address.postalCode} {siteConfig.address.city}
-                </li>
+                <li><strong>Dénomination :</strong> AUTO-CONDUITE</li>
+                <li><strong>Forme juridique :</strong> Société par actions simplifiée unipersonnelle (SASU)</li>
+                <li><strong>Capital social :</strong> 400,00 euros</li>
+                <li><strong>SIRET :</strong> 990 202 616 00019</li>
+                <li><strong>RCS :</strong> 990 202 616 R.C.S. Metz</li>
+                <li><strong>Code APE :</strong> 8553Z</li>
+                <li><strong>N° TVA intracommunautaire :</strong> <span className="text-foreground">[à compléter : numéro communiqué par le SIE de Metz]</span></li>
+                <li><strong>Siège social :</strong> 16D Rue du Château de Merten, 57360 Amnéville</li>
                 <li>
                   <strong>Téléphone :</strong>{' '}
                   <a
@@ -91,7 +88,8 @@ export default function LegalPage() {
                 </li>
               </ul>
               <p>
-                <strong>Directeur de la publication :</strong> M. Faé
+                <strong>Directeur de la publication :</strong> M. Paulin Faé Kah,
+                Président de la SASU.
               </p>
             </section>
 
@@ -99,9 +97,28 @@ export default function LegalPage() {
               <h2>2. Hébergement</h2>
               <p>Le site est hébergé par :</p>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li><strong>Hébergeur :</strong> <span className="text-foreground">[à compléter, ex. Vercel Inc., OVHcloud, Scaleway]</span></li>
-                <li><strong>Adresse :</strong> <span className="text-foreground">[adresse de l&apos;hébergeur]</span></li>
-                <li><strong>Site web :</strong> <span className="text-foreground">[URL de l&apos;hébergeur]</span></li>
+                <li><strong>Hébergeur :</strong> IONOS SE</li>
+                <li><strong>Adresse :</strong> 7, place de la Gare, BP 70109, 57201 Sarreguemines Cedex</li>
+                <li>
+                  <strong>Site web :</strong>{' '}
+                  <a
+                    href="https://www.ionos.fr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                  >
+                    www.ionos.fr
+                  </a>
+                </li>
+                <li>
+                  <strong>Téléphone :</strong>{' '}
+                  <a
+                    href="tel:0970808911"
+                    className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                  >
+                    0970 808 911
+                  </a>
+                </li>
                 <li><strong>Localisation des serveurs :</strong> Union européenne (conformément aux exigences RGPD).</li>
               </ul>
               <h3 className="pt-2">Prestataires techniques tiers</h3>
@@ -149,6 +166,12 @@ export default function LegalPage() {
                 </Link>{' '}
                 pour le détail.
               </p>
+              <ul className="list-inside list-disc space-y-1 pl-1">
+                <li><strong>Activité principale :</strong> mise à disposition de véhicules équipés de double commande à destination des institutions.</li>
+                <li><strong>Nature de l&apos;activité :</strong> libérale non réglementée.</li>
+                <li><strong>Début d&apos;activité :</strong> 8 août 2025.</li>
+                <li><strong>Immatriculation au RNE :</strong> 15 septembre 2025.</li>
+              </ul>
             </section>
 
             <section className="space-y-3">

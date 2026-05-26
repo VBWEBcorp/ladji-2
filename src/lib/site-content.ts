@@ -185,15 +185,19 @@ export const founderContent = {
     title: 'Kah Faé',
     subtitle: 'Fondateur Auto Conduite · Moselle',
     description:
-      "Kah Faé est le fondateur d'Auto Conduite, dispositif de mobilité solidaire basé en Moselle. Engagé dans l'insertion par la mobilité, il porte un projet qui rapproche véhicules pédagogiques, accompagnement humain et financements adaptés.",
+      "M. Faé est le fondateur d'Auto Conduite, première structure en France à combiner la location de véhicule pédagogique à double commande et l'accompagnement spécifique des adultes en parcours d'insertion professionnelle.",
+  },
+  photo: {
+    src: 'https://i.ibb.co/pr5DPHS9/Photo-du-fondateur.png',
+    alt: 'M. Faé, fondateur Auto Conduite Moselle',
   },
   bio: {
     eyebrow: 'Parcours',
     title: 'Un projet ancré sur le terrain',
     paragraphs: [
-      "Kah Faé fonde Auto Conduite en 2026 en Moselle pour répondre à un constat simple : le permis reste un frein majeur à l'emploi et à l'autonomie, particulièrement dans les zones rurales du Sud Mosellan.",
-      "Le dispositif s'appuie sur un réseau de partenaires institutionnels (France Travail, Missions Locales, Région Grand Est, GEIQ Alemploi, ADAM) et propose des forfaits adaptés à toutes les bourses, du Pack 5h à 199€ jusqu'au Pack 20h CPF avec moniteur agréé.",
-      "Au-delà de la location de véhicules pédagogiques, Auto Conduite porte une vision : faire de la mobilité une brique d'inclusion, accessible, légale et solidaire.",
+      "Fort d'une solide expérience dans le transport et la logistique, forgée entre engagement militaire et grandes entreprises de la supply chain, M. Faé a conçu Auto Conduite pour lever un frein concret et souvent invisible : l'absence de mobilité autonome comme obstacle à l'emploi.",
+      "Implanté sur les territoires de Sarrebourg et Château-Salins, Auto Conduite a vocation à déployer son modèle sur l'ensemble des bassins d'emploi prioritaires de la région Grand Est, en lien avec la direction régionale et les acteurs institutionnels : France Travail, Missions Locales, GEIQ Alemploi Lorraine et la Région Grand Est.",
+      "Convaincu que la mobilité apprenante est un levier d'émancipation durable, M. Faé s'appuie sur les outils numériques et l'intelligence artificielle pour structurer un modèle économique solide, ancré dans les réalités du terrain et réplicable à l'échelle nationale.",
     ],
   },
   mission: {
@@ -201,19 +205,19 @@ export const founderContent = {
     title: 'Lever le frein mobilité, durablement',
     points: [
       {
+        iconName: 'Compass',
+        title: 'Un frein invisible, levé',
+        desc: "L'absence de mobilité autonome reste un obstacle direct à l'emploi. Auto Conduite s'attaque à ce frein concret, trop souvent passé sous silence.",
+      },
+      {
+        iconName: 'Globe',
+        title: 'Du territoire au national',
+        desc: "Implanté à Sarrebourg et Château-Salins, le modèle a vocation à couvrir les bassins d'emploi prioritaires du Grand Est, puis l'échelle nationale.",
+      },
+      {
         iconName: 'Sparkles',
-        title: 'Pour toutes les bourses',
-        desc: 'Tarifs solidaires, financements multiples (CPF, ALMA, ADIE, aide mobilité), pas de frais cachés.',
-      },
-      {
-        iconName: 'Users',
-        title: 'Réseau territorial',
-        desc: 'Partenariats avec les structures d\'insertion mosellanes, du Sud Mosellan au Bassin Houiller.',
-      },
-      {
-        iconName: 'ShieldCheck',
-        title: 'Cadre légal',
-        desc: 'Dispositif conforme aux articles L211-4 et R211-3 du Code de la route, assurance apprentissage incluse.',
+        title: 'Outils numériques et IA',
+        desc: "Le numérique et l'intelligence artificielle structurent un modèle économique solide, ancré dans le terrain et réplicable.",
       },
     ],
   },
@@ -253,6 +257,66 @@ export const partnersContent = {
       logo: null,
     },
   ],
+}
+
+// Page Partenaires (liste détaillée, distincte du bandeau logos partnersContent)
+export const partnersPageContent = {
+  eyebrow: 'Écosystème',
+  title: 'Nos partenaires institutionnels',
+  description:
+    "Auto Conduite ne fonctionne pas en silo. Notre dispositif s'appuie sur un réseau de partenaires publics et associatifs qui orientent, financent et accompagnent les bénéficiaires.",
+  partners: [
+    {
+      name: 'France Travail',
+      role: 'Orientation et aide mobilité',
+      desc: "Premier opérateur du service public de l'emploi. Les conseillers France Travail orientent les demandeurs d'emploi vers Auto Conduite et peuvent mobiliser l'aide à la mobilité (jusqu'à 1 200 €) dans le cadre d'un projet de retour à l'emploi.",
+      link: { label: 'francetravail.fr', href: 'https://www.francetravail.fr' },
+    },
+    {
+      name: 'Missions Locales',
+      role: 'Accompagnement des 16-25 ans',
+      desc: "Les Missions Locales accompagnent les jeunes de 16 à 25 ans en parcours d'insertion. La Mission Locale Sud Mosellan est notre interlocuteur de référence sur le bassin Sarrebourg / Château-Salins. Mobilisation possible du Fonds d'Aide aux Jeunes (FAJ).",
+      link: { label: 'mission-locale.fr', href: 'https://www.mission-locale.fr' },
+    },
+    {
+      name: 'Région Grand Est',
+      role: 'Politiques régionales de mobilité',
+      desc: "La Région Grand Est porte des politiques de mobilité solidaire en lien avec les acteurs de l'insertion. Auto Conduite s'inscrit dans cette dynamique régionale de levée du frein mobilité.",
+      link: { label: 'grandest.fr', href: 'https://www.grandest.fr' },
+    },
+    {
+      name: 'GEIQ Alemploi',
+      role: "Insertion par l'emploi",
+      desc: "Le GEIQ Alemploi est un groupement d'employeurs pour l'insertion et la qualification, présent sur le territoire mosellan. Notre dispositif est mobilisable pour les salariés en parcours, en cofinancement employeur.",
+      link: { label: 'lesgeiq.fr', href: 'https://www.lesgeiq.fr' },
+    },
+    {
+      name: 'ADAM',
+      role: 'Portage CPF',
+      desc: "ADAM est notre partenaire de portage CPF : c'est elle qui rend le Pack 20h Auto Conduite finançable via le Compte Personnel de Formation (moncompteformation.gouv.fr).",
+      link: { label: 'moncompteformation.gouv.fr', href: 'https://www.moncompteformation.gouv.fr' },
+    },
+    {
+      name: 'ADIE Lorraine',
+      role: 'Microcrédit personnel',
+      desc: "L'ADIE accompagne les personnes éloignées des financements classiques. En Lorraine, elle peut financer le reste à charge d'Auto Conduite pour les bénéficiaires RSA sans solution CPF ni ALMA, via un microcrédit personnel adapté.",
+      link: { label: 'adie.org', href: 'https://www.adie.org' },
+    },
+    {
+      name: 'Département de la Moselle',
+      role: 'Convention en cours',
+      desc: "Une convention est en cours de négociation avec le Département de la Moselle pour un abondement spécifique aux publics du Département (bénéficiaires RSA, ASE, jeunes en insertion). Cette page sera mise à jour à la signature.",
+      link: null,
+    },
+  ],
+  becomePartner: {
+    title: 'Devenir partenaire',
+    description:
+      "Vous êtes une collectivité, une association, un opérateur d'insertion, un bailleur social ou un employeur engagé dans la levée du frein mobilité ? Nous sommes ouverts aux conventions de partenariat, cofinancements et clauses sociales adossées à notre dispositif.",
+    contactName: 'M. Faé',
+    contactPhone: '06 37 53 43 26',
+    contactEmail: 'contact@auto-conduite.com',
+  },
 }
 
 export const testimonialsContent = {
@@ -962,7 +1026,7 @@ export const companionContent = {
     title: 'Briefing sécurité obligatoire',
     duration: '5-8 min',
     desc: "Double commande, posture accompagnateur, règles de sécurité. Vidéo obligatoire à visionner et quiz à valider (score minimum 80%) avant l'accès au véhicule.",
-    note: "La vidéo de briefing est délivrée dans votre espace personnel après validation du dossier.",
+    note: "À la fin du quiz, vous recevez un e-mail de confirmation et votre attestation nominative se télécharge automatiquement. Conservez-la : elle est demandée pour confirmer votre location.",
   },
 }
 

@@ -1,10 +1,10 @@
 export const siteConfig = {
   name: 'Auto Conduite',
-  url: 'https://auto-conduite.fr',
+  url: 'https://auto-conduite.com',
   locale: 'fr_FR',
   description:
     "Auto Conduite, pour toutes les bourses. Location de véhicules pédagogiques à double commande en Moselle, pour les personnes en parcours d'insertion.",
-  ogImage: 'https://auto-conduite.fr/og.png',
+  ogImage: 'https://auto-conduite.com/og.png',
   twitterHandle: '@autoconduite',
   themeColor: '#7c6bff',
   phone: '06 37 53 43 26',
