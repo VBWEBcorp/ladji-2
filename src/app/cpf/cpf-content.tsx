@@ -136,7 +136,7 @@ export function CpfContent() {
           <SectionTitle
             eyebrow="Ce que comprend le Pack 20h CPF"
             title="Formation officielle avec moniteur agréé"
-            description="Le Pack 20h CPF est porté par notre partenaire ADAM, organisme de formation agréé. C'est une formation reconnue par France compétences, finançable CPF."
+            description="Le Pack 20h CPF est porté par notre partenaire le Centre de Formation ADAM, organisme de formation agréé. C'est une formation reconnue par France compétences, finançable CPF."
           />
 
           <motion.ul

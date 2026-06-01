@@ -1,9 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Check, Download, PlayCircle, X } from 'lucide-react'
+import { Check, Mail, X } from 'lucide-react'
 
-import { QuizTrigger } from './quiz/quiz-modal'
 import { CtaSection } from '@/components/sections/cta-section'
 import { PremiumHero } from '@/components/sections/premium-hero'
 import { SectionTitle } from '@/components/ui/section-title'
@@ -158,14 +157,10 @@ export function CompanionContent() {
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
             {guide.description}
           </p>
-          <a
-            href={guide.action.href}
-            aria-disabled={guide.action.disabled}
-            className="mt-7 inline-flex items-center gap-2 rounded-xl border border-border/80 bg-card px-5 py-3 text-sm font-medium text-foreground shadow-[var(--shadow-sm)] transition-colors hover:bg-foreground/[0.04] aria-disabled:cursor-not-allowed aria-disabled:opacity-60"
-          >
-            <Download className="size-4" aria-hidden />
-            {guide.action.label}
-          </a>
+          <div className="mx-auto mt-7 inline-flex items-center gap-2 rounded-xl border border-primary/25 bg-primary/[0.05] px-5 py-3 text-sm font-medium text-foreground">
+            <Mail className="size-4 text-primary" aria-hidden />
+            Envoyé par e-mail à votre accompagnateur après validation de votre dossier.
+          </div>
         </div>
       </section>
 
@@ -173,18 +168,7 @@ export function CompanionContent() {
       <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
         <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-card/70 p-6 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 sm:p-10">
-            <div className="flex items-center gap-3.5">
-              <span className="flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary ring-1 ring-primary/15">
-                <PlayCircle className="size-6" aria-hidden />
-              </span>
-              <div>
-                <p className="font-display text-[11px] font-bold tracking-[0.18em] text-primary">
-                  VIDÉO {video.number}
-                </p>
-                <p className="text-xs text-muted-foreground">Durée {video.duration}</p>
-              </div>
-            </div>
-            <h2 className="mt-5 font-display text-xl font-semibold text-foreground sm:text-2xl">
+            <h2 className="font-display text-xl font-semibold text-foreground sm:text-2xl">
               {video.title}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -193,8 +177,13 @@ export function CompanionContent() {
             <p className="mt-4 rounded-xl bg-amber-500/10 px-4 py-3 text-xs font-medium text-amber-700 ring-1 ring-amber-500/20 dark:bg-amber-500/15 dark:text-amber-300">
               {video.note}
             </p>
-            <div className="mt-6">
-              <QuizTrigger />
+            <div className="mt-6 flex items-start gap-2.5 rounded-xl border border-border/70 bg-background/60 px-4 py-3 text-sm text-muted-foreground">
+              <Mail className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
+              <span>
+                Le quiz briefing est accessible{' '}
+                <strong className="text-foreground">uniquement via le lien personnel</strong> envoyé par
+                e-mail à l&apos;accompagnateur après validation du dossier.
+              </span>
             </div>
           </div>
         </div>

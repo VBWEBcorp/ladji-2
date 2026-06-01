@@ -22,10 +22,16 @@ export default function AdminQuizPage() {
           <>
             <SectionEditor title="Vidéo de briefing">
               <FieldEditor
-                label="Identifiant YouTube (après watch?v=, youtu.be/ ou /shorts/)"
+                label="Identifiant Vimeo (la partie après vimeo.com/)"
                 value={content.video?.videoId}
                 onChange={(v) => update('video.videoId', v.trim())}
-                placeholder="inyCAdpvYz0"
+                placeholder="1196793764"
+              />
+              <FieldEditor
+                label="Hash de confidentialité Vimeo (si vidéo non répertoriée, ?h=…)"
+                value={content.video?.hash}
+                onChange={(v) => update('video.hash', v.trim())}
+                placeholder="laisser vide si non requis"
               />
               <label className="flex items-center gap-2 text-sm text-foreground">
                 <input
@@ -34,10 +40,10 @@ export default function AdminQuizPage() {
                   onChange={(e) => update('video.isShort', e.target.checked)}
                   className="size-4 rounded border-input"
                 />
-                Vidéo au format Short (vertical 9/16)
+                Vidéo au format vertical (9/16)
               </label>
               <FieldEditor
-                label="Lien de la chaîne (secours si la vidéo ne se lance pas)"
+                label="Lien direct de la vidéo (secours si elle ne se lance pas)"
                 value={content.video?.channelUrl}
                 onChange={(v) => update('video.channelUrl', v)}
                 type="url"

@@ -20,7 +20,12 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useContent } from '@/hooks/use-content'
-import { downloadAttestation, type AttestationData } from '@/lib/attestation'
+import {
+  buildReference,
+  downloadAttestation,
+  generateAttestationBase64,
+  type AttestationData,
+} from '@/lib/attestation'
 import {
   QUIZ_CONFIG,
   quizDefaults,
@@ -86,7 +91,7 @@ async function notifyManager(
 /*  Composant principal : machine à états multi-step                          */
 /* ========================================================================== */
 
-export function QuizFlow({ onClose }: { onClose?: () => void }) {
+export function QuizFlow({ onClose, token }: { onClose?: () => void; token?: string }) {
   const { data: quiz } = useContent<QuizContentData>('quiz', quizDefaults)
   const questions = (quiz.questions?.length ? quiz.questions : quizDefaults.questions) as QuizQuestion[]
 
@@ -101,6 +106,28 @@ export function QuizFlow({ onClose }: { onClose?: () => void }) {
   useEffect(() => {
     setAttemptsUsed(readAttempts())
   }, [])
+
+  // Lien unique (e-mail) : on pré-remplit l'identité depuis le dossier validé.
+  useEffect(() => {
+    if (!token) return
+    let cancelled = false
+    fetch(`/api/briefing/${token}`)
+      .then((r) => r.json())
+      .then((d) => {
+        if (cancelled || !d?.valid || !d.invite) return
+        setCandidate({
+          firstName: d.invite.firstName || '',
+          lastName: d.invite.lastName || '',
+          email: d.invite.email || '',
+        })
+      })
+      .catch(() => {
+        /* lien invalide/expiré : le parcours reste utilisable en saisie manuelle */
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [token])
 
   const startRun = useCallback(() => {
     setIndex(0)
@@ -190,6 +217,7 @@ export function QuizFlow({ onClose }: { onClose?: () => void }) {
               candidate={candidate}
               correctCount={correctCount}
               attemptsUsed={attemptsUsed}
+              token={token}
               onRetry={startRun}
               onClose={onClose}
             />
@@ -218,23 +246,20 @@ function Step({ children }: { children: React.ReactNode }) {
 /*  ÉTAPE 1 — Vidéo briefing : à sa fin, le quiz démarre                       */
 /* ========================================================================== */
 
-let ytApiPromise: Promise<any> | null = null
-function loadYouTubeApi(): Promise<any> {
+let vimeoApiPromise: Promise<any> | null = null
+function loadVimeoApi(): Promise<any> {
   if (typeof window === 'undefined') return Promise.reject(new Error('no window'))
   const w = window as any
-  if (w.YT && w.YT.Player) return Promise.resolve(w.YT)
-  if (ytApiPromise) return ytApiPromise
-  ytApiPromise = new Promise((resolve) => {
-    const prev = w.onYouTubeIframeAPIReady
-    w.onYouTubeIframeAPIReady = () => {
-      prev?.()
-      resolve(w.YT)
-    }
+  if (w.Vimeo && w.Vimeo.Player) return Promise.resolve(w.Vimeo)
+  if (vimeoApiPromise) return vimeoApiPromise
+  vimeoApiPromise = new Promise((resolve, reject) => {
     const tag = document.createElement('script')
-    tag.src = 'https://www.youtube.com/iframe_api'
+    tag.src = 'https://player.vimeo.com/api/player.js'
+    tag.onload = () => resolve((window as any).Vimeo)
+    tag.onerror = () => reject(new Error('vimeo api failed'))
     document.head.appendChild(tag)
   })
-  return ytApiPromise
+  return vimeoApiPromise
 }
 
 function VideoStep({
@@ -265,22 +290,29 @@ function VideoStep({
 
   useEffect(() => {
     let cancelled = false
-    loadYouTubeApi()
-      .then((YT) => {
+    loadVimeoApi()
+      .then((Vimeo) => {
         if (cancelled || !hostRef.current) return
         const el = document.createElement('div')
         el.style.width = '100%'
         el.style.height = '100%'
         hostRef.current.appendChild(el)
-        playerRef.current = new YT.Player(el, {
-          videoId: video.videoId,
-          playerVars: { playsinline: 1, rel: 0, modestbranding: 1 },
-          events: {
-            onStateChange: (e: any) => {
-              if (e.data === YT.PlayerState.ENDED) finish()
-            },
-          },
-        })
+        const opts: Record<string, unknown> = {
+          id: Number(video.videoId),
+          playsinline: true,
+          dnt: true,
+          // Le conteneur impose déjà le ratio ; l'iframe est forcée en taille via CSS.
+          responsive: false,
+        }
+        // Vidéo Vimeo non répertoriée : hash de confidentialité requis (`?h=xxxx`).
+        if (video.hash) opts.h = video.hash
+        const player = new Vimeo.Player(el, opts)
+        playerRef.current = player
+        // Fin de la vidéo → lancement automatique du quiz.
+        player.on('ended', () => finish())
+        // Si la vidéo ne peut pas être lue (confidentialité, intégration bloquée…),
+        // on propose immédiatement la continuation manuelle + le lien direct.
+        player.on('error', () => setShowFallback(true))
       })
       .catch(() => setShowFallback(true))
 
@@ -297,7 +329,7 @@ function VideoStep({
       }
       playerRef.current = null
     }
-  }, [finish, video.videoId])
+  }, [finish, video.videoId, video.hash])
 
   return (
     <div className="text-center">
@@ -351,7 +383,7 @@ function VideoStep({
               rel="noopener noreferrer"
               className="text-primary underline-offset-4 hover:underline"
             >
-              Voir sur la chaîne Auto Conduite
+              Ouvrir la vidéo briefing
             </a>
           </p>
         </div>
@@ -622,6 +654,7 @@ function ResultStep({
   candidate,
   correctCount,
   attemptsUsed,
+  token,
   onRetry,
   onClose,
 }: {
@@ -632,6 +665,7 @@ function ResultStep({
   candidate: Candidate
   correctCount: number
   attemptsUsed: number
+  token?: string
   onRetry: () => void
   onClose?: () => void
 }) {
@@ -653,24 +687,69 @@ function ResultStep({
     percent,
   }
 
+  // Téléchargement manuel (bouton) : réutilise la référence déjà émise si dispo.
   const generate = async () => {
     setDownloading(true)
     try {
-      const { reference: ref } = await downloadAttestation(data)
+      const { reference: ref } = await downloadAttestation(data, reference ?? buildReference())
       setReference(ref)
     } finally {
       setDownloading(false)
     }
   }
 
+  // Enregistre le résultat côté serveur (lien unique) : déclenche l'envoi de
+  // l'attestation par mail + la notification gestionnaire (workflow Resend).
+  const postCompletion = async (payload: Record<string, unknown>) => {
+    if (!token) return
+    try {
+      await fetch(`/api/briefing/${token}/complete`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+    } catch {
+      /* silencieux : l'attestation reste téléchargée côté accompagnateur */
+    }
+  }
+
   useEffect(() => {
-    if (passed && !autoFired.current) {
-      autoFired.current = true
-      void generate()
-      void notifyManager(formspreeEndpoint, total, candidate, correctCount, percent)
+    if (autoFired.current) return
+    autoFired.current = true
+
+    if (passed) {
+      void (async () => {
+        setDownloading(true)
+        try {
+          const ref = buildReference()
+          // Copie téléchargée sur l'appareil de l'accompagnateur.
+          await downloadAttestation(data, ref)
+          setReference(ref)
+          if (token) {
+            // Lien unique : on envoie l'attestation (base64) + notif gestionnaire par mail.
+            const { base64 } = await generateAttestationBase64(data, ref)
+            await postCompletion({
+              passed: true,
+              correct: correctCount,
+              total,
+              percent,
+              reference: ref,
+              attestationBase64: base64,
+            })
+          } else {
+            // Parcours libre (sans token) : notification gestionnaire via Formspree.
+            void notifyManager(formspreeEndpoint, total, candidate, correctCount, percent)
+          }
+        } finally {
+          setDownloading(false)
+        }
+      })()
+    } else if (token) {
+      // Échec sur lien unique : on enregistre la tentative côté serveur.
+      void postCompletion({ passed: false, correct: correctCount, total, percent })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [passed])
+  }, [])
 
   const result = passed
     ? resultMessages.success

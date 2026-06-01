@@ -8,14 +8,16 @@
 
 /** Vidéo briefing — lecture obligatoire avant accès au quiz.
  *  Le quiz se déclenche automatiquement dès la fin de la vidéo
- *  (fin détectée via l'API YouTube IFrame).
- *  Pour changer de vidéo : coller l'identifiant (la partie après
- *  `watch?v=`, `youtu.be/` ou `/shorts/`). */
-export const BRIEFING_VIDEO_ID = 'inyCAdpvYz0' // https://www.youtube.com/shorts/inyCAdpvYz0
-/** Le briefing actuel est un Short YouTube (format vertical 9/16). */
-export const BRIEFING_IS_SHORT = true
-export const BRIEFING_CHANNEL_URL =
-  'https://youtube.com/@auto-conduite57?si=Bb0S3bkRFLr3vAVU'
+ *  (fin détectée via le Player SDK Vimeo, événement `ended`).
+ *  Pour changer de vidéo : coller l'identifiant numérique Vimeo
+ *  (la partie après `vimeo.com/`). Si la vidéo est non répertoriée
+ *  avec un hash de confidentialité (`?h=xxxx`), renseigner BRIEFING_VIDEO_HASH. */
+export const BRIEFING_VIDEO_ID = '1196793764' // https://vimeo.com/1196793764
+/** Hash de confidentialité Vimeo (vidéos non répertoriées). Vide si non requis. */
+export const BRIEFING_VIDEO_HASH = ''
+/** Format vidéo : false = paysage (16/9), true = vertical (9/16). */
+export const BRIEFING_IS_SHORT = false
+export const BRIEFING_CHANNEL_URL = 'https://vimeo.com/1196793764'
 
 /** Endpoint Formspree facultatif pour notifier le gestionnaire à la réussite
  *  (prénom, nom, e-mail, score). Laissé vide = aucune notification envoyée,
@@ -245,6 +247,7 @@ export interface QuizContentData {
     videoId: string
     isShort: boolean
     channelUrl: string
+    hash?: string
   }
   formspreeEndpoint: string
   config: {
@@ -271,6 +274,7 @@ export const quizDefaults: QuizContentData = {
     videoId: BRIEFING_VIDEO_ID,
     isShort: BRIEFING_IS_SHORT,
     channelUrl: BRIEFING_CHANNEL_URL,
+    hash: BRIEFING_VIDEO_HASH,
   },
   formspreeEndpoint: FORMSPREE_ENDPOINT,
   config: {

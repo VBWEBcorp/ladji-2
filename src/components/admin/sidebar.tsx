@@ -30,6 +30,7 @@ import {
   HeartHandshake,
   UserRound,
   ListChecks,
+  MapPin,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useSidebar } from '@/components/admin/sidebar-context'
@@ -55,6 +56,8 @@ const pageEditItems = [
 ]
 
 const moduleItems = [
+  { href: '/admin/deposits', label: 'Points de dépôt', icon: MapPin },
+  { href: '/admin/briefing', label: 'Dossiers accompagnateur', icon: UserCheck },
   { href: '/admin/quiz', label: 'Quiz', icon: ListChecks },
   { href: '/admin/gallery', label: 'Galerie', icon: Images },
   { href: '/admin/blog', label: 'Blog', icon: FileText },

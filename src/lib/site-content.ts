@@ -291,10 +291,10 @@ export const partnersPageContent = {
       link: { label: 'lesgeiq.fr', href: 'https://www.lesgeiq.fr' },
     },
     {
-      name: 'ADAM',
-      role: 'Portage CPF',
-      desc: "ADAM est notre partenaire de portage CPF : c'est elle qui rend le Pack 20h Auto Conduite finançable via le Compte Personnel de Formation (moncompteformation.gouv.fr).",
-      link: { label: 'moncompteformation.gouv.fr', href: 'https://www.moncompteformation.gouv.fr' },
+      name: 'Centre de Formation ADAM',
+      role: 'Partenaire CPF agréé',
+      desc: "Formation Pack 20h avec moniteur agréé. Le Centre de Formation ADAM rend le Pack 20h Auto Conduite finançable via le Compte Personnel de Formation (moncompteformation.gouv.fr).",
+      link: null,
     },
     {
       name: 'ADIE Lorraine',
@@ -517,32 +517,44 @@ export const zones = [
   },
 ]
 
-// Points de dépôt officiels (bassin Sarrebourg / Château-Salins)
+// Points de dépôt officiels (bassin Sarrebourg / Château-Salins).
+// lat/lng = coordonnées APPROXIMATIVES (niveau ville/quartier), suffisantes pour
+// le calcul de zone (seuils 15/35 km). À affiner depuis le back-office si besoin.
 export const depositPoints = [
   {
     name: 'Parking Leclerc Sarrebourg',
     address: 'Sarrebourg (57400)',
     hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
+    lat: 48.7245,
+    lng: 7.084,
   },
   {
     name: 'Parking Gare de Sarrebourg',
     address: 'Gare SNCF, Sarrebourg',
     hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
+    lat: 48.7385,
+    lng: 7.0598,
   },
   {
     name: 'France Travail Sarrebourg',
     address: 'ZAC les Terrasses de la Sarre',
     hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
+    lat: 48.7185,
+    lng: 7.044,
   },
   {
     name: 'Parking Intermarché Château-Salins',
     address: 'Château-Salins (57170)',
     hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
+    lat: 48.8225,
+    lng: 6.517,
   },
   {
     name: 'Mission Locale Sud Mosellan',
-    address: 'À confirmer',
+    address: 'Sarrebourg (à confirmer)',
     hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
+    lat: 48.7361,
+    lng: 7.0553,
   },
 ]
 
@@ -564,6 +576,11 @@ export const servicesContent = {
         name: 'Pack 5h',
         offer: '6h avec 1h offerte',
         prices: { A: 199, B: 214, C: 229 },
+        stripeUrls: {
+          A: 'https://buy.stripe.com/8x2eVgfiq8oXd4I94ceQM00',
+          B: 'https://buy.stripe.com/28E14q1rA7kT9Sw94ceQM01',
+          C: 'https://buy.stripe.com/aFadRc1rA9t14ycfsAeQM02',
+        },
         description: 'Idéal pour une première prise en main ou des sessions ponctuelles.',
         features: [
           'Véhicule pédagogique à double commande',
@@ -577,6 +594,11 @@ export const servicesContent = {
         name: 'Pack 10h',
         offer: 'Le plus populaire',
         prices: { A: 329, B: 344, C: 359 },
+        stripeUrls: {
+          A: 'https://buy.stripe.com/00w7sO0nw34D5Cg94ceQM03',
+          B: 'https://buy.stripe.com/5kQ4gCb2a9t19SwbckeQM05',
+          C: 'https://buy.stripe.com/7sY3cyc6eax57Ko1BKeQM06',
+        },
         description: "Pour un entraînement régulier avant l'examen.",
         features: [
           'Véhicule pédagogique à double commande',
@@ -591,6 +613,11 @@ export const servicesContent = {
         name: 'Pack 20h Proche',
         offer: 'Avec votre accompagnateur',
         prices: { A: 620, B: 635, C: 650 },
+        stripeUrls: {
+          A: 'https://buy.stripe.com/7sYaF00nw9t11m04NWeQM07',
+          B: 'https://buy.stripe.com/00w3cyeemcFde8M6W4eQM08',
+          C: 'https://buy.stripe.com/14A9AWdai5cLc0E0xGeQM09',
+        },
         description: 'Le forfait complet pour pratiquer avec un proche, à votre rythme.',
         features: [
           'Véhicule pédagogique récent',
@@ -913,8 +940,12 @@ export const prescriberContent = {
     {
       iconName: 'FileText',
       title: 'Fiche synthétique',
-      desc: 'Fiche PDF téléchargeable à présenter à votre bénéficiaire ou à votre équipe. (Document en cours de finalisation.)',
-      action: { label: 'Télécharger la fiche (à venir)', href: '#', disabled: true },
+      desc: 'Fiche PDF téléchargeable à présenter à votre bénéficiaire ou à votre équipe : dispositif, forfaits, zones et étapes de prescription.',
+      action: {
+        label: 'Télécharger la fiche prescripteur',
+        href: '/documents/fiche-prescripteur-auto-conduite.pdf',
+        disabled: false,
+      },
     },
   ],
   // Formulaire d'orientation bénéficiaire (5 champs max, cf. §3.5)

@@ -3,9 +3,11 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Check, ExternalLink, MapPin } from 'lucide-react'
 import Link from 'next/link'
+import { useState } from 'react'
 
 import { CtaSection } from '@/components/sections/cta-section'
 import { PremiumHero } from '@/components/sections/premium-hero'
+import { ZoneFinder } from '@/components/sections/zone-finder'
 import { Button } from '@/components/ui/button'
 import { SectionTitle } from '@/components/ui/section-title'
 import { WhatsAppButton } from '@/components/whatsapp-button'
@@ -25,6 +27,128 @@ const defaults = servicesContent
 
 type ZoneCode = 'A' | 'B' | 'C'
 
+const zoneRanges: Record<ZoneCode, string> = {
+  A: 'jusqu\'à 15 km',
+  B: '15 à 35 km',
+  C: '+ 35 km',
+}
+
+type PlanShape = (typeof defaults.pricing.plans)[number]
+
+function PlanCard({
+  plan,
+  fallback,
+  zone,
+  onZoneChange,
+}: {
+  plan: PlanShape
+  fallback?: PlanShape
+  zone: ZoneCode
+  onZoneChange: (z: ZoneCode) => void
+}) {
+  const Icon = getIcon(plan.iconName ?? fallback?.iconName)
+  const popular = (plan as any).popular
+  const prices = plan.prices as Record<ZoneCode, number>
+  const stripeUrls = ((plan as any).stripeUrls ?? (fallback as any)?.stripeUrls) as
+    | Record<ZoneCode, string>
+    | undefined
+  const stripeUrl = stripeUrls?.[zone]
+
+  return (
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: 24, scale: 0.97 },
+        visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.55, ease } },
+      }}
+      className={`relative flex flex-col rounded-2xl border bg-card/70 p-6 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-md)] ${
+        popular
+          ? 'border-primary/60 ring-primary/30 shadow-[0_20px_50px_-20px_oklch(0.62_0.10_200/0.45)]'
+          : 'border-border/80'
+      }`}
+    >
+      {popular && (
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow-[0_8px_20px_-8px_oklch(0.62_0.10_200/0.5)]">
+          Populaire
+        </span>
+      )}
+      <div className="flex items-center justify-between">
+        <span className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
+          <Icon className="size-5" aria-hidden />
+        </span>
+        {(plan as any).offer && (
+          <span className="rounded-full bg-foreground/[0.06] px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+            {(plan as any).offer}
+          </span>
+        )}
+      </div>
+      <h3 className="mt-4 font-display text-lg font-semibold text-foreground">{plan.name}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{plan.description}</p>
+
+      {/* Sélecteur de zone : met à jour le prix et le lien de paiement */}
+      <div className="mt-5 grid grid-cols-3 gap-1.5 rounded-xl border border-border/60 bg-background/50 p-1.5">
+        {(['A', 'B', 'C'] as ZoneCode[]).map((z) => (
+          <button
+            key={z}
+            type="button"
+            onClick={() => onZoneChange(z)}
+            aria-pressed={zone === z}
+            className={`rounded-lg px-1 py-2 text-center transition-colors ${
+              zone === z
+                ? 'bg-primary text-primary-foreground shadow-[0_6px_16px_-8px_oklch(0.62_0.10_200/0.6)]'
+                : 'text-muted-foreground hover:bg-foreground/[0.05]'
+            }`}
+          >
+            <span className="block text-[10px] font-semibold uppercase tracking-wide">Zone {z}</span>
+            <span className="mt-0.5 block font-display text-sm font-semibold">{prices[z]}€</span>
+          </button>
+        ))}
+      </div>
+      <div className="mt-4 flex items-baseline gap-2">
+        <span className="font-display text-3xl font-bold tracking-tight text-foreground">
+          {prices[zone]}€
+        </span>
+        <span className="text-xs text-muted-foreground">
+          Zone {zone} · {zoneRanges[zone]}
+        </span>
+      </div>
+
+      <ul className="mt-5 space-y-2.5">
+        {plan.features.map((f: string) => (
+          <li key={f} className="flex items-start gap-2 text-sm text-foreground/85">
+            <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+              <Check className="size-3" aria-hidden />
+            </span>
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-6 space-y-2.5 pt-2">
+        {stripeUrl ? (
+          <Button asChild className="w-full" variant={popular ? 'default' : 'outline'}>
+            <a href={stripeUrl} target="_blank" rel="noopener noreferrer">
+              Payer ce forfait · {prices[zone]}€
+              <ExternalLink className="size-4" aria-hidden />
+            </a>
+          </Button>
+        ) : (
+          <Button asChild className="w-full" variant={popular ? 'default' : 'outline'}>
+            <Link href="/contact">Vérifier mon éligibilité</Link>
+          </Button>
+        )}
+        {stripeUrl && (
+          <Link
+            href="/contact"
+            className="block text-center text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Vérifier mon éligibilité d&apos;abord
+          </Link>
+        )}
+      </div>
+    </motion.div>
+  )
+}
+
 export function ServicesContent() {
   const { data } = useContent('services', defaults)
   const hero = data.hero ?? defaults.hero
@@ -34,6 +158,14 @@ export function ServicesContent() {
   const funding = (data.funding ?? defaults.funding) as typeof defaults.funding
   const conditions = (data.conditions ?? defaults.conditions) as typeof defaults.conditions
   const cpfPack = (data.cpfPack ?? defaults.cpfPack) as typeof defaults.cpfPack
+
+  // Points de dépôt éditables depuis le back-office (/admin/deposits).
+  const { data: mapData } = useContent('mapPoints', { points: depositPoints })
+  const points = ((mapData.points as typeof depositPoints) ?? depositPoints).filter(Boolean)
+
+  // Zone partagée : pilotée par la carte (détection d'adresse) OU par le
+  // sélecteur manuel sur chaque carte de forfait. Les deux restent synchronisés.
+  const [zone, setZone] = useState<ZoneCode>('A')
 
   return (
     <>
@@ -45,6 +177,20 @@ export function ServicesContent() {
         compact
         backgroundImage={siteImages.servicesHero}
       />
+
+      {/* Carte interactive : adresse → point de dépôt le plus proche → zone */}
+      <section className="border-b border-border/60 bg-background">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <SectionTitle
+            eyebrow="Votre point de dépôt"
+            title="Trouvez le véhicule le plus proche de chez vous"
+            description="Saisissez votre adresse : la carte vous indique le point de stationnement le plus proche et votre zone tarifaire (A, B ou C). Les forfaits ci-dessous s'ajustent automatiquement."
+          />
+          <div className="mt-12">
+            <ZoneFinder points={points} onZoneDetected={(z) => setZone(z)} />
+          </div>
+        </div>
+      </section>
 
       {/* Pricing : 3 Packs avec 3 prix (zones A/B/C) */}
       <section className="border-b border-border/60 bg-background">
@@ -65,82 +211,15 @@ export function ServicesContent() {
             }}
             className="mt-14 grid gap-6 lg:grid-cols-3"
           >
-            {pricing.plans.map((plan, i) => {
-              const Icon = getIcon(plan.iconName ?? defaults.pricing.plans[i]?.iconName)
-              const popular = (plan as any).popular
-              return (
-                <motion.div
-                  key={plan.name}
-                  variants={{
-                    hidden: { opacity: 0, y: 24, scale: 0.97 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      transition: { duration: 0.55, ease },
-                    },
-                  }}
-                  className={`relative flex flex-col rounded-2xl border bg-card/70 p-6 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-md)] ${
-                    popular
-                      ? 'border-primary/60 ring-primary/30 shadow-[0_20px_50px_-20px_oklch(0.62_0.10_200/0.45)]'
-                      : 'border-border/80'
-                  }`}
-                >
-                  {popular && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow-[0_8px_20px_-8px_oklch(0.62_0.10_200/0.5)]">
-                      Populaire
-                    </span>
-                  )}
-                  <div className="flex items-center justify-between">
-                    <span className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
-                      <Icon className="size-5" aria-hidden />
-                    </span>
-                    {(plan as any).offer && (
-                      <span className="rounded-full bg-foreground/[0.06] px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
-                        {(plan as any).offer}
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="mt-4 font-display text-lg font-semibold text-foreground">
-                    {plan.name}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {plan.description}
-                  </p>
-
-                  {/* 3 prix par zone */}
-                  <div className="mt-5 grid grid-cols-3 gap-2 rounded-xl border border-border/60 bg-background/50 p-2">
-                    {(['A', 'B', 'C'] as ZoneCode[]).map((z) => (
-                      <div key={z} className="text-center">
-                        <div className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
-                          Zone {z}
-                        </div>
-                        <div className="mt-1 font-display text-lg font-semibold text-foreground">
-                          {(plan.prices as Record<ZoneCode, number>)[z]}€
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <ul className="mt-5 space-y-2.5">
-                    {plan.features.map((f: string) => (
-                      <li key={f} className="flex items-start gap-2 text-sm text-foreground/85">
-                        <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
-                          <Check className="size-3" aria-hidden />
-                        </span>
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 pt-2">
-                    <Button asChild className="w-full" variant={popular ? 'default' : 'outline'}>
-                      <Link href="/contact">Vérifier mon éligibilité</Link>
-                    </Button>
-                  </div>
-                </motion.div>
-              )
-            })}
+            {pricing.plans.map((plan, i) => (
+              <PlanCard
+                key={plan.name}
+                plan={plan}
+                fallback={defaults.pricing.plans[i]}
+                zone={zone}
+                onZoneChange={setZone}
+              />
+            ))}
           </motion.div>
 
           {/* Contact direct WhatsApp pour toute question sur un forfait */}
@@ -308,7 +387,7 @@ export function ServicesContent() {
             }}
             className="mt-14 grid gap-5 md:grid-cols-2"
           >
-            {depositPoints.map((p, i) => (
+            {points.map((p, i) => (
               <motion.div
                 key={p.name}
                 variants={{

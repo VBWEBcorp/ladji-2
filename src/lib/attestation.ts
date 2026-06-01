@@ -42,13 +42,13 @@ function formatDate(date = new Date()): string {
 }
 
 /**
- * Génère l'attestation nominative et la télécharge.
- * Retourne la référence et le nom de fichier produits.
+ * Construit le document PDF de l'attestation (sans le sauvegarder).
+ * Mutualisé entre le téléchargement et la génération base64 (envoi e-mail).
  */
-export async function downloadAttestation(
+async function renderAttestation(
   data: AttestationData,
-  reference = buildReference(),
-): Promise<{ reference: string; fileName: string }> {
+  reference: string,
+): Promise<{ doc: import('jspdf').jsPDF; fileName: string }> {
   const { jsPDF } = await import('jspdf')
   const doc = new jsPDF({ unit: 'pt', format: 'a4' })
 
@@ -182,7 +182,40 @@ export async function downloadAttestation(
   doc.text('Document généré automatiquement.', W - M, footY + 30, { align: 'right' })
 
   const fileName = `attestation-briefing-${data.lastName.trim().toLowerCase().replace(/\s+/g, '-') || 'accompagnateur'}.pdf`
-  doc.save(fileName)
 
+  return { doc, fileName }
+}
+
+/**
+ * Génère l'attestation nominative et la télécharge sur l'appareil.
+ * Retourne la référence et le nom de fichier produits.
+ */
+export async function downloadAttestation(
+  data: AttestationData,
+  reference = buildReference(),
+): Promise<{ reference: string; fileName: string }> {
+  const { doc, fileName } = await renderAttestation(data, reference)
+  doc.save(fileName)
   return { reference, fileName }
+}
+
+/**
+ * Génère l'attestation et la renvoie encodée en base64 (sans préfixe data URI).
+ * Sert à l'envoi en pièce jointe via l'API d'e-mail (workflow Resend).
+ */
+export async function generateAttestationBase64(
+  data: AttestationData,
+  reference = buildReference(),
+): Promise<{ reference: string; base64: string }> {
+  const { doc } = await renderAttestation(data, reference)
+  const buffer = doc.output('arraybuffer') as ArrayBuffer
+  const bytes = new Uint8Array(buffer)
+  let binary = ''
+  const chunk = 0x8000
+  for (let i = 0; i < bytes.length; i += chunk) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunk))
+  }
+  const base64 =
+    typeof btoa !== 'undefined' ? btoa(binary) : Buffer.from(bytes).toString('base64')
+  return { reference, base64 }
 }
