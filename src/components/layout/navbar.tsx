@@ -83,7 +83,7 @@ export function Navbar() {
             }}
           />
 
-          <div className="flex h-14 items-center justify-between gap-2 rounded-2xl bg-background/70 pl-3 pr-1.5 backdrop-blur-xl supports-[backdrop-filter]:bg-background/55 sm:pl-4">
+          <div className="flex h-14 items-center justify-between gap-2 rounded-2xl bg-white pl-3 pr-1.5 sm:pl-4">
             <Logo />
 
             <nav
@@ -170,7 +170,7 @@ export function Navbar() {
               {/* Burger mobile */}
               <button
                 type="button"
-                className="relative inline-flex size-8 items-center justify-center rounded-xl text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 lg:hidden"
+                className="relative inline-flex size-8 items-center justify-center rounded-xl text-gray-700 transition-colors hover:bg-black/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 lg:hidden"
                 aria-expanded={open}
                 aria-controls="mobile-nav"
                 aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
