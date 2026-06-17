@@ -12,7 +12,8 @@ import path from 'path'
 import { siteConfig } from '@/lib/seo'
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY || ''
-const MAIL_FROM = process.env.MAIL_FROM || `Auto Conduite <${siteConfig.email}>`
+const MAIL_FROM =
+  process.env.MAIL_FROM || process.env.RESEND_FROM || `Auto Conduite <${siteConfig.email}>`
 const MANAGER_EMAIL = process.env.MANAGER_EMAIL || siteConfig.email
 
 const GUIDE_FILENAME = 'Guide_Pedagogique_Accompagnateur_Auto_Conduite.pdf'
@@ -213,6 +214,63 @@ export async function sendAttestation(
       { filename: `attestation-briefing-${reference}.pdf`, content: attestationBase64 },
     ],
     replyTo: siteConfig.email,
+  })
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Formulaire de contact public                                               */
+/* -------------------------------------------------------------------------- */
+
+export interface ContactMessage {
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string
+  profile?: string
+  message: string
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
+/** Message du formulaire de contact → boîte gestionnaire (reply-to = visiteur). */
+export async function sendContactMessage(msg: ContactMessage): Promise<SendResult> {
+  const fullName = `${msg.firstName} ${msg.lastName}`.trim()
+  const rows: Array<[string, string]> = [
+    ['Nom', fullName],
+    ['Email', msg.email],
+    ['Téléphone', msg.phone || '—'],
+    ['Profil', msg.profile || '—'],
+  ]
+  const infoHtml = rows
+    .map(
+      ([label, value]) =>
+        `<li><strong>${label} :</strong> ${escapeHtml(value)}</li>`
+    )
+    .join('')
+  const body = `
+    <p style="font-size:14px;line-height:1.6;color:#4a5560;">
+      Nouveau message reçu via le formulaire de contact du site.
+    </p>
+    <ul style="font-size:14px;line-height:1.8;color:#4a5560;list-style:none;padding:0;">
+      ${infoHtml}
+    </ul>
+    <hr style="border:none;border-top:1px solid #e4ecee;margin:18px 0;">
+    <p style="font-size:13px;color:#8a97a3;margin:0 0 6px;">Message :</p>
+    <p style="font-size:14px;line-height:1.6;color:${INK};white-space:pre-wrap;">${escapeHtml(
+      msg.message
+    )}</p>
+  `
+  return sendEmail({
+    to: MANAGER_EMAIL,
+    subject: `Contact site — ${fullName || msg.email}`,
+    html: layout('Nouveau message de contact', body),
+    replyTo: msg.email,
   })
 }
 
