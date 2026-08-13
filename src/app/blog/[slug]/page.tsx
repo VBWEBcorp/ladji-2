@@ -101,11 +101,15 @@ export default async function BlogPostPage({ params }: { params: Params }) {
       keywords: post.tags?.join(', '),
     }
 
-    return (
+    // JSON-LD de PHARE s'il existe (stocké tel quel sur l'article), sinon celui
+  // généré ci-dessus. `</script>` échappé pour ne pas casser la balise.
+  const articleLd = ((post as any).jsonLd || JSON.stringify(jsonLd)).replace(/</g, '\\u003c')
+
+  return (
       <>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: articleLd }}
         />
         <BlogPostContent slug={slug} />
       </>

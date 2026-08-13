@@ -8,6 +8,11 @@ import { GallerySettings } from '@/models/Gallery'
 
 const baseUrl = siteConfig.url
 
+
+// Rendu à la demande : revalidatePath("/sitemap.xml") ne purge pas le cache des
+// routes de métadonnées (vérifié en production), un article déposé ou retiré par
+// PHARE n'y apparaîtrait — ou n'en sortirait — qu'au prochain build.
+export const dynamic = 'force-dynamic'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages: MetadataRoute.Sitemap = [
     {

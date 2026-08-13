@@ -13,6 +13,13 @@ export interface IBlogPost extends Document {
   publishedAt?: Date
   metaTitle?: string
   metaDescription?: string
+  // Champs alimentés par le webhook PHARE.
+  coverImageAlt?: string
+  markdown?: string
+  /** JSON-LD prêt à l'emploi, injecté tel quel par le gabarit d'article. */
+  jsonLd?: string
+  /** "phare" pour les articles déposés par le webhook, absent pour les autres. */
+  source?: string
   createdAt: Date
   updatedAt: Date
 }
@@ -41,6 +48,10 @@ const BlogPostSchema = new Schema<IBlogPost>(
     publishedAt: { type: Date },
     metaTitle: String,
     metaDescription: String,
+    coverImageAlt: { type: String, default: '' },
+    markdown: String,
+    jsonLd: String,
+    source: String,
   },
   { timestamps: true }
 )
