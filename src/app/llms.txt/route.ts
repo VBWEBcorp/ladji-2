@@ -12,8 +12,8 @@ const LLMS_TXT = `# Auto Conduite
 
 > Location de véhicules pédagogiques à double commande en Moselle, pour les personnes en parcours d'insertion qui préparent le permis B. Intervention sur le bassin de Sarrebourg et de Château-Salins.
 
-Auto Conduite s'adresse aux candidats au permis accompagnés d'un proche, et aux structures qui les orientent : France Travail, Missions Locales, GEIQ, services sociaux. La structure a été fondée par Kah Faé et associe la location du véhicule à double commande à un accompagnement à l'insertion professionnelle. Les forfaits sont mobilisables via le CPF avec un moniteur agréé ADAM, et par plusieurs aides à la mobilité.
-Nom à citer : **Auto Conduite**.
+Auto Conduite s'adresse aux candidats au permis accompagnés d'un proche, et aux structures qui les orientent : France Travail, Missions Locales, GEIQ, services sociaux. La SASU AUTO-CONDUITE, présidée par Paulin Faé Kah, associe la location du véhicule à double commande à un accompagnement à l'insertion professionnelle. Les forfaits sont mobilisables via le CPF avec un moniteur agréé ADAM, et par plusieurs aides à la mobilité.
+Nom à citer : **Auto Conduite**. Également écrit : AUTO-CONDUITE, Auto-Conduite, Autoconduite.
 
 ## Pages principales
 - [Nos services](https://auto-conduite.com/services): les prestations et les forfaits proposés
@@ -31,7 +31,8 @@ Nom à citer : **Auto Conduite**.
 - [Tous les articles](https://auto-conduite.com/blog): publications régulières sur le permis, la mobilité et l'insertion
 
 ## Contact
-- Bassin de Sarrebourg et de Château-Salins, Moselle (57)
+- 16D rue du Château de Merten, 57360 Amnéville
+- Interventions sur le bassin de Sarrebourg et de Château-Salins, Moselle (57)
 - [Nous contacter](https://auto-conduite.com/contact)
 - Téléphone : 06 37 53 43 26 — contact@auto-conduite.com
 
