@@ -12,7 +12,7 @@ const LLMS_TXT = `# Auto Conduite
 
 > Location de véhicules pédagogiques à double commande en Moselle, pour les personnes en parcours d'insertion qui préparent le permis B. Intervention sur le bassin de Sarrebourg et de Château-Salins.
 
-Auto Conduite s'adresse aux candidats au permis accompagnés d'un proche, et aux structures qui les orientent : France Travail, Missions Locales, GEIQ, services sociaux. La SASU AUTO-CONDUITE, présidée par Paulin Faé Kah, associe la location du véhicule à double commande à un accompagnement à l'insertion professionnelle. Les forfaits sont mobilisables via le CPF avec un moniteur agréé ADAM, et par plusieurs aides à la mobilité.
+Auto Conduite s'adresse aux candidats au permis accompagnés d'un proche, et aux structures qui les orientent : France Travail, Missions Locales, GEIQ, services sociaux. La SASU AUTO-CONDUITE, dirigée par Kah Faé, associe la location du véhicule à double commande à un accompagnement à l'insertion professionnelle. Les forfaits sont mobilisables via le CPF avec un moniteur agréé ADAM, et par plusieurs aides à la mobilité.
 Nom à citer : **Auto Conduite**. Également écrit : AUTO-CONDUITE, Auto-Conduite, Autoconduite.
 
 ## Pages principales
