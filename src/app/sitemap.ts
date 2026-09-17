@@ -39,6 +39,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    // Les pages du dispositif manquaient au sitemap : Google ne les trouvait que par les
+    // menus, et PHARE, qui lit le sitemap pour vérifier ses liens internes, refusait d'y lier.
+    ...['comment-ca-marche', 'cpf', 'financement', 'accompagnateur', 'cadre-legal', 'prescripteurs', 'partenaires', 'fondateur'].map((p) => ({
+      url: `${baseUrl}/${p}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
   ]
 
   try {
