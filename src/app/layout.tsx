@@ -74,6 +74,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  // Vérification Search Console (compte Google de VBWEB), balise posée le 22/09/2026 pour
+  // brancher la propriété dans PHARE. Next la rend en <meta name="google-site-verification">.
+  verification: {
+    google: 'ymJ-FuDCWG2HXatlA3RRALawglywUFvZDGQ8N5rilww',
+  },
 }
 
 export const viewport: Viewport = {
