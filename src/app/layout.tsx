@@ -67,10 +67,6 @@ export const metadata: Metadata = {
     'max-snippet': -1,
     'max-video-preview': -1,
   },
-  icons: {
-    icon: '/favicon.svg',
-    apple: '/apple-touch-icon.png',
-  },
   alternates: {
     canonical: '/',
   },

@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
         url,
         siteName: siteConfig.name,
         locale: siteConfig.locale,
-        images: post.coverImage ? [{ url: post.coverImage, width: 1200, height: 630, alt: title }] : [],
+        images: post.coverImage ? [{ url: post.coverImage, width: 1200, height: 630, alt: title }] : [{ url: siteConfig.ogImage }],
         publishedTime: post.publishedAt?.toISOString(),
         modifiedTime: post.updatedAt?.toISOString(),
         authors: post.author ? [post.author] : [],
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
         card: 'summary_large_image',
         title,
         description,
-        images: post.coverImage ? [post.coverImage] : [],
+        images: [post.coverImage || siteConfig.ogImage],
       },
       alternates: {
         canonical: `/blog/${post.slug}`,

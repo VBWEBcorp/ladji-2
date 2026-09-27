@@ -32,13 +32,13 @@ export async function generateMetadata(): Promise<Metadata> {
         url: `${siteConfig.url}/gallery`,
         siteName: siteConfig.name,
         locale: siteConfig.locale,
-        images: settings?.heroImage ? [{ url: settings.heroImage }] : [],
+        images: [{ url: settings?.heroImage || siteConfig.ogImage }],
       },
       twitter: {
         card: 'summary_large_image',
         title,
         description,
-        images: settings?.heroImage ? [settings.heroImage] : [],
+        images: [settings?.heroImage || siteConfig.ogImage],
       },
       alternates: {
         canonical: '/gallery',
