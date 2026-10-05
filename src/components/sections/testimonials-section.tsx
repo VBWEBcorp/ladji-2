@@ -157,7 +157,7 @@ export function TestimonialsSection() {
         </div>
       ) : (
         <div className="mx-auto mt-10 max-w-6xl px-4 pb-14 sm:px-6 lg:px-8 lg:pb-20">
-          <div className="flex flex-col items-stretch justify-center gap-6 md:flex-row">
+          <div className="flex flex-col items-stretch justify-center gap-6 md:flex-row md:items-center">
             {testimonials.map((t, i) => (
               <div key={`${t.name}-${i}`} className="w-full md:max-w-md">
                 <TestimonialCard testimonial={t} full />
