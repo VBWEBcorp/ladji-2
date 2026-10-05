@@ -144,6 +144,28 @@ export function ContactContent() {
                       {form.submitLabel}
                     </Button>
                   </form>
+
+                  <div className="mt-7 space-y-1.5 border-t border-border/50 pt-6 text-sm leading-relaxed text-muted-foreground">
+                    <p>
+                      Vous échangez directement avec M. Faé, fondateur d&apos;Auto Conduite.
+                      Réponse sous 24h ouvrées.
+                    </p>
+                    <p>
+                      <a
+                        href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`}
+                        className="font-medium text-foreground transition-colors hover:text-primary"
+                      >
+                        {siteConfig.phone}
+                      </a>{' '}
+                      (appel ou WhatsApp) ·{' '}
+                      <a
+                        href={`mailto:${siteConfig.email}`}
+                        className="font-medium text-foreground transition-colors hover:text-primary"
+                      >
+                        {siteConfig.email}
+                      </a>
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>

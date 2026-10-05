@@ -92,13 +92,13 @@ export const whyContent = {
     },
     {
       iconName: 'ShieldCheck',
-      title: 'Cadre légal L211-4',
-      desc: "Conduite supervisée ou accompagnée encadrée par le Code de la route. Assurance apprentissage incluse.",
+      title: 'Cadre légal',
+      desc: "Apprentissage de la conduite à titre non onéreux (art. R. 211-3 du Code de la route, arrêté du 16 juillet 2013). Assurance apprentissage incluse.",
     },
     {
       iconName: 'Users',
       title: 'Partenaires institutionnels',
-      desc: 'France Travail, Missions Locales, GEIQ, Département de la Moselle, ADAM, Région Grand Est.',
+      desc: 'Région Grand Est, GEIQ Alemploi, ADAM.',
     },
   ],
 }
@@ -113,7 +113,7 @@ export const storyContent = {
     },
     {
       title: 'Choisissez votre forfait',
-      desc: 'Pack 5h, 10h ou 20h finançable CPF, tarif ajusté selon votre zone (A, B ou C).',
+      desc: 'Pack 5h, 10h ou 20h. Option CPF via ADAM. Tarif ajusté selon votre zone (A, B ou C).',
     },
     {
       title: 'Récupérez le véhicule',
@@ -170,7 +170,7 @@ export const profilesContent = {
       iconName: 'Wallet',
       label: 'Titulaire CPF',
       title: "J'ai un CPF et je veux financer mon permis",
-      desc: "Formation à 1 450€ avec moniteur agréé ADAM. Le CPF couvre jusqu'à 900€, le reste est payable en 3 fois.",
+      desc: "Formation à 1 450 € dispensée par ADAM (moniteur agréé). Le CPF couvre jusqu'à 900€, le reste est payable en 3 fois.",
       pricing: '183€/mois',
       href: '/cpf',
       cta: 'Vérifier mon CPF',
@@ -235,15 +235,8 @@ export const founderContent = {
 export const partnersContent = {
   eyebrow: 'Partenaires institutionnels',
   title: 'Ils nous font confiance',
+  // Seuls les partenaires qui ont donné leur accord écrit (demande de M. Faé, 4 octobre 2026).
   items: [
-    {
-      name: 'France Travail',
-      logo: 'https://i.ibb.co/d0F4KXvL/France-travail-2023-svg.png',
-    },
-    {
-      name: 'Mission Locale',
-      logo: 'https://i.ibb.co/0RsZ1C9X/ml-logo-long-rvb.png',
-    },
     {
       name: 'Région Grand Est',
       logo: 'https://i.ibb.co/35NMns1v/grand-est-logo.jpg',
@@ -323,57 +316,24 @@ export const testimonialsContent = {
   eyebrow: 'Témoignages',
   title: 'Ils ont choisi Auto Conduite',
   description:
-    'Bénéficiaires, accompagnateurs, prescripteurs : ils témoignent de leur expérience.',
+    'Bénéficiaires, accompagnateurs : ils témoignent de leur expérience.',
+  // Uniquement des retours réels. `googleUrl` : avis publié sur la fiche Google
+  // (logo Google et lien affichés sur la carte) ; sans lui, simple témoignage.
   items: [
-    {
-      name: 'Yassine K.',
-      company: 'Bénéficiaire · Sarrebourg',
-      text: "Sans Auto Conduite je n'aurais jamais pu m'entraîner autant. Le tarif est abordable et le cadre est rassurant.",
-      stars: 5,
-    },
-    {
-      name: 'Marie D.',
-      company: 'Accompagnatrice proche',
-      text: "J'accompagne mon fils chaque week-end. Le véhicule à double commande me donne confiance, je sais que je peux reprendre la main si besoin.",
-      stars: 5,
-    },
-    {
-      name: 'Thomas L.',
-      company: 'Bénéficiaire · Demandeur d\'emploi',
-      text: "Sans permis, pas d'embauche dans ma zone. Avec l'aide mobilité France Travail et Auto Conduite, j'ai enfin pu passer le cap.",
-      stars: 5,
-    },
-    {
-      name: 'Camille B.',
-      company: 'Bénéficiaire · Jeune Mission Locale',
-      text: "Ma conseillère m'a orienté vers Auto Conduite. Tout s'est fait en ligne, c'était simple et rapide.",
-      stars: 5,
-    },
     {
       name: 'Laurent M.',
       company: 'Père accompagnateur',
-      text: 'On peut louer à la séance, à la journée, au pack. Très flexible et bien expliqué dès le départ.',
+      text: 'Très flexible et bien expliqué dès le départ.',
       stars: 5,
     },
     {
-      name: 'Sophie R.',
-      company: 'Conseillère Mission Locale Sud Mosellan',
-      text: "Un dispositif idéal pour nos jeunes en parcours d'insertion. Le coût réduit et le cadre légal sont de vrais atouts.",
+      name: 'Bangaly S.',
+      company: 'Candidat libre · Avis Google, septembre 2026',
+      text: "J'ai préparé mon permis avec Auto Conduite au lieu d'une auto-école classique, et je ne regrette pas. Le véhicule à double commande m'a permis de m'entraîner en confiance, avec un de mes proches. Séances de 2h nickel. Résultat : permis obtenu ! Je recommande à tous ceux qui veulent une alternative sérieuse à l'auto-école.",
       stars: 5,
+      googleUrl: 'https://share.google/48NKR7Mz0yb3oN6lh',
     },
-    {
-      name: 'Pierre V.',
-      company: 'Bénéficiaire RSA',
-      text: "Avec l'ADIE et le CPF, j'ai pu boucler le financement de mon Pack 20h. Le bilan IA après chaque séance m'aide à progresser.",
-      stars: 5,
-    },
-    {
-      name: 'Julie A.',
-      company: 'Bénéficiaire · Conduite accompagnée',
-      text: 'Avec mon père on a roulé partout dans la région. Le forfait à la semaine est vraiment avantageux.',
-      stars: 5,
-    },
-  ],
+  ] as { name: string; company: string; text: string; stars: number; googleUrl?: string }[],
 }
 
 export const galleryContent = {
@@ -415,7 +375,7 @@ export const faqContent = {
     {
       question: 'Où récupérer le véhicule ?',
       answer:
-        "Aux points de dépôt du bassin Sarrebourg / Château-Salins : Parking Leclerc Sarrebourg (24/7), Gare de Sarrebourg, France Travail Sarrebourg, Intermarché Château-Salins (24/7).",
+        "Aux points de dépôt du bassin Sarrebourg / Château-Salins : à Sarrebourg, à proximité de la gare SNCF ; à Château-Salins, gare routière (Place du Ruisseau Salé / 11 rue de la Verrerie), rue de Strasbourg, parking du gymnase municipal, parking de la Maison du Département.",
     },
   ],
 }
@@ -443,7 +403,7 @@ export const aboutContent = {
       iconName: 'ShieldCheck',
       title: 'Sécurité & cadre légal',
       description:
-        "Véhicule pédagogique à double commande, assurance apprentissage incluse, dispositif conforme aux articles L211-4 et R211-3 du Code de la route (conduite accompagnée / supervisée). Service réservé aux majeurs (18 ans minimum).",
+        "Véhicule pédagogique à double commande, assurance apprentissage incluse. Apprentissage de la conduite à titre non onéreux (art. R. 211-3 du Code de la route, arrêté du 16 juillet 2013). Service réservé aux majeurs (18 ans minimum).",
     },
     {
       iconName: 'Users',
@@ -455,7 +415,7 @@ export const aboutContent = {
   legal: [
     {
       iconName: 'Scale',
-      title: 'Articles L211-4 et R211-3 : un cadre clair',
+      title: 'Art. R. 211-3 et arrêté du 16 juillet 2013 : un cadre clair',
       paragraphs: [
         "La conduite accompagnée (AAC) et la conduite supervisée sont des dispositifs encadrés par le Code de la route. Le bénéficiaire doit avoir obtenu son NEPH, son code, et validé au minimum 20h de conduite en auto-école.",
         "L'accompagnateur proche doit être titulaire du permis B depuis au moins 5 ans, sans annulation ni suspension en cours, et sobre pendant toute la séance.",
@@ -517,44 +477,24 @@ export const zones = [
   },
 ]
 
-// Points de dépôt officiels (bassin Sarrebourg / Château-Salins).
-// lat/lng = coordonnées APPROXIMATIVES (niveau ville/quartier), suffisantes pour
-// le calcul de zone (seuils 15/35 km). À affiner depuis le back-office si besoin.
+// Points de dépôt (liste de M. Faé, 4 octobre 2026). lat/lng servent au calcul
+// de zone (seuils 15/35 km) : gare SNCF de Sarrebourg et gare routière de
+// Château-Salins (place du Ruisseau Salé). `hours` vide = ligne non affichée.
 export const depositPoints = [
   {
-    name: 'Parking Leclerc Sarrebourg',
-    address: 'Sarrebourg (57400)',
-    hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
-    lat: 48.7245,
-    lng: 7.084,
+    name: 'Sarrebourg',
+    address: 'À proximité de la gare SNCF',
+    hours: '',
+    lat: 48.7381,
+    lng: 7.0531,
   },
   {
-    name: 'Parking Gare de Sarrebourg',
-    address: 'Gare SNCF, Sarrebourg',
-    hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
-    lat: 48.7385,
-    lng: 7.0598,
-  },
-  {
-    name: 'France Travail Sarrebourg',
-    address: 'ZAC les Terrasses de la Sarre',
-    hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
-    lat: 48.7185,
-    lng: 7.044,
-  },
-  {
-    name: 'Parking Intermarché Château-Salins',
-    address: 'Château-Salins (57170)',
-    hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
-    lat: 48.8225,
-    lng: 6.517,
-  },
-  {
-    name: 'Mission Locale Sud Mosellan',
-    address: 'Sarrebourg (à confirmer)',
-    hours: 'Accès 24h/24 · 7j/7 · parking ouvert',
-    lat: 48.7361,
-    lng: 7.0553,
+    name: 'Château-Salins',
+    address:
+      'Gare routière, Place du Ruisseau Salé / 11 rue de la Verrerie, rue de Strasbourg, parking du gymnase municipal, parking de la Maison du Département',
+    hours: '',
+    lat: 48.8213,
+    lng: 6.5054,
   },
 ]
 
@@ -587,12 +527,14 @@ export const servicesContent = {
           'Assurance apprentissage incluse',
           '1h offerte sur le pack',
           'Kilométrage illimité',
+          'Validité 1 mois · Payable en 3 fois',
         ],
       },
       {
         iconName: 'Calendar',
         name: 'Pack 10h',
-        offer: 'Le plus populaire',
+        // Pack mis en avant (popular) : la mention s'affiche en badge au-dessus de la carte.
+        offer: 'Pour un entraînement régulier',
         prices: { A: 329, B: 344, C: 359 },
         stripeUrls: {
           A: 'https://buy.stripe.com/00w7sO0nw34D5Cg94ceQM03',
@@ -604,7 +546,7 @@ export const servicesContent = {
           'Véhicule pédagogique à double commande',
           'Assurance apprentissage incluse',
           'Validité 3 mois',
-          'Créneaux prioritaires',
+          'Payable en 3 fois',
         ],
         popular: true,
       },
@@ -624,9 +566,18 @@ export const servicesContent = {
           'Assurance apprentissage incluse',
           'Pratique avec accompagnateur proche',
           'Idéal préparation examen',
+          'Validité 3 mois · Payable en 3 fois',
         ],
       },
     ],
+    goodToKnow: {
+      title: 'Bon à savoir',
+      items: [
+        'Véhicule à boîte automatique, séances par blocs de 2h.',
+        "Accès 24h/24, 7j/7 : code d'ouverture envoyé par SMS. Le véhicule doit être rendu au même emplacement.",
+        'Les heures non utilisées à la fin de la validité ne sont pas reportées, sauf justificatif valable (par exemple un certificat médical).',
+      ],
+    },
   },
   // Pack 20h CPF séparé (cf. brief Ouibo : moniteur agréé ADAM, 1450€, reste à charge 550€ = 183€/mois)
   cpfPack: {
@@ -640,7 +591,7 @@ export const servicesContent = {
     monthly: 183,
     operator: 'ADAM',
     description:
-      "Formation officielle avec moniteur agréé, finançable via votre Compte Personnel de Formation. Le CPF couvre jusqu'à 900€, le reste à charge de 550€ est payable en 3 fois sans frais.",
+      "Formation officielle dispensée par ADAM (moniteur agréé), finançable via votre Compte Personnel de Formation. Le CPF couvre jusqu'à 900€, le reste à charge de 550€ est payable en 3 fois sans frais.",
     features: [
       'Moniteur agréé ADAM',
       'Formation officielle reconnue',
@@ -661,6 +612,8 @@ export const servicesContent = {
     title: 'Où récupérer le véhicule',
     description:
       'Bassin Sarrebourg / Château-Salins. D\'autres points de dépôt arriveront progressivement sur le département.',
+    note:
+      'Indiquez votre zone à la réservation : le véhicule le plus proche vous est attribué et sa localisation exacte vous est envoyée à la confirmation.',
   },
   funding: {
     eyebrow: 'Financements',
@@ -702,10 +655,11 @@ export const servicesContent = {
         iconName: 'GraduationCap',
         title: "Pour le bénéficiaire",
         items: [
-          'Avoir obtenu le code de la route (NEPH validé)',
-          'Avoir validé 20h minimum en auto-école',
-          'Être inscrit en conduite accompagnée (AAC) ou supervisée',
-          'Fournir l\'attestation de fin de formation initiale',
+          'Être majeur (18 ans minimum)',
+          'Avoir un numéro NEPH',
+          'Avoir obtenu le code de la route',
+          "Élève d'auto-école : avoir fait au moins 20h de conduite en auto-école (attestation sur l'honneur)",
+          "Candidat libre : aucun minimum d'heures demandé",
         ],
       },
       {
@@ -925,17 +879,17 @@ export const prescriberContent = {
     {
       iconName: 'UserCheck',
       title: 'Orientation rapide',
-      desc: "Formulaire en ligne de 5 champs max. Réponse de M. Faé sous 24h. Pas de paperasse côté prescripteur.",
+      desc: 'Formulaire de 5 champs. Réponse de M. Faé sous 24h ouvrées. Première séance possible sous 48 à 72h après validation du dossier.',
     },
     {
       iconName: 'ShieldCheck',
       title: 'Conformité légale',
-      desc: 'Dispositif conforme aux articles L211-4 et R211-3 du Code de la route (conduite accompagnée/supervisée). Véhicule pédagogique à double commande, assurance apprentissage incluse. Service réservé aux majeurs.',
+      desc: 'Apprentissage de la conduite à titre non onéreux (art. R. 211-3 du Code de la route, arrêté du 16 juillet 2013). Véhicule à double commande, assurance apprentissage incluse. Service réservé aux majeurs.',
     },
     {
       iconName: 'BarChart3',
-      title: 'Reporting anonymisé',
-      desc: "Espace prescripteur sécurisé (à venir) : rapports anonymisés mensuels sur les parcours des bénéficiaires que vous avez orientés.",
+      title: 'Suivi sur demande',
+      desc: "Contactez M. Faé à tout moment pour connaître la situation d'un bénéficiaire orienté. Un suivi régulier est en préparation.",
     },
     {
       iconName: 'FileText',
@@ -961,13 +915,6 @@ export const prescriberContent = {
       { name: 'beneficiary_profile', label: 'Profil / contexte', placeholder: 'DE / RSA / jeune / autre + besoin (Pack 5h, 10h, 20h)', type: 'textarea' },
     ],
     submitLabel: 'Envoyer la demande',
-  },
-  // Espace prescripteur (cf. §3.5 + §8.2, à venir)
-  space: {
-    title: 'Espace prescripteur sécurisé',
-    description:
-      "Bientôt disponible : un espace connecté avec suivi des bénéficiaires orientés (données anonymisées), rapport mensuel d'impact automatique, téléchargement des fiches synthétiques.",
-    status: 'À venir',
   },
   // Clauses sociales (cf. §3.5, section dédiée)
   clauses: {

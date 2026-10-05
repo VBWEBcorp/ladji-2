@@ -37,7 +37,8 @@ function withIds(list: any[]): EditablePoint[] {
       id: p.id || newId(),
       name: p.name || '',
       address: p.address || '',
-      hours: p.hours || DEFAULT_HOURS,
+      // Vide = pas de ligne horaires sur le site : on ne la remplit pas d'office.
+      hours: p.hours ?? DEFAULT_HOURS,
       lat: Number(p.lat),
       lng: Number(p.lng),
     }))
@@ -307,7 +308,7 @@ export default function AdminDepositsPage() {
                       id={`name-${p.id}`}
                       value={p.name}
                       onChange={(e) => update(p.id, 'name', e.target.value)}
-                      placeholder="Parking Leclerc Sarrebourg"
+                      placeholder="Sarrebourg"
                       className="h-9"
                     />
                   </div>

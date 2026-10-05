@@ -1,6 +1,6 @@
 'use client'
 
-import { Star } from 'lucide-react'
+import { ExternalLink, Star } from 'lucide-react'
 
 import { SectionTitle } from '@/components/ui/section-title'
 import { useContent } from '@/hooks/use-content'
@@ -12,6 +12,12 @@ const defaults = {
   description: testimonialsContent.description,
   testimonials: testimonialsContent.items,
 }
+
+type Testimonial = (typeof testimonialsContent.items)[number]
+
+// En dessous de ce nombre, un défilement en boucle laisserait des trous :
+// les cartes sont posées côte à côte, texte en entier.
+const MARQUEE_MIN = 4
 
 function GoogleLogo() {
   return (
@@ -26,13 +32,20 @@ function GoogleLogo() {
 
 function TestimonialCard({
   testimonial,
+  full = false,
 }: {
-  testimonial: { name: string; company: string; text: string; stars: number }
+  testimonial: Testimonial
+  /** Carte posée (pas de défilement) : hauteur libre, texte et légende en entier. */
+  full?: boolean
 }) {
   return (
-    <figure className="flex h-[200px] w-[300px] shrink-0 flex-col overflow-hidden rounded-xl border border-border/60 bg-card/80 px-5 py-4 shadow-[var(--shadow-xs)] ring-1 ring-foreground/[0.03] backdrop-blur-sm">
+    <figure
+      className={`flex flex-col overflow-hidden rounded-xl border border-border/60 bg-card/80 px-5 py-4 shadow-[var(--shadow-xs)] ring-1 ring-foreground/[0.03] backdrop-blur-sm ${
+        full ? 'h-full w-full' : 'h-[200px] w-[300px] shrink-0'
+      }`}
+    >
       <div className="flex items-center justify-between shrink-0">
-        <div className="flex items-center gap-0.5">
+        <div className="flex items-center gap-0.5" role="img" aria-label={`${testimonial.stars} étoiles sur 5`}>
           {Array.from({ length: 5 }).map((_, i) => (
             <Star
               key={i}
@@ -41,10 +54,10 @@ function TestimonialCard({
             />
           ))}
         </div>
-        <GoogleLogo />
+        {testimonial.googleUrl && <GoogleLogo />}
       </div>
-      <blockquote className="mt-3 flex-1 min-h-0 overflow-hidden">
-        <p className="line-clamp-4 text-[13px] leading-relaxed text-foreground/85">
+      <blockquote className={`mt-3 flex-1 ${full ? '' : 'min-h-0 overflow-hidden'}`}>
+        <p className={`text-[13px] leading-relaxed text-foreground/85 ${full ? '' : 'line-clamp-4'}`}>
           &ldquo;{testimonial.text}&rdquo;
         </p>
       </blockquote>
@@ -53,9 +66,20 @@ function TestimonialCard({
           {testimonial.name.charAt(0)}
         </div>
         <div className="min-w-0 flex-1">
-          <p className="truncate text-xs font-semibold text-foreground">{testimonial.name}</p>
-          <p className="truncate text-[11px] text-muted-foreground">{testimonial.company}</p>
+          <p className={`text-xs font-semibold text-foreground ${full ? '' : 'truncate'}`}>{testimonial.name}</p>
+          <p className={`text-[11px] text-muted-foreground ${full ? '' : 'truncate'}`}>{testimonial.company}</p>
         </div>
+        {testimonial.googleUrl && (
+          <a
+            href={testimonial.googleUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex shrink-0 items-center gap-1 text-[11px] font-medium text-primary transition-colors hover:text-primary/80"
+          >
+            Voir sur Google
+            <ExternalLink className="size-3" aria-hidden />
+          </a>
+        )}
       </figcaption>
     </figure>
   )
@@ -65,7 +89,7 @@ function MarqueeRow({
   items,
   direction,
 }: {
-  items: { name: string; company: string; text: string; stars: number }[]
+  items: Testimonial[]
   direction: 'left' | 'right'
 }) {
   const animationClass = direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'
@@ -90,7 +114,8 @@ function MarqueeRow({
 
 export function TestimonialsSection() {
   const { data } = useContent('testimonials', defaults)
-  const testimonials = data.testimonials ?? defaults.testimonials
+  const testimonials: Testimonial[] = data.testimonials ?? defaults.testimonials
+  const marquee = testimonials.length >= MARQUEE_MIN
 
   const mid = Math.ceil(testimonials.length / 2)
   const topRow = testimonials.slice(0, mid)
@@ -122,17 +147,25 @@ export function TestimonialsSection() {
             title={data.title ?? defaults.title}
             description={data.description ?? defaults.description}
           />
-          <p className="mx-auto mt-4 max-w-2xl text-center text-xs italic leading-relaxed text-muted-foreground/85">
-            Témoignages d&rsquo;illustration : les premiers retours de bénéficiaires
-            alimenteront cette section progressivement.
-          </p>
         </div>
       </div>
 
-      <div className="mt-10 space-y-6 pb-14 lg:pb-20">
-        <MarqueeRow items={topRow} direction="left" />
-        {bottomRow.length > 0 && <MarqueeRow items={bottomRow} direction="right" />}
-      </div>
+      {marquee ? (
+        <div className="mt-10 space-y-6 pb-14 lg:pb-20">
+          <MarqueeRow items={topRow} direction="left" />
+          {bottomRow.length > 0 && <MarqueeRow items={bottomRow} direction="right" />}
+        </div>
+      ) : (
+        <div className="mx-auto mt-10 max-w-6xl px-4 pb-14 sm:px-6 lg:px-8 lg:pb-20">
+          <div className="flex flex-col items-stretch justify-center gap-6 md:flex-row">
+            {testimonials.map((t, i) => (
+              <div key={`${t.name}-${i}`} className="w-full md:max-w-md">
+                <TestimonialCard testimonial={t} full />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   )
 }

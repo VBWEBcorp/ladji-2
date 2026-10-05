@@ -54,12 +54,12 @@ export default function LegalFrameworkPage() {
             <section className="space-y-3">
               <h2>1. Les textes de référence</h2>
               <p>
-                L&apos;apprentissage de la conduite est encadré par le Code de la route,
-                en particulier les articles <strong>L211-4</strong> et <strong>R211-3</strong>,
-                qui définissent les conditions de la conduite accompagnée et supervisée
-                (rôle de l&apos;accompagnateur, véhicule, assurance). Ces textes définissent
-                les conditions, les acteurs et les responsabilités liées à la formation
-                à la conduite.
+                L&apos;apprentissage de la conduite à titre non onéreux est encadré par
+                l&apos;<strong>article R. 211-3 du Code de la route</strong> et par
+                l&apos;<strong>arrêté du 16 juillet 2013</strong>, qui définissent les
+                conditions de cet apprentissage (rôle de l&apos;accompagnateur, véhicule,
+                assurance). Ces textes définissent les conditions, les acteurs et les
+                responsabilités liées à la formation à la conduite.
               </p>
               <p className="rounded-xl border border-primary/20 bg-primary/[0.04] p-3 text-foreground">
                 <strong>Service réservé aux majeurs.</strong> L&apos;accès au dispositif
@@ -67,9 +67,7 @@ export default function LegalFrameworkPage() {
               </p>
               <p>
                 À ces textes s&apos;ajoute l&apos;arrêté du 22 décembre 2009 relatif à
-                l&apos;apprentissage dans un établissement agréé, et l&apos;arrêté du 16 juillet
-                2013 portant sur l&apos;apprentissage à titre non onéreux (qui encadre
-                la conduite supervisée et accompagnée).
+                l&apos;apprentissage dans un établissement agréé.
               </p>
             </section>
 

@@ -61,12 +61,6 @@ export default function AdminPrescribersPage() {
             />
           </SectionEditor>
 
-          <SectionEditor title="Espace prescripteur (à venir)">
-            <FieldEditor label="Titre" value={content.space?.title} onChange={(v) => update('space.title', v)} />
-            <FieldEditor label="Description" value={content.space?.description} onChange={(v) => update('space.description', v)} type="textarea" />
-            <FieldEditor label="Statut (badge)" value={content.space?.status} onChange={(v) => update('space.status', v)} />
-          </SectionEditor>
-
           <SectionEditor title="Clauses sociales">
             <FieldEditor label="Titre" value={content.clauses?.title} onChange={(v) => update('clauses.title', v)} />
             <StringListEditor

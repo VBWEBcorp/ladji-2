@@ -1,7 +1,7 @@
 'use client'
 
 import { PageEditor } from '@/components/admin/page-editor'
-import { FieldEditor, SectionEditor } from '@/components/admin/field-editor'
+import { FieldEditor, SectionEditor, StringListEditor } from '@/components/admin/field-editor'
 import { Button } from '@/components/ui/button'
 import { Plus, Trash2 } from 'lucide-react'
 import { servicesContent } from '@/lib/site-content'
@@ -69,7 +69,7 @@ export default function AdminServicesPage() {
                     />
                   </div>
                   <FieldEditor
-                    label="Mention (ex : '6h avec 1h offerte')"
+                    label={plan.popular ? 'Badge du pack mis en avant (ex : Pour un entraînement régulier)' : "Mention (ex : '6h avec 1h offerte')"}
                     value={plan.offer ?? ''}
                     onChange={(v) => {
                       const list = [...(content.pricing.plans ?? [])]
@@ -173,6 +173,17 @@ export default function AdminServicesPage() {
                 </div>
               ))}
             </div>
+          </SectionEditor>
+
+          <SectionEditor title="Bon à savoir (sous les forfaits)">
+            <FieldEditor label="Titre" value={content.pricing?.goodToKnow?.title} onChange={(v) => update('pricing.goodToKnow.title', v)} />
+            <StringListEditor
+              label="Points"
+              addLabel="Ajouter un point"
+              type="textarea"
+              items={content.pricing?.goodToKnow?.items ?? []}
+              onChange={(v) => update('pricing.goodToKnow.items', v)}
+            />
           </SectionEditor>
 
           <SectionEditor title="Pack 20h CPF (option ADAM)">

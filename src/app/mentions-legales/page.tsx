@@ -151,8 +151,9 @@ export default function LegalPage() {
                 mobilité solidaire basé en Moselle. Auto Conduite met à disposition
                 des véhicules pédagogiques à double commande pour les personnes en
                 parcours d&apos;insertion engagées dans la conduite supervisée ou
-                accompagnée, dans le cadre des articles L211-4 et R211-3 du Code
-                de la route.
+                accompagnée, dans le cadre de l&apos;apprentissage de la conduite à
+                titre non onéreux (art. R. 211-3 du Code de la route, arrêté du
+                16 juillet 2013).
               </p>
               <p>
                 Auto Conduite n&apos;est pas une auto-école et n&apos;intervient

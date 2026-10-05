@@ -21,7 +21,6 @@ export function PrescriberContent() {
   const hero = data.hero ?? defaults.hero
   const benefits = (data.benefits ?? defaults.benefits) as typeof defaults.benefits
   const form = (data.form ?? defaults.form) as typeof defaults.form
-  const space = (data.space ?? defaults.space) as typeof defaults.space
   const clauses = (data.clauses ?? defaults.clauses) as typeof defaults.clauses
   const contact = (data.contact ?? defaults.contact) as typeof defaults.contact
 
@@ -131,7 +130,7 @@ export function PrescriberContent() {
                 {
                   step: '03',
                   title: 'Vous recevez le suivi',
-                  desc: 'Confirmation de la prise en charge, statut du dossier, et reporting anonymisé mensuel (à venir).',
+                  desc: "Confirmation de la prise en charge, puis point d'étape sur simple demande.",
                 },
               ].map((item) => (
                 <motion.li
@@ -244,21 +243,6 @@ export function PrescriberContent() {
                     </a>
                   </li>
                 </ul>
-              </div>
-
-              {/* Espace prescripteur (à venir) */}
-              <div className="rounded-3xl border border-border/80 bg-card/70 p-7 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5">
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-display text-base font-semibold tracking-tight text-foreground">
-                    {space.title}
-                  </h3>
-                  <span className="rounded-full bg-amber-500/10 px-2.5 py-1 text-[11px] font-semibold text-amber-600 ring-1 ring-amber-500/20 dark:bg-amber-500/15 dark:text-amber-300">
-                    {space.status}
-                  </span>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {space.description}
-                </p>
               </div>
             </motion.aside>
           </div>

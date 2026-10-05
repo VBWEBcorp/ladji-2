@@ -4,7 +4,7 @@ import { ContactContent } from './contact-content'
 import { breadcrumbJsonLd, webPageJsonLd } from '@/components/seo/json-ld'
 
 const description =
-  'Contactez-nous pour discuter de votre projet. Devis gratuit, réponse rapide.'
+  'Contactez Auto Conduite : éligibilité, forfaits, orientation de bénéficiaires. Réponse sous 24h ouvrées.'
 
 export const metadata: Metadata = {
   title: 'Contact',

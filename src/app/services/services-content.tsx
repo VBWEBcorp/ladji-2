@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Check, ExternalLink, MapPin } from 'lucide-react'
+import { ArrowUpRight, Check, ExternalLink, Info, MapPin } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -48,6 +48,8 @@ function PlanCard({
 }) {
   const Icon = getIcon(plan.iconName ?? fallback?.iconName)
   const popular = (plan as any).popular
+  // Pack mis en avant : sa mention passe en badge au-dessus de la carte.
+  const offer: string | undefined = (plan as any).offer
   const prices = plan.prices as Record<ZoneCode, number>
   const stripeUrls = ((plan as any).stripeUrls ?? (fallback as any)?.stripeUrls) as
     | Record<ZoneCode, string>
@@ -66,18 +68,18 @@ function PlanCard({
           : 'border-border/80'
       }`}
     >
-      {popular && (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow-[0_8px_20px_-8px_oklch(0.62_0.10_200/0.5)]">
-          Populaire
+      {popular && offer && (
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow-[0_8px_20px_-8px_oklch(0.62_0.10_200/0.5)]">
+          {offer}
         </span>
       )}
       <div className="flex items-center justify-between">
         <span className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
           <Icon className="size-5" aria-hidden />
         </span>
-        {(plan as any).offer && (
+        {!popular && offer && (
           <span className="rounded-full bg-foreground/[0.06] px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
-            {(plan as any).offer}
+            {offer}
           </span>
         )}
       </div>
@@ -153,6 +155,7 @@ export function ServicesContent() {
   const { data } = useContent('services', defaults)
   const hero = data.hero ?? defaults.hero
   const pricing = (data.pricing ?? defaults.pricing) as typeof defaults.pricing
+  const goodToKnow = pricing.goodToKnow ?? defaults.pricing.goodToKnow
   const zonesSection = (data.zones ?? defaults.zones) as typeof defaults.zones
   const deposits = (data.deposits ?? defaults.deposits) as typeof defaults.deposits
   const funding = (data.funding ?? defaults.funding) as typeof defaults.funding
@@ -221,6 +224,34 @@ export function ServicesContent() {
               />
             ))}
           </motion.div>
+
+          {/* Bon à savoir : conditions communes à tous les packs */}
+          {!!goodToKnow?.items?.length && (
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, ease }}
+              className="mx-auto mt-12 max-w-3xl rounded-2xl border border-border/80 bg-card/70 p-6 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 sm:p-8"
+            >
+              <h3 className="flex items-center gap-2.5 font-display text-base font-semibold text-foreground">
+                <span className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/15">
+                  <Info className="size-4" aria-hidden />
+                </span>
+                {goodToKnow.title}
+              </h3>
+              <ul className="mt-5 space-y-3">
+                {goodToKnow.items.map((item: string) => (
+                  <li key={item} className="flex items-start gap-2 text-sm leading-relaxed text-foreground/85">
+                    <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+                      <Check className="size-3" aria-hidden />
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
 
           {/* Contact direct WhatsApp pour toute question sur un forfait */}
           <div className="mt-12 flex flex-col items-center gap-3 text-center">
@@ -433,16 +464,24 @@ export function ServicesContent() {
                       {p.address}
                     </p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/50 ring-2 ring-primary/15" aria-hidden />
-                    <p className="text-sm font-medium leading-relaxed text-foreground/85">
-                      {p.hours}
-                    </p>
-                  </div>
+                  {p.hours && (
+                    <div className="flex items-start gap-3">
+                      <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/50 ring-2 ring-primary/15" aria-hidden />
+                      <p className="text-sm font-medium leading-relaxed text-foreground/85">
+                        {p.hours}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
           </motion.div>
+          {deposits.note && (
+            <p className="mx-auto mt-10 flex max-w-3xl items-start gap-3 rounded-2xl border border-primary/25 bg-primary/[0.04] px-5 py-4 text-sm leading-relaxed text-foreground/85 ring-1 ring-primary/10">
+              <Info className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
+              <span>{deposits.note}</span>
+            </p>
+          )}
         </div>
       </section>
 

@@ -145,13 +145,29 @@ export function Footer() {
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} {siteConfig.name}. Tous droits réservés.
           </p>
-          <div className="flex items-center gap-5 text-xs text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-xs text-muted-foreground">
             <Link href="/mentions-legales" className="transition-colors hover:text-foreground">
               Mentions légales
             </Link>
             <Link href="/politique-de-confidentialite" className="transition-colors hover:text-foreground">
               Confidentialité
             </Link>
+            <a
+              href="https://ouibo.fr"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
+            >
+              Site réalisé par
+              <img
+                src="/realise-par-ouibo.png"
+                alt="Ouibo"
+                width={68}
+                height={16}
+                loading="lazy"
+                className="h-4 w-auto"
+              />
+            </a>
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@ export default function AdminTestimonialsPage() {
           </SectionEditor>
 
           <SectionEditor title="Liste des témoignages">
-            {(content.testimonials ?? []).map((t: { name: string; company: string; text: string; stars: number }, i: number) => (
+            {(content.testimonials ?? []).map((t: { name: string; company: string; text: string; stars: number; googleUrl?: string }, i: number) => (
               <div key={i} className="p-4 border border-border/30 rounded-lg space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-muted-foreground font-medium">Témoignage {i + 1}</span>
@@ -75,6 +75,17 @@ export default function AdminTestimonialsPage() {
                   onChange={(v) => {
                     const items = [...(content.testimonials ?? [])]
                     items[i] = { ...items[i], stars: Math.min(5, Math.max(1, parseInt(v) || 5)) }
+                    update('testimonials', items)
+                  }}
+                />
+                <FieldEditor
+                  label="Lien de l'avis Google (laisser vide si ce n'est pas un avis Google)"
+                  value={t.googleUrl ?? ''}
+                  type="url"
+                  placeholder="https://share.google/…"
+                  onChange={(v) => {
+                    const items = [...(content.testimonials ?? [])]
+                    items[i] = { ...items[i], googleUrl: v.trim() || undefined }
                     update('testimonials', items)
                   }}
                 />
