@@ -21,7 +21,7 @@ function PartnerCard({ partner }: { partner: PartnerItem }) {
           className="max-h-12 w-auto max-w-full object-contain opacity-70 grayscale transition-[filter,opacity] duration-700 ease-out group-hover:opacity-100 group-hover:grayscale-0 sm:max-h-14"
         />
       ) : (
-        <span className="font-display text-sm font-semibold tracking-tight text-muted-foreground/70 transition-colors duration-700 ease-out group-hover:text-foreground sm:text-base">
+        <span className="font-display text-xl font-bold tracking-wide text-foreground/80 transition-colors duration-700 ease-out group-hover:text-foreground sm:text-2xl">
           {partner.name}
         </span>
       )}
