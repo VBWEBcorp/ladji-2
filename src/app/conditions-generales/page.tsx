@@ -42,7 +42,7 @@ export default function CGUPage() {
             Conditions générales d&apos;utilisation et de service
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Dernière mise à jour : <span className="text-foreground">mai 2026</span>
+            Dernière mise à jour : <span className="text-foreground">octobre 2026</span>
           </p>
           <p className="mt-3 text-sm text-muted-foreground">
             Les présentes conditions encadrent à la fois l&apos;utilisation du site{' '}
@@ -61,13 +61,13 @@ export default function CGUPage() {
                 (ci-après les « CGU ») définissent les règles d&apos;accès au site et
                 les conditions du dispositif {siteConfig.name}, qui met à disposition
                 des véhicules pédagogiques à double commande à destination des
-                bénéficiaires inscrits dans une démarche de conduite supervisée ou
-                accompagnée.
+                bénéficiaires engagés dans l&apos;apprentissage de la conduite à titre
+                non onéreux (art. R. 211-3 du Code de la route, arrêté du 16 juillet
+                2013 modifié).
               </p>
               <p>
                 {siteConfig.name} n&apos;est pas une auto-école et ne dispense
-                pas la formation initiale obligatoirement délivrée par un
-                établissement agréé. Voir notre page{' '}
+                aucune leçon de conduite. Voir notre page{' '}
                 <Link href="/cadre-legal" className="font-medium text-primary underline underline-offset-4 hover:text-primary/80">
                   Cadre légal
                 </Link>.
@@ -89,10 +89,10 @@ export default function CGUPage() {
 
               <h3 className="pt-2">a) Côté bénéficiaire</h3>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li>Être âgé de 18 ans révolus (conduite supervisée) ou 15 ans (conduite accompagnée, dite AAC).</li>
-                <li>Avoir obtenu le code de la route (NEPH valide).</li>
-                <li>Avoir suivi 20h minimum en auto-école et disposer de l&apos;attestation de fin de formation initiale (ou justifier d&apos;un échec à l&apos;épreuve pratique).</li>
-                <li>Avoir participé au rendez-vous préalable de 2h prévu par l&apos;arrêté du 16 juillet 2013 (en présence d&apos;un enseignant agréé et de l&apos;accompagnateur).</li>
+                <li>Être majeur (18 ans révolus).</li>
+                <li>Avoir un numéro NEPH et avoir obtenu le code de la route.</li>
+                <li>Élève d&apos;auto-école : avoir déjà effectué 20h de conduite en auto-école, attestées sur l&apos;honneur.</li>
+                <li>Candidat libre : aucun minimum d&apos;heures demandé.</li>
                 <li>Communiquer un justificatif de domicile pour le calcul de la zone kilométrique.</li>
               </ul>
 
@@ -115,9 +115,27 @@ export default function CGUPage() {
               <h2>4. Forfaits et tarifs</h2>
               <p>
                 Trois forfaits sont proposés : <strong>Pack 5h</strong> (6h avec 1h
-                offerte), <strong>Pack 10h</strong> et <strong>Pack 20h finançable CPF</strong>.
+                offerte), <strong>Pack 10h</strong> et <strong>Pack 20h</strong>.
                 Les tarifs s&apos;ajustent selon la zone kilométrique (A, B ou C)
-                applicable au bénéficiaire.
+                applicable au bénéficiaire. Les séances se font par blocs de 2h.
+              </p>
+              <p>
+                <strong>Validité :</strong> 1 mois pour le Pack 5h, 3 mois pour les
+                Packs 10h et 20h, à compter de la souscription. Les heures non
+                consommées à la fin de la validité sont perdues et ne sont pas
+                reportées, sauf justificatif valable (par exemple un certificat
+                médical).
+              </p>
+              <p>
+                <strong>Option CPF via ADAM :</strong> la formation de 20 heures
+                minimum à 1 450 €, dispensée par ADAM, organisme agréé (moniteur
+                agréé), peut être financée par le CPF. Le CPF ne concerne que ce
+                parcours, pas les Packs 5h, 10h et 20h.
+              </p>
+              <p>
+                <strong>Option examen :</strong> pour un candidat libre,{' '}
+                {siteConfig.name} peut fournir le véhicule à double commande le jour
+                de l&apos;épreuve pratique, en option payante à 30 €.
               </p>
               <p>
                 Les tarifs en vigueur sont publiés sur la page{' '}
@@ -232,7 +250,7 @@ export default function CGUPage() {
               </p>
               <p>
                 L&apos;accompagnateur, du fait de sa présence en place avant droit et de
-                la maîtrise du double pédalier, exerce une vigilance active. Il
+                la maîtrise de la double commande de frein, exerce une vigilance active. Il
                 engage sa responsabilité au même titre qu&apos;un conducteur classique
                 au sens du Code de la route.
               </p>
@@ -241,11 +259,11 @@ export default function CGUPage() {
             <section className="space-y-3">
               <h2>11. Paiement</h2>
               <p>
-                Les modes de paiement acceptés sont : Stripe (carte bancaire, lorsque
-                activé), ALMA (paiement fractionné, lorsque activé), virement bancaire,
-                et financement via CPF (Pack 20h porté par ADAM). Les financements
-                publics (aide mobilité France Travail, FAJ, ADIE) sont mobilisables
-                au cas par cas, voir la page{' '}
+                Les modes de paiement acceptés sont : carte bancaire (paiement en
+                ligne sécurisé), paiement en 3 fois via Klarna, virement bancaire, et
+                financement via le CPF pour la seule formation dispensée par ADAM.
+                Selon éligibilité, le Fonds d&apos;aide aux jeunes (FAJ) ou un
+                microcrédit ADIE peuvent compléter, voir la page{' '}
                 <Link href="/financement" className="font-medium text-primary underline underline-offset-4 hover:text-primary/80">
                   Financement
                 </Link>.

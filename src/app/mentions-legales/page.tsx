@@ -129,7 +129,7 @@ export default function LegalPage() {
               </p>
               <ul className="list-inside list-disc space-y-1 pl-1">
                 <li><strong>Stripe</strong> (paiement, lorsque activé) : Stripe Payments Europe Ltd., Irlande.</li>
-                <li><strong>ADAM</strong> (portage CPF du Pack 20h) : partenaire de financement.</li>
+                <li><strong>ADAM</strong> (organisme agréé, formation finançable par le CPF) : partenaire.</li>
                 <li><strong>LIMOVA</strong> (chatbot, lorsque activé) : serveurs Union européenne.</li>
                 <li><strong>n8n</strong> (orchestration de workflows internes) : auto-hébergé en Union européenne.</li>
               </ul>
@@ -150,15 +150,13 @@ export default function LegalPage() {
                 Le site présente le dispositif {siteConfig.name}, service de
                 mobilité solidaire basé en Moselle. Auto Conduite met à disposition
                 des véhicules pédagogiques à double commande pour les personnes en
-                parcours d&apos;insertion engagées dans la conduite supervisée ou
-                accompagnée, dans le cadre de l&apos;apprentissage de la conduite à
-                titre non onéreux (art. R. 211-3 du Code de la route, arrêté du
-                16 juillet 2013).
+                parcours d&apos;insertion, dans le cadre de l&apos;apprentissage de la
+                conduite à titre non onéreux (art. R. 211-3 du Code de la route,
+                arrêté du 16 juillet 2013 modifié).
               </p>
               <p>
-                Auto Conduite n&apos;est pas une auto-école et n&apos;intervient
-                pas dans la formation initiale dispensée par les établissements
-                agréés. Voir la page{' '}
+                Auto Conduite n&apos;est pas une auto-école et ne dispense aucune
+                leçon de conduite. Voir la page{' '}
                 <Link
                   href="/cadre-legal"
                   className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
@@ -207,8 +205,7 @@ export default function LegalPage() {
                 {siteConfig.name} apporte un soin particulier à la qualité des
                 informations diffusées sur le site, mais ne peut garantir leur
                 exhaustivité ni leur exactitude permanente. Les contenus relatifs
-                aux dispositifs publics (CPF, aides France Travail, FAJ, ADIE,
-                etc.) sont susceptibles d&apos;évoluer indépendamment de notre volonté.
+                aux dispositifs de financement (CPF, FAJ, ADIE, etc.) sont susceptibles d&apos;évoluer indépendamment de notre volonté.
               </p>
               <p>
                 {siteConfig.name} ne saurait être tenu responsable :
@@ -281,7 +278,7 @@ export default function LegalPage() {
             <section className="space-y-3">
               <h2>9. Crédits</h2>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li><strong>Conception et développement :</strong> <span className="text-foreground">[à compléter]</span></li>
+                <li><strong>Conception et développement :</strong> <span className="text-foreground">Ouibo</span></li>
                 <li><strong>Photographies :</strong> visuels fournis par {siteConfig.name} (M. Faé), droits réservés.</li>
                 <li><strong>Icônes :</strong> Lucide Icons (licence ISC).</li>
                 <li><strong>Polices :</strong> Inter, Plus Jakarta Sans, Instrument Serif, JetBrains Mono (Google Fonts, Open Font License).</li>

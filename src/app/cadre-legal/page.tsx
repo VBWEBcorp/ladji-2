@@ -5,7 +5,7 @@ import { breadcrumbJsonLd, webPageJsonLd } from '@/components/seo/json-ld'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
 
 const description =
-  "Le cadre légal du dispositif Auto Conduite : conduite supervisée et accompagnée (Code de la route, articles L211-1 à L211-7 et R211-3 à R211-7), candidat libre, place d'Auto Conduite dans l'écosystème de l'apprentissage."
+  "Le cadre légal du dispositif Auto Conduite : apprentissage de la conduite à titre non onéreux (art. R. 211-3 du Code de la route, arrêté du 16 juillet 2013 modifié), double commande (art. R. 317-25), candidat libre et place d'Auto Conduite."
 
 export const metadata: Metadata = {
   title: 'Cadre légal',
@@ -23,6 +23,8 @@ const jsonLd = {
     ]),
   ],
 }
+
+const lien = 'font-medium text-primary underline underline-offset-4 hover:text-primary/80'
 
 export default function LegalFrameworkPage() {
   return (
@@ -43,10 +45,11 @@ export default function LegalFrameworkPage() {
             Un cadre clair, encadré par la loi
           </h1>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            Auto Conduite intervient dans le cadre légal de la conduite supervisée
-            et de la conduite accompagnée. Nous ne sommes pas une auto-école : nous
-            fournissons un véhicule pédagogique à double commande pour la phase
-            d&apos;entraînement, en complément du parcours suivi en école de conduite.
+            Auto Conduite intervient dans le cadre de l&apos;apprentissage de la
+            conduite à titre non onéreux. Nous ne sommes pas une auto-école : nous
+            fournissons un véhicule pédagogique à double commande pour
+            s&apos;entraîner avec un proche, en complément d&apos;une auto-école ou en
+            candidat libre.
           </p>
 
           <article className="mt-12 space-y-12 text-sm leading-relaxed text-muted-foreground [&_h2]:font-display [&_h2]:text-lg [&_h2]:font-semibold [&_h2]:text-foreground [&_h3]:text-sm [&_h3]:font-semibold [&_h3]:text-foreground">
@@ -54,89 +57,64 @@ export default function LegalFrameworkPage() {
             <section className="space-y-3">
               <h2>1. Les textes de référence</h2>
               <p>
-                L&apos;apprentissage de la conduite à titre non onéreux est encadré par
-                l&apos;<strong>article R. 211-3 du Code de la route</strong> et par
-                l&apos;<strong>arrêté du 16 juillet 2013</strong>, qui définissent les
-                conditions de cet apprentissage (rôle de l&apos;accompagnateur, véhicule,
-                assurance). Ces textes définissent les conditions, les acteurs et les
-                responsabilités liées à la formation à la conduite.
+                L&apos;apprentissage de la conduite à titre non onéreux est autorisé par
+                l&apos;<strong>article R. 211-3 du Code de la route</strong> et encadré par
+                l&apos;<strong>arrêté du 16 juillet 2013 modifié</strong>. Ces textes
+                définissent les conditions de cet apprentissage : rôle de
+                l&apos;accompagnateur, véhicule, assurance.
+              </p>
+              <p>
+                Le véhicule est équipé d&apos;une double commande, conformément à
+                l&apos;<strong>article R. 317-25 du Code de la route</strong>.
               </p>
               <p className="rounded-xl border border-primary/20 bg-primary/[0.04] p-3 text-foreground">
                 <strong>Service réservé aux majeurs.</strong> L&apos;accès au dispositif
                 Auto Conduite est réservé aux personnes âgées de 18 ans minimum.
               </p>
-              <p>
-                À ces textes s&apos;ajoute l&apos;arrêté du 22 décembre 2009 relatif à
-                l&apos;apprentissage dans un établissement agréé.
-              </p>
             </section>
 
             <section className="space-y-3">
-              <h2>2. La conduite supervisée</h2>
-              <p>
-                La conduite supervisée est ouverte aux candidats âgés de 18 ans
-                révolus. Elle permet de poursuivre l&apos;apprentissage en dehors de
-                l&apos;auto-école après validation de la formation initiale (minimum
-                20h théoriques et pratiques) ou après un échec à l&apos;examen pratique.
-              </p>
-              <h3 className="pt-2">Conditions pour le bénéficiaire</h3>
+              <h2>2. Les conditions pour le bénéficiaire</h2>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li>Avoir 18 ans révolus.</li>
-                <li>Détenir un NEPH valide (numéro d&apos;enregistrement préfectoral harmonisé).</li>
-                <li>Avoir réussi le code de la route.</li>
-                <li>Avoir suivi 20h minimum de leçons en auto-école et obtenu l&apos;attestation de fin de formation initiale (ou avoir échoué à l&apos;épreuve pratique).</li>
-                <li>Participer à un rendez-vous préalable d&apos;au moins 2 heures, en présence d&apos;un enseignant agréé et de l&apos;accompagnateur, avant le début de la conduite supervisée.</li>
+                <li>Être majeur (18 ans minimum).</li>
+                <li>Avoir un numéro NEPH (numéro d&apos;enregistrement préfectoral harmonisé).</li>
+                <li>Avoir obtenu le code de la route.</li>
+                <li>Élève d&apos;auto-école : avoir déjà effectué 20h de conduite en auto-école, attestées sur l&apos;honneur.</li>
+                <li>Candidat libre : aucun minimum d&apos;heures demandé.</li>
               </ul>
-              <h3 className="pt-2">Conditions pour l&apos;accompagnateur</h3>
+            </section>
+
+            <section className="space-y-3">
+              <h2>3. Les conditions pour l&apos;accompagnateur</h2>
               <ul className="list-inside list-disc space-y-1 pl-1">
                 <li>Être titulaire du permis B depuis au moins 5 ans sans interruption.</li>
-                <li>Ne pas avoir fait l&apos;objet d&apos;une suspension, annulation ou invalidation du permis dans les 5 années précédentes.</li>
-                <li>Être désigné nommément au contrat d&apos;assurance.</li>
+                <li>Ne pas avoir fait l&apos;objet d&apos;une suspension, annulation ou invalidation du permis en cours.</li>
+                <li>Être désigné nommément au contrat de location.</li>
                 <li>Être sobre pendant toute la durée de la séance.</li>
+                <li>Avoir validé le briefing sécurité (vidéo + quiz) avant la première séance.</li>
               </ul>
-            </section>
-
-            <section className="space-y-3">
-              <h2>3. La conduite accompagnée (AAC)</h2>
-              <p>
-                L&apos;apprentissage anticipé de la conduite est accessible dès 15 ans.
-                Il prévoit une formation initiale en auto-école suivie d&apos;une phase
-                de conduite accompagnée d&apos;au minimum un an et 3 000 km parcourus.
-                Cette phase fait l&apos;objet de rendez-vous pédagogiques obligatoires.
-              </p>
-              <p>
-                Les conditions concernant l&apos;accompagnateur sont identiques à celles
-                de la conduite supervisée (permis B 5 ans, pas de suspension, etc.).
-              </p>
             </section>
 
             <section className="space-y-3">
               <h2>4. Le candidat libre</h2>
               <p>
-                Le candidat libre est un bénéficiaire qui s&apos;inscrit directement à
-                l&apos;examen du permis via l&apos;ANTS (ants.gouv.fr), sans passer par une
-                auto-école pour le passage de l&apos;épreuve. Il reste cependant tenu
-                d&apos;avoir suivi une formation initiale et obtenu le code de la route.
-              </p>
-              <p>
-                Le statut de candidat libre ne dispense pas des règles de la conduite
-                supervisée ou accompagnée. Il s&apos;agit d&apos;un mode d&apos;inscription
-                administratif et non d&apos;une dispense de formation.
+                Le candidat libre s&apos;inscrit lui-même au permis sur l&apos;ANTS
+                (ants.gouv.fr) pour obtenir son numéro NEPH, sans passer par une
+                auto-école. La réservation de l&apos;épreuve pratique se fait ensuite sur
+                la plateforme RDV Permis.
               </p>
               <ul className="list-inside list-disc space-y-1 pl-1">
                 <li>Inscription en ligne via{' '}
-                  <a
-                    href="https://ants.gouv.fr"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
-                  >
+                  <a href="https://ants.gouv.fr" target="_blank" rel="noopener noreferrer" className={lien}>
                     ants.gouv.fr
                   </a>{' '}
-                  pour obtenir le NEPH et réserver une date d&apos;examen.
+                  pour obtenir le NEPH.
                 </li>
-                <li>Présentation à l&apos;examen avec son propre véhicule (ou un véhicule loué auprès d&apos;une auto-école ou d&apos;un prestataire agréé).</li>
-                <li>Conformité du véhicule (notamment double commande) exigée par l&apos;inspecteur.</li>
+                <li>Entraînement avec un accompagnateur proche dans le véhicule à double commande d&apos;Auto Conduite.</li>
+                <li>
+                  Le jour de l&apos;examen, Auto Conduite peut fournir le véhicule à double
+                  commande pour l&apos;épreuve pratique, en option payante à 30 €.
+                </li>
               </ul>
             </section>
 
@@ -151,25 +129,22 @@ export default function LegalFrameworkPage() {
                 réservée aux établissements agréés.
               </p>
               <p>
-                Le bénéficiaire conduit avec son accompagnateur proche (ou, s&apos;il
-                le souhaite, avec un enseignant agréé qu&apos;il aura choisi de son côté).
-                Auto Conduite ne se substitue pas à l&apos;auto-école pour la formation
-                initiale obligatoire, ni pour la préparation à l&apos;examen.
+                Le bénéficiaire conduit avec son accompagnateur proche, à son rythme.
+                Auto Conduite ne se substitue pas à l&apos;auto-école.
               </p>
               <h3 className="pt-2">Ce qu&apos;Auto Conduite fournit</h3>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li>Un véhicule pédagogique récent, entretenu et conforme.</li>
-                <li>Un double pédalier homologué (frein + embrayage côté passager avant).</li>
+                <li>Un véhicule pédagogique récent, entretenu et conforme, en boîte automatique.</li>
+                <li>Une double commande de frein homologuée côté passager avant (article R. 317-25).</li>
                 <li>Une assurance spécifique apprentissage qui couvre le bénéficiaire et l&apos;accompagnateur pendant la durée de la location.</li>
-                <li>Un point de dépôt accessible (bassin Sarrebourg / Château-Salins).</li>
+                <li>Un point de dépôt accessible (bassin Sarrebourg / Château-Salins), accès 24h/24 et 7j/7 par code SMS.</li>
                 <li>Un briefing sécurité obligatoire (vidéo + quiz) avant l&apos;accès au véhicule.</li>
               </ul>
               <h3 className="pt-2">Ce qu&apos;Auto Conduite ne fait pas</h3>
               <ul className="list-inside list-disc space-y-1 pl-1">
-                <li>Nous n&apos;assurons pas la formation initiale obligatoire en auto-école.</li>
+                <li>Nous ne sommes pas une auto-école et ne dispensons pas de leçons de conduite.</li>
                 <li>Nous ne formons pas au code de la route.</li>
-                <li>Nous ne préparons pas à l&apos;examen pratique (cela reste le rôle des établissements agréés).</li>
-                <li>Nous ne délivrons pas d&apos;attestation de fin de formation initiale.</li>
+                <li>Nous ne délivrons pas d&apos;attestation de formation.</li>
               </ul>
             </section>
 
@@ -179,44 +154,25 @@ export default function LegalFrameworkPage() {
                 <li>
                   Textes officiels :{' '}
                   <a
-                    href="https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074228/LEGISCTA000006159511/"
+                    href="https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006074228/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                    className={lien}
                   >
-                    Code de la route, articles L211-1 A à L211-7 (Légifrance)
+                    Code de la route, articles R. 211-3 et R. 317-25 (Légifrance)
                   </a>
                 </li>
                 <li>
-                  Informations Service Public :{' '}
-                  <a
-                    href="https://www.service-public.gouv.fr/particuliers/vosdroits/F21012"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
-                  >
-                    Permis de conduire : conduite supervisée
-                  </a>
-                </li>
-                <li>
-                  Sécurité Routière :{' '}
-                  <a
-                    href="https://www.securite-routiere.gouv.fr/passer-son-permis-de-conduire/conduite-accompagnee"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
-                  >
-                    Conduite accompagnée : site officiel
+                  Inscription au permis :{' '}
+                  <a href="https://ants.gouv.fr" target="_blank" rel="noopener noreferrer" className={lien}>
+                    ANTS
                   </a>
                 </li>
               </ul>
               <p className="pt-2 text-foreground">
                 Pour vérifier votre éligibilité au dispositif Auto Conduite, consultez
                 la page{' '}
-                <Link
-                  href="/comment-ca-marche"
-                  className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
-                >
+                <Link href="/comment-ca-marche" className={lien}>
                   Comment ça marche
                 </Link>{' '}
                 ou contactez-nous directement.

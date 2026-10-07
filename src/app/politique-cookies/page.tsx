@@ -139,8 +139,7 @@ export default function CookiePolicyPage() {
             <section className="space-y-3">
               <h2>4. Consentement multi-terminaux</h2>
               <p>
-                Lorsque le site proposera des espaces connectés (espace bénéficiaire,
-                espace prescripteur, à venir), le choix exprimé sur un terminal
+                Si le site propose un jour des espaces connectés, le choix exprimé sur un terminal
                 pourra être rattaché à votre compte. Dans ce cas, votre consentement
                 ou votre refus s&apos;appliquera automatiquement à l&apos;ensemble des
                 appareils sur lesquels vous serez connecté à ce compte, conformément

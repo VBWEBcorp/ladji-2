@@ -48,9 +48,10 @@ export function CpfContent() {
                 Financez votre permis avec votre CPF
               </h1>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Le Pack 20h CPF Auto Conduite, c&apos;est une formation officielle
-                avec moniteur agréé, finançable via votre Compte Personnel de
-                Formation. Le reste à charge est étalé sur 3 mois.
+                L&apos;option CPF, c&apos;est une formation officielle de 20 heures
+                minimum dispensée par ADAM, organisme agréé (moniteur agréé),
+                finançable via votre Compte Personnel de Formation. Le reste à charge
+                est étalé sur 3 mois. Le CPF ne concerne pas les packs 5h, 10h et 20h.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -135,7 +136,7 @@ export function CpfContent() {
         <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <SectionTitle
             eyebrow="Ce que comprend le Pack 20h CPF"
-            title="Formation officielle avec moniteur agréé"
+            title="Formation officielle dispensée par ADAM"
             description="Le Pack 20h CPF est porté par notre partenaire le Centre de Formation ADAM, organisme de formation agréé. C'est une formation reconnue par France compétences, finançable CPF."
           />
 

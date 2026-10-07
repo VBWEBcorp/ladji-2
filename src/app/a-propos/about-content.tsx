@@ -131,7 +131,7 @@ export function AboutContent() {
       {/* Institutions : 4 cards */}
       <section className="border-b border-border/60 bg-background">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-          <SectionTitle eyebrow="Institutions" title="Un partenaire pour l'insertion" />
+          <SectionTitle eyebrow="Institutions" title="Nos partenaires et les relais d'orientation" />
           <motion.div
             initial="hidden"
             whileInView="visible"

@@ -40,7 +40,7 @@ export function HowItWorksContent() {
           <SectionTitle
             eyebrow="Le parcours"
             title="7 étapes claires, du NEPH à la première séance"
-            description="Vous êtes accompagné à chaque étape. La validation finale par M. Faé se fait sous 24h."
+            description="Vous êtes accompagné à chaque étape. La validation finale par M. Faé se fait sous 24h ouvrées."
           />
 
           <div className="relative mt-16">
@@ -257,13 +257,13 @@ export function HowItWorksContent() {
                 label: 'CPF',
                 href: 'https://moncompteformation.gouv.fr',
                 domain: 'moncompteformation.gouv.fr',
-                desc: 'Accès au Pack 20h finançable',
+                desc: 'Option CPF via ADAM : formation de 20 heures',
               },
               {
-                label: 'ADIE Lorraine',
+                label: 'ADIE',
                 href: 'https://adie.org',
                 domain: 'adie.org',
-                desc: 'Microcrédit pour les bénéficiaires RSA',
+                desc: 'Microcrédit personnel, selon éligibilité',
               },
             ].map((l) => (
               <li key={`${l.label}-${l.href}`}>

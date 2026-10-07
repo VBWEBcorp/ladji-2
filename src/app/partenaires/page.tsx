@@ -4,7 +4,7 @@ import { breadcrumbJsonLd, webPageJsonLd } from '@/components/seo/json-ld'
 import { PartnersContent } from './partners-content'
 
 const description =
-  "Les partenaires institutionnels d'Auto Conduite en Moselle : France Travail, Missions Locales, Région Grand Est, GEIQ Alemploi, ADAM, ADIE Lorraine, Département de la Moselle."
+  "Les partenaires d'Auto Conduite en Moselle : Région Grand Est, GEIQ Alemploi Lorraine et ADAM, et les organismes qui peuvent orienter des bénéficiaires."
 
 export const metadata: Metadata = {
   title: 'Partenaires',

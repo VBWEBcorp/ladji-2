@@ -125,7 +125,7 @@ export function PrescriberContent() {
                 {
                   step: '02',
                   title: 'On contacte votre bénéficiaire',
-                  desc: 'Réponse sous 24h. On qualifie son éligibilité, on lui présente le dispositif et on monte son dossier de financement.',
+                  desc: 'Réponse sous 24h ouvrées. On qualifie son éligibilité, on lui présente le dispositif et on monte son dossier de financement.',
                 },
                 {
                   step: '03',

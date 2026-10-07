@@ -56,9 +56,9 @@ export const images = {
 
 export const heroContent = {
   eyebrow: 'Mobilité solidaire · Moselle',
-  title: 'Pour toutes les bourses',
+  title: 'Obtenez votre Permis à votre rythme',
   description:
-    "Pratiquez la conduite entre vos leçons d'auto-école ou en candidat libre, avec un proche, à votre rythme. Mobilité solidaire en Moselle, pour toutes les bourses.",
+    "Entraînez-vous autant qu’il le faut pour gagner en confiance et décrocher votre permis, au volant d’un véhicule à double commande, dès 199 €, assurance apprentissage incluse. Mobilité solidaire en Moselle, option CPF via ADAM.",
   button1: 'Vérifier mon éligibilité',
   button2: 'Voir les forfaits',
   features: [
@@ -69,7 +69,7 @@ export const heroContent = {
   stats: [
     { value: 'Dès 199€', label: 'Pack 5h' },
     { value: '100%', label: 'légal & assuré' },
-    { value: 'CPF', label: 'finançable' },
+    { value: 'CPF', label: 'option via ADAM' },
   ],
   images: images.heroCarousel,
 }
@@ -83,12 +83,12 @@ export const whyContent = {
     {
       iconName: 'Car',
       title: 'Véhicule pédagogique',
-      desc: "Voitures récentes, entretenues, équipées d'un double pédalier homologué pour un apprentissage en toute sécurité.",
+      desc: "Voitures récentes et entretenues, en boîte automatique, équipées d'une double commande de frein homologuée pour un apprentissage en toute sécurité.",
     },
     {
       iconName: 'Coins',
       title: 'Pour toutes les bourses',
-      desc: 'Forfaits dès 199€ (Pack 5h, 1h offerte). Finançables CPF, ALMA, ADIE, aide mobilité France Travail.',
+      desc: 'Forfaits dès 199€ (Pack 5h, 1h offerte), payables en 3 fois via Klarna. Option CPF via ADAM.',
     },
     {
       iconName: 'ShieldCheck',
@@ -109,7 +109,7 @@ export const storyContent = {
   steps: [
     {
       title: 'Vérifiez votre éligibilité',
-      desc: 'Quelques questions sur votre NEPH, votre code, et votre accompagnateur proche. Réponse en 24h.',
+      desc: 'Quelques questions sur votre NEPH, votre code, et votre accompagnateur proche. Réponse sous 24h ouvrées.',
     },
     {
       title: 'Choisissez votre forfait',
@@ -162,7 +162,7 @@ export const profilesContent = {
       label: 'Prescripteur',
       title: 'Je suis prescripteur (France Travail, Mission Locale…)',
       desc: "J'oriente un bénéficiaire en parcours d'insertion. Process en 3 étapes, fiche orientation, suivi.",
-      pricing: 'Orientation en 24h',
+      pricing: 'Réponse sous 24h ouvrées',
       href: '/prescripteurs',
       cta: 'Orienter un bénéficiaire',
     },
@@ -185,7 +185,7 @@ export const founderContent = {
     title: 'Kah Faé',
     subtitle: 'Fondateur Auto Conduite · Moselle',
     description:
-      "M. Faé est le fondateur d'Auto Conduite, première structure en France à combiner la location de véhicule pédagogique à double commande et l'accompagnement spécifique des adultes en parcours d'insertion professionnelle.",
+      "M. Faé est le fondateur d'Auto Conduite, qui combine la location de véhicule pédagogique à double commande et l'accompagnement spécifique des adultes en parcours d'insertion professionnelle.",
   },
   photo: {
     src: 'https://i.ibb.co/pr5DPHS9/Photo-du-fondateur.png',
@@ -196,7 +196,7 @@ export const founderContent = {
     title: 'Un projet ancré sur le terrain',
     paragraphs: [
       "Fort d'une solide expérience dans le transport et la logistique, forgée entre engagement militaire et grandes entreprises de la supply chain, M. Faé a conçu Auto Conduite pour lever un frein concret et souvent invisible : l'absence de mobilité autonome comme obstacle à l'emploi.",
-      "Implanté sur les territoires de Sarrebourg et Château-Salins, Auto Conduite a vocation à déployer son modèle sur l'ensemble des bassins d'emploi prioritaires de la région Grand Est, en lien avec la direction régionale et les acteurs institutionnels : France Travail, Missions Locales, GEIQ Alemploi Lorraine et la Région Grand Est.",
+      "Implanté sur les territoires de Sarrebourg et Château-Salins, Auto Conduite a vocation à déployer son modèle sur l'ensemble des bassins d'emploi prioritaires de la région Grand Est, aux côtés de ses partenaires : la Région Grand Est, le GEIQ Alemploi Lorraine et ADAM.",
       "Convaincu que la mobilité apprenante est un levier d'émancipation durable, M. Faé s'appuie sur les outils numériques et l'intelligence artificielle pour structurer un modèle économique solide, ancré dans les réalités du terrain et réplicable à l'échelle nationale.",
     ],
   },
@@ -257,20 +257,9 @@ export const partnersPageContent = {
   eyebrow: 'Écosystème',
   title: 'Nos partenaires institutionnels',
   description:
-    "Auto Conduite ne fonctionne pas en silo. Notre dispositif s'appuie sur un réseau de partenaires publics et associatifs qui orientent, financent et accompagnent les bénéficiaires.",
+    "Auto Conduite ne fonctionne pas en silo. Trois partenaires accompagnent le dispositif, et d'autres organismes peuvent orienter des bénéficiaires vers nous.",
+  // Seuls ces trois partenaires sont présentés comme tels (réponse de M. Faé, 7 octobre 2026).
   partners: [
-    {
-      name: 'France Travail',
-      role: 'Orientation et aide mobilité',
-      desc: "Premier opérateur du service public de l'emploi. Les conseillers France Travail orientent les demandeurs d'emploi vers Auto Conduite et peuvent mobiliser l'aide à la mobilité (jusqu'à 1 200 €) dans le cadre d'un projet de retour à l'emploi.",
-      link: { label: 'francetravail.fr', href: 'https://www.francetravail.fr' },
-    },
-    {
-      name: 'Missions Locales',
-      role: 'Accompagnement des 16-25 ans',
-      desc: "Les Missions Locales accompagnent les jeunes de 16 à 25 ans en parcours d'insertion. La Mission Locale Sud Mosellan est notre interlocuteur de référence sur le bassin Sarrebourg / Château-Salins. Mobilisation possible du Fonds d'Aide aux Jeunes (FAJ).",
-      link: { label: 'mission-locale.fr', href: 'https://www.mission-locale.fr' },
-    },
     {
       name: 'Région Grand Est',
       role: 'Politiques régionales de mobilité',
@@ -278,30 +267,32 @@ export const partnersPageContent = {
       link: { label: 'grandest.fr', href: 'https://www.grandest.fr' },
     },
     {
-      name: 'GEIQ Alemploi',
+      name: 'GEIQ Alemploi Lorraine',
       role: "Insertion par l'emploi",
       desc: "Le GEIQ Alemploi est un groupement d'employeurs pour l'insertion et la qualification, présent sur le territoire mosellan. Notre dispositif est mobilisable pour les salariés en parcours, en cofinancement employeur.",
       link: { label: 'lesgeiq.fr', href: 'https://www.lesgeiq.fr' },
     },
     {
-      name: 'Centre de Formation ADAM',
-      role: 'Partenaire CPF agréé',
-      desc: "Formation Pack 20h avec moniteur agréé. Le Centre de Formation ADAM rend le Pack 20h Auto Conduite finançable via le Compte Personnel de Formation (moncompteformation.gouv.fr).",
-      link: null,
-    },
-    {
-      name: 'ADIE Lorraine',
-      role: 'Microcrédit personnel',
-      desc: "L'ADIE accompagne les personnes éloignées des financements classiques. En Lorraine, elle peut financer le reste à charge d'Auto Conduite pour les bénéficiaires RSA sans solution CPF ni ALMA, via un microcrédit personnel adapté.",
-      link: { label: 'adie.org', href: 'https://www.adie.org' },
-    },
-    {
-      name: 'Département de la Moselle',
-      role: 'Convention en cours',
-      desc: "Une convention est en cours de négociation avec le Département de la Moselle pour un abondement spécifique aux publics du Département (bénéficiaires RSA, ASE, jeunes en insertion). Cette page sera mise à jour à la signature.",
+      name: 'ADAM',
+      role: 'Organisme de formation agréé',
+      desc: "ADAM, organisme agréé, dispense la formation de 20 heures minimum (moniteur agréé) à 1 450 €, finançable via le Compte Personnel de Formation (moncompteformation.gouv.fr). C'est l'option CPF proposée avec Auto Conduite ; elle ne concerne pas les packs 5h, 10h et 20h.",
       link: null,
     },
   ],
+  // Organismes qui peuvent orienter des bénéficiaires, sans être présentés comme partenaires.
+  orienters: {
+    title: 'Ils peuvent aussi vous orienter',
+    items: [
+      {
+        name: 'France Travail',
+        desc: "Les conseillers France Travail peuvent orienter des demandeurs d'emploi vers Auto Conduite dans le cadre de leur projet de mobilité.",
+      },
+      {
+        name: 'Missions Locales',
+        desc: "Les Missions Locales accompagnent les jeunes de 16 à 25 ans en parcours d'insertion et peuvent les orienter vers Auto Conduite.",
+      },
+    ],
+  },
   becomePartner: {
     title: 'Devenir partenaire',
     description:
@@ -360,7 +351,7 @@ export const faqContent = {
     {
       question: 'Suis-je éligible au dispositif ?',
       answer:
-        "Il faut avoir obtenu son code de la route (NEPH), être en parcours d'insertion (ou particulier majeur) et disposer d'un accompagnateur proche titulaire du permis B depuis 5 ans minimum.",
+        "Il faut être majeur, avoir un numéro NEPH et avoir obtenu le code de la route, et disposer d'un accompagnateur proche titulaire du permis B depuis 5 ans minimum. Élève d'auto-école : 20h de conduite déjà effectuées, attestées sur l'honneur ; candidat libre : aucun minimum d'heures.",
     },
     {
       question: 'Le véhicule est-il assuré ?',
@@ -370,7 +361,7 @@ export const faqContent = {
     {
       question: 'Quels sont les financements possibles ?',
       answer:
-        "Selon votre profil : CPF (Pack 20h via ADAM), ALMA (paiement fractionné), ADIE (microcrédit personnel), aide mobilité France Travail (jusqu'à 1200€), Fonds d'Aide aux Jeunes via Mission Locale.",
+        "Paiement en 3 fois via Klarna pour tous les packs. Option CPF via ADAM (formation de 20 heures minimum à 1 450 €). Selon éligibilité : Fonds d'Aide aux Jeunes via la Mission Locale, ou microcrédit ADIE.",
     },
     {
       question: 'Où récupérer le véhicule ?',
@@ -389,7 +380,7 @@ export const aboutContent = {
     eyebrow: 'Qui sommes-nous',
     title: 'La mobilité pour toutes les bourses',
     description:
-      "Auto Conduite est une initiative de mobilité solidaire portée par M. Faé en Moselle. Notre mission : rendre la pratique de la conduite accessible aux personnes en parcours d'insertion, dans un cadre légal et sécurisé, en complément des dispositifs publics.",
+      "Auto Conduite est un service de mobilité solidaire fondé par M.Faé en Moselle, à partir du secteur Sarrebourg / Château-Salins, avec un déploiement progressif sur l’ensemble du département. Nous louons des véhicules à double commande pour permettre aux adultes en parcours d’insertion, aux candidats libres et à ceux dont les leçons sont trop espacées de continuer à pratiquer entre deux séances, sans perdre le fil, encadrés par un proche, dans un cadre légal et assuré.",
     image: images.aboutHero,
   },
   values: [
@@ -397,19 +388,19 @@ export const aboutContent = {
       iconName: 'Sparkles',
       title: 'Pour toutes les bourses',
       description:
-        "Le permis ne doit plus être un frein à l'emploi. Nos forfaits sont pensés pour être compatibles avec le CPF, l'aide mobilité, le FAJ et les microcrédits ADIE.",
+        "Le permis ne doit plus être un frein à l'emploi. Nos forfaits sont payables en 3 fois via Klarna. L'option CPF passe par ADAM, et le FAJ ou un microcrédit ADIE peuvent compléter, selon éligibilité.",
     },
     {
       iconName: 'ShieldCheck',
       title: 'Sécurité & cadre légal',
       description:
-        "Véhicule pédagogique à double commande, assurance apprentissage incluse. Apprentissage de la conduite à titre non onéreux (art. R. 211-3 du Code de la route, arrêté du 16 juillet 2013). Service réservé aux majeurs (18 ans minimum).",
+        "Véhicule à double commande, assurance apprentissage incluse. Apprentissage de la conduite à titre non onéreux (art. R. 211-3 du Code de la route, arrêté du 16 juillet 2013 modifié) : pratique avec un accompagnateur titulaire du permis B depuis au moins 5 ans, dans un véhicule à double commande conforme à l’article R. 317-25. Service réservé aux majeurs (18 ans minimum).",
     },
     {
       iconName: 'Users',
-      title: 'Brique de mobilité',
+      title: 'Complémentaire, jamais concurrent',
       description:
-        "Nous complétons l'écosystème existant (auto-écoles, prescripteurs, financeurs), nous ne le remplaçons pas. Notre rôle : fournir le véhicule et le cadre.",
+        "Nous complétons l’écosystème existant (auto-écoles, prescripteurs, financeurs), nous ne le remplaçons pas. Notre rôle : fournir le véhicule et le cadre légal qui permettent de pratiquer entre les séances, pendant que la formation reste assurée par les professionnels.",
     },
   ],
   legal: [
@@ -417,35 +408,36 @@ export const aboutContent = {
       iconName: 'Scale',
       title: 'Art. R. 211-3 et arrêté du 16 juillet 2013 : un cadre clair',
       paragraphs: [
-        "La conduite accompagnée (AAC) et la conduite supervisée sont des dispositifs encadrés par le Code de la route. Le bénéficiaire doit avoir obtenu son NEPH, son code, et validé au minimum 20h de conduite en auto-école.",
-        "L'accompagnateur proche doit être titulaire du permis B depuis au moins 5 ans, sans annulation ni suspension en cours, et sobre pendant toute la séance.",
+        "L’apprentissage de la conduite à titre non onéreux est autorisé par l’article R. 211-3 du Code de la route et encadré par l’arrêté du 16 juillet 2013 modifié. Il se fait avec un accompagnateur proche, en complément d’une auto-école ou en candidat libre. Élève d’auto-école : 20h de conduite déjà effectuées, attestées sur l’honneur ; candidat libre : aucun minimum d’heures.",
+        "L’accompagnateur doit être titulaire du permis B depuis au moins 5 ans sans interruption, sans annulation ni suspension en cours. Le véhicule est équipé d’une double commande de frein, conformément à l’article R. 317-25.",
       ],
     },
     {
       iconName: 'ShieldCheck',
       title: 'Candidat libre : expliqué simplement',
       paragraphs: [
-        "Le candidat libre s'inscrit à l'examen via l'ANTS (ants.gouv.fr) sans passer par une auto-école. Auto Conduite met à disposition le véhicule pédagogique pour la phase d'entraînement, dans le respect total de la réglementation.",
-        "Chaque véhicule pédagogique est régulièrement contrôlé, entretenu et équipé d'un double pédalier (frein + embrayage) homologué.",
+        "Le candidat libre s’inscrit lui-même au permis sur l’ANTS (ants.gouv.fr) pour obtenir son numéro NEPH, sans passer par une auto-école. La réservation de l’épreuve pratique se fait ensuite sur la plateforme RDV Permis. Auto Conduite met à disposition le véhicule à double commande et le cadre légal pour s’entraîner dans les règles.",
+        "Chaque véhicule, en boîte automatique, est régulièrement contrôlé, entretenu et équipé d’une double commande de frein homologuée. Le jour de l’examen, nous pouvons fournir le véhicule à double commande pour l’épreuve pratique, en option à 30 € : un obstacle en moins pour les candidats libres.",
       ],
     },
   ],
+  // Partenaires d'abord, puis les organismes qui peuvent orienter (sans être partenaires).
   institutions: [
     {
+      title: 'Région Grand Est',
+      desc: "Partenaire d'Auto Conduite. La Région porte des politiques de mobilité solidaire en lien avec les acteurs de l'insertion.",
+    },
+    {
+      title: 'GEIQ Alemploi Lorraine',
+      desc: "Partenaire d'Auto Conduite : levée du frein mobilité pour les salariés en insertion.",
+    },
+    {
       title: 'France Travail',
-      desc: "Aide mobilité jusqu'à 1200€ pour les demandeurs d'emploi.",
+      desc: "Peut orienter des demandeurs d’emploi vers Auto Conduite dans le cadre de leur projet de mobilité.",
     },
     {
-      title: 'Missions Locales',
-      desc: "Accompagnement des jeunes 16-25 ans (FAJ, suivi parcours d'insertion).",
-    },
-    {
-      title: 'GEIQ Alemploi',
-      desc: "Levée du frein mobilité pour les salariés en insertion.",
-    },
-    {
-      title: 'Département de la Moselle',
-      desc: 'Abondement et conventions ESS (en cours de négociation).',
+      title: 'Mission locale',
+      desc: "Accompagne les jeunes de 16 à 25 ans en parcours d’insertion et peut les orienter vers Auto Conduite. Selon éligibilité, le conseiller peut mobiliser le Fonds d’aide aux jeunes (FAJ).",
     },
   ],
   gallery: images.aboutGallery,
@@ -503,7 +495,7 @@ export const servicesContent = {
     eyebrow: 'Forfaits & Tarifs',
     title: 'Des forfaits pour toutes les bourses',
     description:
-      "3 packs au choix, ajustés selon votre zone kilométrique. Finançables CPF (Pack 20h), ALMA, ADIE ou aide mobilité France Travail.",
+      "3 packs au choix, ajustés selon votre zone kilométrique, payables en 3 fois via Klarna. Option CPF via ADAM.",
   },
   pricing: {
     eyebrow: 'Forfaits et Tarifs',
@@ -579,9 +571,10 @@ export const servicesContent = {
       ],
     },
   },
-  // Pack 20h CPF séparé (cf. brief Ouibo : moniteur agréé ADAM, 1450€, reste à charge 550€ = 183€/mois)
+  // Parcours CPF séparé : formation dispensée par ADAM (1450€, reste à charge 550€ = 183€/mois).
+  // Le CPF ne concerne que ce parcours, jamais les packs 5h, 10h et 20h.
   cpfPack: {
-    eyebrow: 'Option CPF · Moniteur agréé',
+    eyebrow: 'Option CPF via ADAM',
     name: 'Pack 20h CPF',
     headline: '183€/mois',
     subline: 'sur 3 fois sans frais',
@@ -591,10 +584,10 @@ export const servicesContent = {
     monthly: 183,
     operator: 'ADAM',
     description:
-      "Formation officielle dispensée par ADAM (moniteur agréé), finançable via votre Compte Personnel de Formation. Le CPF couvre jusqu'à 900€, le reste à charge de 550€ est payable en 3 fois sans frais.",
+      "Formation officielle de 20 heures minimum, dispensée par ADAM, organisme agréé (moniteur agréé), finançable via votre Compte Personnel de Formation. Le CPF couvre jusqu'à 900€, le reste à charge de 550€ est payable en 3 fois sans frais. Le CPF ne concerne que ce parcours, pas les packs 5h, 10h et 20h.",
     features: [
-      'Moniteur agréé ADAM',
-      'Formation officielle reconnue',
+      'Dispensée par ADAM, organisme agréé',
+      'Formation de 20 heures minimum',
       'CPF jusqu\'à 900€ (selon solde)',
       'Reste à charge 550€ en 3 fois',
     ],
@@ -620,28 +613,20 @@ export const servicesContent = {
     title: "Plusieurs solutions selon votre profil",
     items: [
       {
-        title: 'CPF (Pack 20h)',
-        desc: 'Pack 20h finançable via moncompteformation.gouv.fr, portage assuré par ADAM. Plafond 900€ pour les demandeurs d\'emploi inscrits.',
+        title: 'Klarna : paiement en 3 fois',
+        desc: 'Réglez votre pack 5h, 10h ou 20h en 3 fois avec Klarna.',
       },
       {
-        title: 'ALMA : paiement fractionné',
-        desc: 'Paiement en 2x, 3x ou 4x pour le reste à charge. (Solution en cours d\'activation.)',
-      },
-      {
-        title: 'Aide mobilité France Travail',
-        desc: 'Jusqu\'à 1200€ pour les demandeurs d\'emploi. À demander auprès de votre conseiller.',
+        title: 'Option CPF via ADAM',
+        desc: 'Formation de 20 heures minimum à 1 450 €, dispensée par ADAM, organisme agréé. Le CPF couvre jusqu\'à 900 € selon votre solde ; il ne finance pas les packs 5h, 10h et 20h.',
       },
       {
         title: 'FAJ : Fonds d\'Aide aux Jeunes',
-        desc: 'Via Mission Locale, pour les 16-25 ans en parcours d\'insertion.',
+        desc: 'Via la Mission Locale, pour les 18-25 ans en parcours d\'insertion, selon éligibilité.',
       },
       {
-        title: 'ADIE Lorraine',
-        desc: 'Microcrédit personnel pour les bénéficiaires RSA sans solution CPF ou ALMA. adie.org',
-      },
-      {
-        title: 'Abondement Département Moselle',
-        desc: 'Convention en cours de négociation pour les publics du Département.',
+        title: 'Microcrédit ADIE',
+        desc: 'Microcrédit personnel, selon éligibilité. adie.org',
       },
     ],
   },
@@ -676,9 +661,9 @@ export const servicesContent = {
         iconName: 'Building2',
         title: 'Pour les prescripteurs',
         items: [
-          'Convention de partenariat possible (FT, ML, GEIQ, social)',
+          'Orientation possible par toute structure (France Travail, Mission Locale, GEIQ, social)',
           'Facturation directe ou prise en charge',
-          'Reporting et suivi anonymisé',
+          'Suivi sur demande auprès de M. Faé',
           'Fiche synthétique téléchargeable',
         ],
       },
@@ -696,32 +681,32 @@ export const howItWorksContent = {
     eyebrow: 'Comment ça marche',
     title: 'Votre parcours pas à pas',
     description:
-      "Du NEPH à votre première séance, un parcours simple, légal et accompagné. Sept étapes claires pour bénéficier du dispositif Auto Conduite.",
+      "De votre inscription à votre première séance, un parcours simple, légal et accompagné. Sept étapes claires pour bénéficier du dispositif Auto Conduite.",
   },
   // Parcours bénéficiaire en 7 étapes (cf. §3.2 du cahier : NEPH → inscription → forfait → paiement → briefing → réservation → séance)
   journey: [
     {
       iconName: 'FileText',
       title: 'Obtenez votre NEPH',
-      desc: "Le NEPH (Numéro d'Enregistrement Préfectoral Harmonisé) est obligatoire pour s'inscrire à l'examen. Il s'obtient en ligne sur ants.gouv.fr, on vous guide pas à pas. Le code de la route peut être passé en parallèle via Codeclic (17€) ou en candidat libre dans un centre agréé.",
+      desc: "Le NEPH est votre numéro d’inscription au permis. Candidat libre : demandez-le vous-même sur l’ANTS (ants.gouv.fr), sans auto-école. Déjà inscrit en auto-école : vous l’avez déjà, votre établissement s’en est chargé ; passez directement à l’étape suivante.",
       link: { label: 'ants.gouv.fr', href: 'https://ants.gouv.fr', external: true },
     },
     {
       iconName: 'UserCheck',
       title: 'Inscrivez-vous au dispositif',
-      desc: "Quelques questions simples : âge, NEPH, accompagnateur proche disponible. M. Faé vérifie votre éligibilité et vous répond en moins de 24h.",
+      desc: "Quelques questions simples : âge, NEPH, accompagnateur proche disponible. Auto Conduite vérifie votre éligibilité et vous répond sous 24h ouvrées.",
       link: { label: 'Formulaire d\'éligibilité', href: '/contact', external: false },
     },
     {
       iconName: 'Coins',
       title: 'Choisissez votre forfait',
-      desc: 'Pack 5h (avec 1h offerte), Pack 10h ou Pack 20h finançable CPF, tarif ajusté selon votre zone kilométrique (A, B ou C).',
+      desc: 'Pack 5h (avec 1h offerte), Pack 10h ou Pack 20h, tarif ajusté selon votre zone kilométrique (A, B ou C). Option CPF via ADAM.',
       link: { label: 'Voir les forfaits', href: '/services', external: false },
     },
     {
       iconName: 'CreditCard',
-      title: 'Réglez votre forfait',
-      desc: 'Plusieurs financements possibles : CPF via ADAM, ALMA fractionné, aide mobilité France Travail, FAJ Mission Locale, ADIE pour les RSA.',
+      title: 'Financez votre forfait',
+      desc: "Plusieurs solutions pour financer votre parcours : paiement en 3 fois via Klarna, option CPF via ADAM (formation de 20 heures minimum, selon éligibilité) et, selon éligibilité, microcrédit ADIE ou Fonds d’aide aux jeunes (FAJ) via la Mission Locale pour les 18-25 ans. Un conseiller vous oriente selon votre situation.",
       link: { label: 'Voir le financement', href: '/financement', external: false },
     },
     {
@@ -733,13 +718,13 @@ export const howItWorksContent = {
     {
       iconName: 'Calendar',
       title: 'Réservez votre créneau',
-      desc: "Choisissez votre point de dépôt (Sarrebourg, Château-Salins…), votre date et l'horaire qui vous arrange. La réservation est confirmée par SMS et email.",
+      desc: "Choisissez votre point de rendez-vous (Sarrebourg, Château-Salins…), votre date et l'horaire qui vous arrange. La réservation est confirmée par SMS et email.",
       link: null,
     },
     {
       iconName: 'CarFront',
       title: 'Effectuez votre séance',
-      desc: "Récupérez le véhicule pédagogique à double commande au point de dépôt, démarrez la séance avec votre accompagnateur proche. Bilan IA automatique dans les 5 minutes qui suivent.",
+      desc: "Récupérez le véhicule pédagogique à double commande au point de rendez-vous, démarrez la séance avec votre accompagnateur proche. Bilan IA automatique dans les 5 minutes qui suivent.",
       link: null,
     },
   ],
@@ -785,7 +770,7 @@ export const howItWorksContent = {
       {
         question: 'Auto Conduite remplace-t-elle une auto-école ?',
         answer:
-          "Non. Auto Conduite met à disposition un véhicule pédagogique à double commande pour la phase d'entraînement. Vous devez avoir validé au minimum 20h en auto-école avant d'accéder au dispositif. Auto Conduite est une brique de mobilité complémentaire.",
+          "Non. Auto Conduite met à disposition un véhicule pédagogique à double commande pour la phase d’entraînement. Élève d’auto-école : vous devez avoir déjà effectué 20h de conduite, attestées sur l’honneur. Candidat libre : aucun minimum d’heures n’est demandé. Dans tous les cas, vous êtes accompagné d’une personne titulaire du permis B depuis au moins 5 ans, et le briefing sécurité doit être validé.",
       },
       {
         question: 'Quelles sont les conditions pour mon accompagnateur ?',
@@ -795,7 +780,7 @@ export const howItWorksContent = {
       {
         question: 'Que se passe-t-il après ma demande ?',
         answer:
-          "M. Faé valide votre dossier sous 24h. Vous recevez ensuite par email et SMS le briefing sécurité obligatoire (vidéo + quiz de validation). Une fois le quiz validé, vous pouvez réserver vos créneaux.",
+          "Auto Conduite valide votre dossier sous 24h ouvrées. Vous recevez ensuite par email et SMS le briefing sécurité obligatoire (vidéo + quiz de validation). Une fois le quiz validé, vous pouvez réserver vos créneaux.",
       },
       {
         question: 'Comment se passe la première séance ?',
@@ -816,48 +801,38 @@ export const fundingContent = {
     eyebrow: 'Financement',
     title: 'Quatre solutions pour financer votre permis',
     description:
-      "Le permis ne doit plus être un frein à l'emploi. Selon votre profil, plusieurs dispositifs peuvent prendre en charge tout ou partie de votre forfait. On vous oriente vers le bon.",
+      "Le permis ne doit plus être un frein à l'emploi. Selon votre profil, plusieurs solutions peuvent vous aider à financer votre parcours. On vous oriente vers la bonne.",
   },
-  // 4 dispositifs simples (cf. brief Ouibo : sans détailler les conditions)
+  // 4 solutions (réponse de M. Faé, 7 octobre 2026 : plus d'aide France Travail ni
+  // de Département ; ALMA remplacé par Klarna ; FAJ et ADIE selon éligibilité).
   solutions: [
     {
-      iconName: 'GraduationCap',
-      title: 'CPF',
+      iconName: 'CreditCard',
+      title: 'Klarna : paiement en 3 fois',
       desc:
-        "Compte Personnel de Formation. Finance le Pack 20h via notre partenaire ADAM.",
+        "Réglez votre pack 5h, 10h ou 20h en 3 fois avec Klarna. Ce n’est pas une aide mais une facilité de paiement.",
+      link: null,
+    },
+    {
+      iconName: 'GraduationCap',
+      title: 'Option CPF via ADAM',
+      desc:
+        "Le Compte Personnel de Formation finance uniquement le parcours de 20 heures minimum à 1 450 €, dispensé par ADAM, organisme agréé (moniteur agréé), sous réserve d’éligibilité. Il ne concerne pas les packs 5h, 10h et 20h.",
       link: { label: 'moncompteformation.gouv.fr', href: 'https://moncompteformation.gouv.fr', external: true },
     },
     {
       iconName: 'HandCoins',
-      title: 'Aide mobilité',
+      title: 'FAJ',
       desc:
-        "Aide France Travail jusqu'à 1 200€, à demander auprès de votre conseiller.",
-      link: null,
-    },
-    {
-      iconName: 'CreditCard',
-      title: 'ALMA',
-      desc:
-        "Paiement fractionné en 3 fois sans frais sur le reste à charge.",
+        "Fonds d’aide aux jeunes : pour les 18-25 ans suivis par la Mission Locale, selon éligibilité.",
       link: null,
     },
     {
       iconName: 'Landmark',
-      title: 'ADIE',
+      title: 'Microcrédit ADIE',
       desc:
-        "Microcrédit personnel pour les bénéficiaires sans solution CPF ni ALMA.",
+        "Microcrédit personnel pour les personnes sans solution de financement classique, selon éligibilité.",
       link: { label: 'adie.org', href: 'https://adie.org', external: true },
-    },
-  ],
-  // Rétro-compat : solutions détaillées masquées au rendu mais conservées
-  legacySolutions: [
-    {
-      iconName: 'Building2',
-      title: 'Abondement Département de la Moselle',
-      desc:
-        "Convention en cours de négociation avec le Département de la Moselle pour un abondement spécifique aux publics du Département (RSA, ASE, jeunes…).",
-      link: null,
-      status: 'Convention en cours',
     },
   ],
 }
@@ -872,7 +847,7 @@ export const prescriberContent = {
     eyebrow: 'Prescripteurs',
     title: 'Un dispositif clé en main pour vos publics',
     description:
-      "France Travail, Missions Locales, GEIQ, services sociaux, CCAS, associations d'insertion : orientez rapidement un bénéficiaire vers Auto Conduite et suivez son parcours.",
+      "France Travail, Missions Locales, GEIQ, services sociaux, CCAS, associations d'insertion : orientez rapidement un bénéficiaire vers Auto Conduite, avec un suivi sur simple demande.",
   },
   // Bénéfices pour le prescripteur (cf. §3.5)
   benefits: [
@@ -906,7 +881,7 @@ export const prescriberContent = {
   form: {
     eyebrow: 'Orientation bénéficiaire',
     title: 'Orienter un bénéficiaire',
-    description: "Remplissez ces 5 informations, nous prenons contact directement avec votre bénéficiaire sous 24h.",
+    description: "Remplissez ces 5 informations, nous prenons contact directement avec votre bénéficiaire sous 24h ouvrées.",
     fields: [
       { name: 'prescriber_org', label: 'Votre structure', placeholder: 'France Travail, Mission Locale, GEIQ Alemploi…', type: 'text' },
       { name: 'prescriber_name', label: 'Votre nom et contact', placeholder: 'Nom + téléphone ou email', type: 'text' },
@@ -975,7 +950,7 @@ export const companionContent = {
       'Récupérer le véhicule pédagogique au point de dépôt convenu',
       'Prendre le volant pour amener le bénéficiaire au point de départ de la séance',
       'Surveiller la conduite du bénéficiaire pendant toute la séance',
-      "Intervenir via le double pédalier (frein et embrayage) en cas de besoin",
+      "Intervenir via la double commande de frein en cas de besoin",
       "Reprendre le volant à tout moment si la situation l'exige",
       "Rapporter le véhicule au point de dépôt à la fin de la séance",
     ],
@@ -1017,7 +992,7 @@ export const contactContent = {
     eyebrow: 'Contact',
     title: 'Vérifiez votre éligibilité ou posez vos questions',
     description:
-      "Bénéficiaires, accompagnateurs, prescripteurs : remplissez le formulaire et nous vous recontactons sous 24h. Vous pouvez aussi nous joindre directement par téléphone ou WhatsApp.",
+      "Bénéficiaires, accompagnateurs, prescripteurs : remplissez le formulaire et nous vous recontactons sous 24h ouvrées. Vous pouvez aussi nous joindre directement par téléphone ou WhatsApp.",
   },
   form: {
     title: 'Demande de contact / éligibilité',

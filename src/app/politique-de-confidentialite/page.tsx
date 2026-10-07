@@ -149,7 +149,7 @@ export default function PrivacyPage() {
                 <li>Constituer le dossier d&apos;inscription et le suivre.</li>
                 <li>Émettre les contrats de location et factures correspondantes.</li>
                 <li>Assurer la sécurité du dispositif (briefing, traçabilité du visionnage).</li>
-                <li>Établir des statistiques anonymisées (reporting institutionnel auprès des prescripteurs et financeurs).</li>
+                <li>Établir des statistiques anonymisées sur l&apos;activité du dispositif.</li>
                 <li>Respecter nos obligations légales et comptables.</li>
               </ul>
             </section>
@@ -161,7 +161,7 @@ export default function PrivacyPage() {
                 <li><strong>L&apos;exécution d&apos;un contrat ou de mesures précontractuelles</strong> (article 6.1.b) : pour la gestion du dossier, la signature du contrat de location, la facturation.</li>
                 <li><strong>Le consentement</strong> (article 6.1.a) : pour les communications non essentielles, les cookies de mesure d&apos;audience, et le formulaire de contact.</li>
                 <li><strong>L&apos;intérêt légitime</strong> (article 6.1.f) : pour la sécurité du site, la prévention de la fraude, et l&apos;orientation par prescripteur (transmission qualifiée).</li>
-                <li><strong>L&apos;obligation légale</strong> (article 6.1.c) : conservation comptable, traçabilité de la formation initiale, conformité au Code de la route.</li>
+                <li><strong>L&apos;obligation légale</strong> (article 6.1.c) : conservation comptable, conformité au Code de la route.</li>
               </ul>
             </section>
 
@@ -175,10 +175,10 @@ export default function PrivacyPage() {
               <ul className="list-inside list-disc space-y-1 pl-1">
                 <li><strong>Hébergeur du site</strong> : serveurs en Union européenne.</li>
                 <li><strong>Stripe</strong> (lorsque le paiement en ligne sera activé) : Stripe Payments Europe Ltd., Irlande. Données : informations de paiement, montants. Stripe agit en tant que responsable de traitement pour la conformité PCI-DSS.</li>
-                <li><strong>ADAM</strong> : partenaire de portage CPF pour le Pack 20h. Données transmises uniquement avec accord du bénéficiaire.</li>
+                <li><strong>ADAM</strong> : organisme agréé qui dispense la formation finançable par le CPF. Données transmises uniquement avec accord du bénéficiaire.</li>
                 <li><strong>LIMOVA</strong> (chatbot, lorsque activé) : messages échangés via le chatbot.</li>
                 <li><strong>Prestataire SMS / email</strong> (lorsque activé) : pour les rappels de séance.</li>
-                <li><strong>Prescripteurs orientants</strong> : uniquement les données anonymisées de suivi, après accord du bénéficiaire.</li>
+                <li><strong>Prescripteurs orientants</strong> : uniquement les informations de suivi qu&apos;ils demandent, après accord du bénéficiaire.</li>
               </ul>
               <p>
                 Aucune donnée n&apos;est cédée ni revendue à des tiers à des fins

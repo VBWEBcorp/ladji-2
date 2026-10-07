@@ -13,6 +13,7 @@ export function PartnersContent() {
   const description = data.description ?? partnersPageContent.description
   const partners = (data.partners ?? partnersPageContent.partners) as typeof partnersPageContent.partners
   const becomePartner = data.becomePartner ?? partnersPageContent.becomePartner
+  const orienters = (data.orienters ?? partnersPageContent.orienters) as typeof partnersPageContent.orienters
 
   return (
     <>
@@ -62,6 +63,22 @@ export function PartnersContent() {
             ))}
           </ul>
 
+          {/* Organismes d'orientation : cités sans logo, pas présentés comme partenaires */}
+          {orienters?.items?.length > 0 && (
+            <section className="mt-12">
+              <h2 className="font-display text-lg font-semibold text-foreground">
+                {orienters.title}
+              </h2>
+              <ul className="mt-4 space-y-3">
+                {orienters.items.map((o) => (
+                  <li key={o.name} className="text-sm leading-relaxed text-muted-foreground">
+                    <span className="font-semibold text-foreground">{o.name}</span> : {o.desc}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           <section className="mt-14 rounded-2xl border border-border/80 bg-card/70 p-7 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 sm:p-9">
             <h2 className="font-display text-lg font-semibold text-foreground">
               {becomePartner.title}
@@ -83,7 +100,7 @@ export function PartnersContent() {
                 href="/prescripteurs"
                 className="inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors hover:text-primary/80"
               >
-                Espace prescripteurs <span aria-hidden>→</span>
+                Page prescripteurs <span aria-hidden>→</span>
               </Link>
             </div>
           </section>

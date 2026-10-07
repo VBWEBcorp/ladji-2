@@ -4,7 +4,7 @@ import { AboutContent } from './about-content'
 import { breadcrumbJsonLd, webPageJsonLd } from '@/components/seo/json-ld'
 
 const description =
-  'Découvrez notre histoire, nos valeurs et notre équipe. Nous accompagnons les entreprises dans leur développement digital.'
+  "Auto Conduite, mobilité solidaire en Moselle : location de véhicules à double commande pour s'entraîner à la conduite avec un proche, dans un cadre légal et assuré."
 
 export const metadata: Metadata = {
   title: 'À propos',

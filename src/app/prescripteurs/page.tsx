@@ -5,7 +5,7 @@ import { PrescriberContent } from './prescriber-content'
 export const metadata: Metadata = {
   title: 'Prescripteurs',
   description:
-    "Espace dédié aux prescripteurs Auto Conduite (France Travail, Missions Locales, GEIQ, services sociaux). Formulaire d'orientation 5 champs, fiche synthétique, reporting anonymisé.",
+    "Page dédiée aux prescripteurs Auto Conduite (France Travail, Missions Locales, GEIQ, services sociaux). Formulaire d'orientation 5 champs, fiche synthétique, suivi sur demande, réponse sous 24h ouvrées.",
   alternates: { canonical: '/prescripteurs' },
 }
 

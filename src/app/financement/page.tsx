@@ -5,7 +5,7 @@ import { FundingContent } from './funding-content'
 export const metadata: Metadata = {
   title: 'Financement',
   description:
-    "Toutes les solutions de financement Auto Conduite : CPF via ADAM, ALMA fractionné, aide mobilité France Travail, FAJ Mission Locale, ADIE microcrédit, abondement Département Moselle.",
+    "Les solutions de financement Auto Conduite : paiement en 3 fois via Klarna, option CPF via ADAM et, selon éligibilité, FAJ ou microcrédit ADIE.",
   alternates: { canonical: '/financement' },
 }
 

@@ -217,7 +217,7 @@ export default function AdminServicesPage() {
             <FieldEditor label="Opérateur (ex : ADAM)" value={content.cpfPack?.operator} onChange={(v) => update('cpfPack.operator', v)} />
           </SectionEditor>
 
-          <SectionEditor title="Financements (CPF, ALMA, ADIE, France Travail...)">
+          <SectionEditor title="Financements (Klarna, CPF via ADAM, FAJ, ADIE)">
             <FieldEditor label="Accroche" value={content.funding?.eyebrow} onChange={(v) => update('funding.eyebrow', v)} />
             <FieldEditor label="Titre" value={content.funding?.title} onChange={(v) => update('funding.title', v)} />
             <div className="space-y-3 pt-2">
