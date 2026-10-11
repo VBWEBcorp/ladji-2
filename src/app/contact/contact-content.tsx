@@ -3,10 +3,8 @@
 import { motion } from 'framer-motion'
 import { Mail, MapPin, Phone } from 'lucide-react'
 
+import { DemandeForm } from '@/components/demande-form'
 import { PremiumHero } from '@/components/sections/premium-hero'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { WhatsAppButton } from '@/components/whatsapp-button'
 import { useContent } from '@/hooks/use-content'
 import { siteConfig } from '@/lib/seo'
@@ -64,86 +62,7 @@ export function ContactContent() {
                     {form.title}
                   </h2>
 
-                  <form
-                    className="mt-7 space-y-5"
-                    onSubmit={(e) => e.preventDefault()}
-                  >
-                    <div className="grid gap-5 sm:grid-cols-2">
-                      <div className="space-y-2">
-                        <Label htmlFor="firstname">Prénom</Label>
-                        <Input
-                          id="firstname"
-                          name="firstname"
-                          placeholder="Jean"
-                          autoComplete="given-name"
-                          className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)]"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="lastname">Nom</Label>
-                        <Input
-                          id="lastname"
-                          name="lastname"
-                          placeholder="Dupont"
-                          autoComplete="family-name"
-                          className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)]"
-                        />
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="jean@email.fr"
-                        autoComplete="email"
-                        className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)]"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Téléphone</Label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        placeholder="06 12 34 56 78"
-                        autoComplete="tel"
-                        className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)]"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="profile">Vous êtes</Label>
-                      <select
-                        id="profile"
-                        name="profile"
-                        defaultValue=""
-                        className="h-11 w-full rounded-xl border border-input bg-background/70 px-3.5 text-sm text-foreground transition-shadow focus-visible:border-ring focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)] focus-visible:outline-none"
-                      >
-                        <option value="" disabled>
-                          Sélectionnez votre profil
-                        </option>
-                        {form.profileOptions.map((opt: string) => (
-                          <option key={opt} value={opt}>
-                            {opt}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Votre message</Label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={5}
-                        placeholder="Dites-nous en quoi nous pouvons vous aider : forfait souhaité, dates, questions…"
-                        className="w-full rounded-xl border border-input bg-background/70 px-3.5 py-3 text-sm leading-relaxed text-foreground transition-shadow placeholder:text-muted-foreground focus-visible:border-ring focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)] focus-visible:outline-none"
-                      />
-                    </div>
-                    <Button type="submit" size="lg" className="w-full">
-                      {form.submitLabel}
-                    </Button>
-                  </form>
+                  <DemandeForm submitLabel={form.submitLabel} />
 
                   <div className="mt-7 space-y-1.5 border-t border-border/50 pt-6 text-sm leading-relaxed text-muted-foreground">
                     <p>
