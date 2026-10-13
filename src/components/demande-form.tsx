@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { CheckCircle2, Loader2 } from 'lucide-react'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -21,17 +21,25 @@ const liste =
 export function DemandeForm({ submitLabel }: { submitLabel: string }) {
   const [etat, setEtat] = useState<'saisie' | 'envoi' | 'envoye' | 'erreur'>('saisie')
   const [message, setMessage] = useState('')
+  // Moment d'affichage : un envoi en moins de 3 s est celui d'un robot.
+  const affiche = useRef(Date.now())
 
   async function envoyer(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const f = new FormData(e.currentTarget)
+    if (!String(f.get('email') || '').trim()) {
+      setEtat('erreur')
+      setMessage("L'e-mail est obligatoire.")
+      return
+    }
     setEtat('envoi')
     setMessage('')
     try {
       const res = await fetch('/api/demande', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
         body: JSON.stringify({
+          t: Date.now() - affiche.current,
           prenom: f.get('prenom'),
           nom: f.get('nom'),
           email: f.get('email'),

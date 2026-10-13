@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 import { PACKS, PROFILS, ZONES } from '@/lib/demande'
+import { envoyerVersMake, estRobot } from '@/lib/make'
 
 // Formulaire de demande (page Contact) → circuit Make de M. Faé : tableau de
 // suivi, devis calculé selon zone et pack, envoyé au client après validation.
@@ -22,8 +23,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Requête illisible.' }, { status: 400 })
   }
 
-  // Champ piège invisible : un robot le remplit, un humain non.
-  if (texte(body.site_web)) return NextResponse.json({ ok: true })
+  // Robot (champ piège rempli, ou formulaire envoyé en moins de 3 s) : on ne transmet rien.
+  if (estRobot(body)) return NextResponse.json({ ok: true })
 
   const demande = {
     prenom: texte(body.prenom, 80),
@@ -50,20 +51,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: `À vérifier : ${erreurs.join(', ')}.` }, { status: 400 })
   }
 
-  try {
-    const res = await fetch(MAKE_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(demande),
-    })
-    if (!res.ok) {
-      console.error('[demande] Make a répondu', res.status, (await res.text()).slice(0, 200))
-      return NextResponse.json({ error: "La demande n'a pas pu être transmise." }, { status: 502 })
-    }
-  } catch (e) {
-    console.error('[demande] envoi vers Make impossible', e)
+  if (!(await envoyerVersMake(MAKE_WEBHOOK_URL, demande))) {
     return NextResponse.json({ error: "La demande n'a pas pu être transmise." }, { status: 502 })
   }
-
   return NextResponse.json({ ok: true })
 }

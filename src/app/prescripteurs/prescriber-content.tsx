@@ -1,7 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Download, Mail, Phone, Send } from 'lucide-react'
+import { CheckCircle2, Download, Loader2, Mail, Phone, Send } from 'lucide-react'
+import Link from 'next/link'
+import { useRef, useState } from 'react'
 
 import { CtaSection } from '@/components/sections/cta-section'
 import { PremiumHero } from '@/components/sections/premium-hero'
@@ -23,6 +25,36 @@ export function PrescriberContent() {
   const form = (data.form ?? defaults.form) as typeof defaults.form
   const clauses = (data.clauses ?? defaults.clauses) as typeof defaults.clauses
   const contact = (data.contact ?? defaults.contact) as typeof defaults.contact
+
+  // Envoi du formulaire d'orientation vers /api/prescripteur (webhook Make dédié).
+  const [etat, setEtat] = useState<'saisie' | 'envoi' | 'envoye' | 'erreur'>('saisie')
+  const [erreur, setErreur] = useState('')
+  const affiche = useRef(Date.now())
+
+  async function envoyer(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const f = new FormData(e.currentTarget)
+    setEtat('envoi')
+    setErreur('')
+    try {
+      const res = await fetch('/api/prescripteur', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        body: JSON.stringify({
+          ...Object.fromEntries(form.fields.map((fl) => [fl.name, f.get(fl.name)])),
+          consentement: f.get('consentement') === 'oui',
+          site_web: f.get('site_web'),
+          t: Date.now() - affiche.current,
+        }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data?.error || 'Envoi impossible.')
+      setEtat('envoye')
+    } catch (err) {
+      setEtat('erreur')
+      setErreur((err as Error).message)
+    }
+  }
 
   return (
     <>
@@ -178,9 +210,18 @@ export function PrescriberContent() {
                 {form.description}
               </p>
 
+              {etat === 'envoye' ? (
+                <div className="mt-8 flex items-start gap-3 rounded-3xl border border-primary/30 bg-primary/[0.05] p-7 text-sm leading-relaxed text-foreground">
+                  <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
+                  <p>
+                    Merci, l&apos;orientation est bien envoyée. M. Faé contacte votre
+                    bénéficiaire sous 24h ouvrées.
+                  </p>
+                </div>
+              ) : (
               <form
                 className="mt-8 space-y-5 rounded-3xl border border-border/80 bg-card/70 p-7 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 sm:p-9"
-                onSubmit={(e) => e.preventDefault()}
+                onSubmit={envoyer}
               >
                 {form.fields.map((f) => (
                   <div key={f.name} className="space-y-2">
@@ -197,17 +238,53 @@ export function PrescriberContent() {
                       <Input
                         id={f.name}
                         name={f.name}
+                        required
                         placeholder={f.placeholder}
                         className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)]"
                       />
                     )}
                   </div>
                 ))}
-                <Button type="submit" size="lg" className="w-full">
-                  {form.submitLabel}
-                  <Send className="size-4" aria-hidden />
+
+                {/* Champ piège pour les robots : invisible pour les visiteurs. */}
+                <div className="hidden" aria-hidden>
+                  <label htmlFor="site_web_prescripteur">Site web</label>
+                  <input id="site_web_prescripteur" name="site_web" type="text" tabIndex={-1} autoComplete="off" />
+                </div>
+
+                <label className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
+                  <input type="checkbox" name="consentement" value="oui" required className="mt-1 size-4 shrink-0 accent-[oklch(0.62_0.10_200)]" />
+                  <span>
+                    J&apos;accepte que ces informations soient utilisées pour traiter
+                    l&apos;orientation et recontacter le bénéficiaire, avec son accord.
+                    Voir la{' '}
+                    <Link href="/politique-de-confidentialite" className="font-medium text-primary underline underline-offset-4">
+                      politique de confidentialité
+                    </Link>
+                    .
+                  </span>
+                </label>
+
+                {etat === 'erreur' && (
+                  <p role="alert" className="rounded-xl border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-destructive">
+                    {erreur} Vous pouvez aussi appeler le 06 37 53 43 26.
+                  </p>
+                )}
+
+                <Button type="submit" size="lg" className="w-full" disabled={etat === 'envoi'}>
+                  {etat === 'envoi' ? (
+                    <>
+                      <Loader2 className="size-4 animate-spin" aria-hidden /> Envoi en cours…
+                    </>
+                  ) : (
+                    <>
+                      {form.submitLabel}
+                      <Send className="size-4" aria-hidden />
+                    </>
+                  )}
                 </Button>
               </form>
+              )}
             </motion.div>
 
             {/* Contacts directs M. Faé */}

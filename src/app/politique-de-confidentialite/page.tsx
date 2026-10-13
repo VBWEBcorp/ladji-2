@@ -176,7 +176,7 @@ export default function PrivacyPage() {
                 <li><strong>Hébergeur du site</strong> : serveurs en Union européenne.</li>
                 <li><strong>Stripe</strong> (lorsque le paiement en ligne sera activé) : Stripe Payments Europe Ltd., Irlande. Données : informations de paiement, montants. Stripe agit en tant que responsable de traitement pour la conformité PCI-DSS.</li>
                 <li><strong>ADAM</strong> : organisme agréé qui dispense la formation finançable par le CPF. Données transmises uniquement avec accord du bénéficiaire.</li>
-                <li><strong>Make</strong> : réception des demandes envoyées par le formulaire de contact, pour le suivi et l&apos;établissement du devis.</li>
+                <li><strong>Make</strong> : réception des demandes envoyées par les formulaires de contact et d&apos;orientation des prescripteurs, pour le suivi et l&apos;établissement du devis.</li>
                 <li><strong>LIMOVA</strong> (chatbot, lorsque activé) : messages échangés via le chatbot.</li>
                 <li><strong>Prestataire SMS / email</strong> (lorsque activé) : pour les rappels de séance.</li>
                 <li><strong>Prescripteurs orientants</strong> : uniquement les informations de suivi qu&apos;ils demandent, après accord du bénéficiaire.</li>
