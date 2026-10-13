@@ -147,11 +147,8 @@ export function DemandeForm({ submitLabel }: { submitLabel: string }) {
         />
       </div>
 
-      {/* Champ piège pour les robots : invisible pour les visiteurs. */}
-      <div className="hidden" aria-hidden>
-        <label htmlFor="site_web">Site web</label>
-        <input id="site_web" name="site_web" type="text" tabIndex={-1} autoComplete="off" />
-      </div>
+      {/* Champ piège pour les robots : invisible, sans libellé, jamais transmis. */}
+      <input name="site_web" type="text" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden />
 
       <label className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
         <input type="checkbox" name="consentement" value="oui" required className="mt-1 size-4 shrink-0 accent-[oklch(0.62_0.10_200)]" />
