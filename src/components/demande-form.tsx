@@ -7,7 +7,14 @@ import { useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { PACKS, PROFILS, ZONES } from '@/lib/demande'
+import {
+  CASE_ATTESTATION_HEURES,
+  CASES_ELIGIBILITE,
+  PACKS,
+  PROFIL_AUTO_ECOLE,
+  PROFILS,
+  ZONES,
+} from '@/lib/demande'
 
 const champ =
   'h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)]'
@@ -21,6 +28,9 @@ const liste =
 export function DemandeForm({ submitLabel }: { submitLabel: string }) {
   const [etat, setEtat] = useState<'saisie' | 'envoi' | 'envoye' | 'erreur'>('saisie')
   const [message, setMessage] = useState('')
+  // L'attestation des 20 h n'est demandée qu'aux élèves d'auto-école.
+  const [profil, setProfil] = useState('')
+  const autoEcole = profil === PROFIL_AUTO_ECOLE
   // Moment d'affichage : un envoi en moins de 3 s est celui d'un robot.
   const affiche = useRef(Date.now())
 
@@ -49,6 +59,10 @@ export function DemandeForm({ submitLabel }: { submitLabel: string }) {
           zone: f.get('zone'),
           pack: f.get('pack'),
           notes: f.get('notes'),
+          neph: f.get('neph'),
+          ...Object.fromEntries(
+            [...CASES_ELIGIBILITE, CASE_ATTESTATION_HEURES].map((c) => [c.name, f.get(c.name) === 'oui']),
+          ),
           consentement: f.get('consentement') === 'oui',
           site_web: f.get('site_web'),
         }),
@@ -99,7 +113,14 @@ export function DemandeForm({ submitLabel }: { submitLabel: string }) {
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="profil">Vous êtes</Label>
-          <select id="profil" name="profil" required defaultValue="" className={liste}>
+          <select
+            id="profil"
+            name="profil"
+            required
+            value={profil}
+            onChange={(e) => setProfil(e.target.value)}
+            className={liste}
+          >
             <option value="" disabled>Sélectionnez votre profil</option>
             {PROFILS.map((p) => (
               <option key={p} value={p}>{p}</option>
@@ -136,6 +157,27 @@ export function DemandeForm({ submitLabel }: { submitLabel: string }) {
           </select>
         </div>
       </div>
+      <div className="space-y-2">
+        <Label htmlFor="neph">N° NEPH</Label>
+        <Input id="neph" name="neph" required placeholder="Ex. : 123456789012" autoComplete="off" className={champ} />
+      </div>
+
+      <fieldset className="space-y-3 rounded-2xl border border-border/60 bg-background/40 p-4">
+        <legend className="px-1 text-sm font-medium text-foreground">Conditions d&apos;accès</legend>
+        {[...CASES_ELIGIBILITE, ...(autoEcole ? [CASE_ATTESTATION_HEURES] : [])].map((c) => (
+          <label key={c.name} className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
+            <input
+              type="checkbox"
+              name={c.name}
+              value="oui"
+              required
+              className="mt-1 size-4 shrink-0 accent-[oklch(0.62_0.10_200)]"
+            />
+            <span>{c.label}</span>
+          </label>
+        ))}
+      </fieldset>
+
       <div className="space-y-2">
         <Label htmlFor="notes">Votre message (facultatif)</Label>
         <textarea

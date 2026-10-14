@@ -13,6 +13,7 @@ import { Label } from '@/components/ui/label'
 import { SectionTitle } from '@/components/ui/section-title'
 import { useContent } from '@/hooks/use-content'
 import { getIcon } from '@/lib/icons'
+import { CHAMPS_PRESCRIPTEUR, CONSENTEMENT_PRESCRIPTEUR } from '@/lib/demande'
 import { images as siteImages, prescriberContent } from '@/lib/site-content'
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -41,7 +42,7 @@ export function PrescriberContent() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
         body: JSON.stringify({
-          ...Object.fromEntries(form.fields.map((fl) => [fl.name, f.get(fl.name)])),
+          ...Object.fromEntries(CHAMPS_PRESCRIPTEUR.map((c) => [c.name, f.get(c.name)])),
           consentement: f.get('consentement') === 'oui',
           site_web: f.get('site_web'),
           t: Date.now() - affiche.current,
@@ -152,7 +153,7 @@ export function PrescriberContent() {
                 {
                   step: '01',
                   title: 'Vous remplissez le formulaire',
-                  desc: 'Formulaire en ligne de 5 champs maximum. Identité du bénéficiaire, profil, type de besoin. 2 minutes chrono.',
+                  desc: 'Formulaire en ligne de 7 champs : votre structure, vos coordonnées, le bénéficiaire et son contexte. 2 minutes chrono.',
                 },
                 {
                   step: '02',
@@ -190,7 +191,7 @@ export function PrescriberContent() {
         </div>
       </section>
 
-      {/* Formulaire d'orientation (5 champs) */}
+      {/* Formulaire d'orientation (7 champs, définis dans lib/demande.ts) */}
       <section className="border-b border-border/60 bg-[oklch(0.975_0.008_220)] dark:bg-[oklch(0.16_0.015_220)]">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
@@ -223,9 +224,9 @@ export function PrescriberContent() {
                 className="mt-8 space-y-5 rounded-3xl border border-border/80 bg-card/70 p-7 shadow-[var(--shadow-sm)] ring-1 ring-foreground/5 sm:p-9"
                 onSubmit={envoyer}
               >
-                {form.fields.map((f) => (
+                {CHAMPS_PRESCRIPTEUR.map((f) => (
                   <div key={f.name} className="space-y-2">
-                    <Label htmlFor={f.name}>{f.label}</Label>
+                    <Label htmlFor={f.name}>{f.requis ? f.label : `${f.label} (facultatif)`}</Label>
                     {f.type === 'textarea' ? (
                       <textarea
                         id={f.name}
@@ -238,7 +239,8 @@ export function PrescriberContent() {
                       <Input
                         id={f.name}
                         name={f.name}
-                        required
+                        type={f.type}
+                        required={f.requis}
                         placeholder={f.placeholder}
                         className="h-11 rounded-xl bg-background/70 transition-shadow focus-visible:shadow-[0_0_0_4px_oklch(0.62_0.10_200/0.1)]"
                       />
@@ -249,13 +251,10 @@ export function PrescriberContent() {
                 {/* Champ piège pour les robots : invisible, sans libellé, jamais transmis. */}
                 <input name="site_web" type="text" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden />
 
-
                 <label className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
                   <input type="checkbox" name="consentement" value="oui" required className="mt-1 size-4 shrink-0 accent-[oklch(0.62_0.10_200)]" />
                   <span>
-                    J&apos;accepte que ces informations soient utilisées pour traiter
-                    l&apos;orientation et recontacter le bénéficiaire, avec son accord.
-                    Voir la{' '}
+                    {CONSENTEMENT_PRESCRIPTEUR}. Voir la{' '}
                     <Link href="/politique-de-confidentialite" className="font-medium text-primary underline underline-offset-4">
                       politique de confidentialité
                     </Link>

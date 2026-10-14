@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-import { PACKS, PROFILS, ZONES } from '@/lib/demande'
+import {
+  CASE_ATTESTATION_HEURES,
+  CASES_ELIGIBILITE,
+  PACKS,
+  PROFIL_AUTO_ECOLE,
+  PROFILS,
+  ZONES,
+} from '@/lib/demande'
 import { envoyerVersMake, estRobot } from '@/lib/make'
 
 // Formulaire de demande (page Contact) → circuit Make de M. Faé : tableau de
@@ -37,7 +44,14 @@ export async function POST(request: NextRequest) {
     pack: texte(body.pack, 3),
     source: 'Site web',
     notes: texte(body.notes, 2000),
-  }
+    neph: texte(body.neph, 30),
+    // Cases d'éligibilité (14 octobre 2026) : « oui » si cochée. L'attestation
+    // des heures ne concerne que le profil « Perfectionnement auto-école » ; vide sinon.
+    ...Object.fromEntries(CASES_ELIGIBILITE.map((c) => [c.name, body[c.name] === true ? 'oui' : ''])),
+    [CASE_ATTESTATION_HEURES.name]: '',
+  } as Record<string, string>
+  const autoEcole = demande.profil === PROFIL_AUTO_ECOLE
+  if (autoEcole && body[CASE_ATTESTATION_HEURES.name] === true) demande[CASE_ATTESTATION_HEURES.name] = 'oui'
 
   const erreurs: string[] = []
   if (!demande.prenom) erreurs.push('prénom')
@@ -46,6 +60,9 @@ export async function POST(request: NextRequest) {
   if (!(PROFILS as readonly string[]).includes(demande.profil)) erreurs.push('profil')
   if (!ZONES.some((z) => z.value === demande.zone)) erreurs.push('zone')
   if (!(PACKS as readonly string[]).includes(demande.pack)) erreurs.push('pack')
+  if (!demande.neph) erreurs.push('n° NEPH')
+  for (const c of CASES_ELIGIBILITE) if (demande[c.name] !== 'oui') erreurs.push(`case « ${c.label} »`)
+  if (autoEcole && demande[CASE_ATTESTATION_HEURES.name] !== 'oui') erreurs.push('attestation des 20 h')
   if (body.consentement !== true) erreurs.push('consentement')
   if (erreurs.length) {
     return NextResponse.json({ error: `À vérifier : ${erreurs.join(', ')}.` }, { status: 400 })

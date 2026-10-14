@@ -45,20 +45,7 @@ export default function AdminPrescribersPage() {
             <FieldEditor label="Titre" value={content.form?.title} onChange={(v) => update('form.title', v)} />
             <FieldEditor label="Description" value={content.form?.description} onChange={(v) => update('form.description', v)} type="textarea" />
             <FieldEditor label="Libellé du bouton" value={content.form?.submitLabel} onChange={(v) => update('form.submitLabel', v)} />
-            <RepeaterField
-              label="Champs du formulaire"
-              addLabel="Ajouter un champ"
-              items={content.form?.fields ?? []}
-              onChange={(v) => update('form.fields', v)}
-              makeNew={() => ({ name: `champ_${Date.now()}`, label: '', placeholder: '', type: 'text' })}
-              itemTitle={(it: { label: string }, i) => it.label || `Champ ${i + 1}`}
-              renderItem={(it: { label: string; placeholder: string }, set) => (
-                <>
-                  <FieldEditor label="Libellé du champ" value={it.label} onChange={(v) => set({ label: v })} />
-                  <FieldEditor label="Texte indicatif (placeholder)" value={it.placeholder} onChange={(v) => set({ placeholder: v })} />
-                </>
-              )}
-            />
+            <p className="text-xs text-muted-foreground">Les champs du formulaire sont fixes : ils correspondent au circuit Make de M. Faé.</p>
           </SectionEditor>
 
           <SectionEditor title="Clauses sociales">

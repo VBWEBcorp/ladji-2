@@ -854,7 +854,7 @@ export const prescriberContent = {
     {
       iconName: 'UserCheck',
       title: 'Orientation rapide',
-      desc: 'Formulaire de 5 champs. Réponse de M. Faé sous 24h ouvrées. Première séance possible sous 48 à 72h après validation du dossier.',
+      desc: 'Formulaire de 7 champs. Réponse de M. Faé sous 24h ouvrées. Première séance possible sous 48 à 72h après validation du dossier.',
     },
     {
       iconName: 'ShieldCheck',
@@ -881,7 +881,7 @@ export const prescriberContent = {
   form: {
     eyebrow: 'Orientation bénéficiaire',
     title: 'Orienter un bénéficiaire',
-    description: "Remplissez ces 5 informations, nous prenons contact directement avec votre bénéficiaire sous 24h ouvrées.",
+    description: "Remplissez ce formulaire, nous prenons contact directement avec votre bénéficiaire sous 24h ouvrées.",
     fields: [
       { name: 'prescriber_org', label: 'Votre structure', placeholder: 'France Travail, Mission Locale, GEIQ Alemploi…', type: 'text' },
       { name: 'prescriber_name', label: 'Votre nom et contact', placeholder: 'Nom + téléphone ou email', type: 'text' },
