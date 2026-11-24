@@ -18,11 +18,13 @@ export function CookieConsent() {
 
   const handleAccept = () => {
     localStorage.setItem('cookie-consent', 'accepted')
+    window.dispatchEvent(new Event('cookie-consent-change'))
     setVisible(false)
   }
 
   const handleRefuse = () => {
     localStorage.setItem('cookie-consent', 'refused')
+    window.dispatchEvent(new Event('cookie-consent-change'))
     setVisible(false)
   }
 
@@ -39,8 +41,8 @@ export function CookieConsent() {
           exit={{ y: 16, opacity: 0 }}
           transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           className="fixed bottom-4 left-4 right-4 z-[100] sm:right-auto sm:max-w-2xl"
-          role="dialog"
-          aria-labelledby="cookie-title"
+          role="region"
+          aria-label="Consentement aux cookies"
           aria-describedby="cookie-desc"
         >
           <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card px-5 py-4 shadow-[0_20px_50px_-12px_oklch(0.2_0.02_264/0.2)]">
