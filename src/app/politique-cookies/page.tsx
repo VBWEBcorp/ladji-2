@@ -81,16 +81,9 @@ export default function CookiePolicyPage() {
 
               <h3 className="pt-2">b) Cookies de mesure d&apos;audience</h3>
               <p>
-                Lorsque cette fonctionnalité sera activée, nous utiliserons un outil
-                de mesure d&apos;audience pour comprendre comment le site est utilisé
-                (pages les plus consultées, parcours, terminal utilisé). Conformément
-                à la position de la CNIL, ces mesures peuvent être exemptées de
-                consentement à condition d&apos;être strictement limitées à des
-                statistiques anonymisées, sans recoupement avec d&apos;autres traitements.
-              </p>
-              <p>
-                Si nous utilisons un outil non couvert par l&apos;exemption (par exemple
-                Google Analytics), nous recueillerons votre consentement préalable.
+                Ce site utilise Google Analytics pour comprendre comment il est utilisé (pages les
+                plus consultées, parcours, terminal utilisé). Aucun cookie de mesure n&apos;est
+                déposé <strong>sans votre accord</strong>, donné sur le bandeau de cookies.
               </p>
 
               <h3 className="pt-2">c) Cookies de personnalisation / marketing</h3>

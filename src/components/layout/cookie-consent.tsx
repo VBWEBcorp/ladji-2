@@ -123,7 +123,7 @@ export function CookieConsent() {
                   Nous utilisons des cookies
                 </p>
                 <p id="cookie-desc" className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                  Pour améliorer votre expérience. En continuant votre navigation, vous acceptez notre utilisation des cookies.{' '}
+                  Avec votre accord, ce site utilise Google Analytics pour mesurer sa fréquentation. Vous pouvez refuser.{' '}
                   <Link
                     href="/politique-cookies"
                     className="text-primary underline-offset-2 hover:underline"
